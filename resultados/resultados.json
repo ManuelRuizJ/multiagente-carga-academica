@@ -1,0 +1,123 @@
+[
+ {
+  "matricula": "E1",
+  "mensaje": "quiero clases en línea por la tarde",
+  "preferencias": {
+   "turno": "vespertino",
+   "modalidad": "enlinea",
+   "carga": null
+  },
+  "fuente_prefs": "reglas",
+  "cursables": [
+   "RED301",
+   "SO301",
+   "EST301",
+   "ING401",
+   "ELE501"
+  ],
+  "resultado": {
+   "estado": "exito",
+   "mejor": {
+    "autor": "AgenteManager (integrada)",
+    "grupos": [
+     "EST301-B",
+     "ING401-B",
+     "RED301-B",
+     "SO301-B"
+    ],
+    "Av": 100.0,
+    "Ho": 100,
+    "Ca": 96.2962962962963,
+    "Pr": 62.5,
+    "creditos": 28,
+    "conflictos": 0,
+    "invalidas": 0,
+    "Score": 91.57407407407408
+   },
+   "propuestas": [
+    {
+     "autor": "AgenteHistorial",
+     "grupos": [
+      "EST301-A",
+      "ING401-A",
+      "RED301-A",
+      "SO301-A"
+     ],
+     "Av": 100.0,
+     "Ho": 100,
+     "Ca": 96.2962962962963,
+     "Pr": 0.0,
+     "creditos": 28,
+     "conflictos": 0,
+     "invalidas": 0,
+     "Score": 79.07407407407408
+    },
+    {
+     "autor": "AgenteCarga",
+     "grupos": [
+      "BD201-A",
+      "ELE501-A",
+      "IA401-A",
+      "ING401-A"
+     ],
+     "Av": 34.285714285714285,
+     "Ho": 100,
+     "Ca": 96.2962962962963,
+     "Pr": 12.5,
+     "creditos": 28,
+     "conflictos": 0,
+     "invalidas": 2,
+     "Score": 61.85978835978836
+    },
+    {
+     "autor": "AgenteHorarios",
+     "grupos": [
+      "BD201-B",
+      "PRO102-B"
+     ],
+     "Av": 0.0,
+     "Ho": 100,
+     "Ca": 0,
+     "Pr": 100.0,
+     "creditos": 16,
+     "conflictos": 0,
+     "invalidas": 2,
+     "Score": 45.0
+    },
+    {
+     "autor": "AgenteManager (integrada)",
+     "grupos": [
+      "EST301-B",
+      "ING401-B",
+      "RED301-B",
+      "SO301-B"
+     ],
+     "Av": 100.0,
+     "Ho": 100,
+     "Ca": 96.2962962962963,
+     "Pr": 62.5,
+     "creditos": 28,
+     "conflictos": 0,
+     "invalidas": 0,
+     "Score": 91.57407407407408
+    }
+   ]
+  },
+  "v": {
+   "∅": 0.0,
+   "A": 79.07,
+   "B": 61.86,
+   "C": 45.0,
+   "AB": 79.07,
+   "AC": 75.0,
+   "BC": 65.79,
+   "ABC": 91.57
+  },
+  "shapley": {
+   "Historial": 42.82,
+   "Carga": 29.61,
+   "Horarios": 19.14
+  },
+  "tiempo_total": 3.32
+ }
+]

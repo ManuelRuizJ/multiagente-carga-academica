@@ -1,0 +1,782 @@
+<?xml version="1.0"?>
+<Ontology xmlns="http://www.w3.org/2002/07/owl#" xml:base="http://www.ibero.mx/ontologias/plan-estudios" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:xml="http://www.w3.org/XML/1998/namespace" xmlns:xsd="http://www.w3.org/2001/XMLSchema#" xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#" ontologyIRI="http://www.ibero.mx/ontologias/plan-estudios">
+    <Prefix name="" IRI="http://www.ibero.mx/ontologias/plan-estudios#"/>
+    <Prefix name="owl" IRI="http://www.w3.org/2002/07/owl#"/>
+    <Prefix name="rdf" IRI="http://www.w3.org/1999/02/22-rdf-syntax-ns#"/>
+    <Prefix name="xml" IRI="http://www.w3.org/XML/1998/namespace"/>
+    <Prefix name="xsd" IRI="http://www.w3.org/2001/XMLSchema#"/>
+    <Prefix name="rdfs" IRI="http://www.w3.org/2000/01/rdf-schema#"/>
+    <Annotation><AnnotationProperty abbreviatedIRI="rdfs:label"/><Literal xml:lang="es">Ontología del plan de estudios para la recomendación de carga académica</Literal></Annotation>
+    <!-- CLASES -->
+    <Declaration><Class IRI="#Persona"/></Declaration>
+    <Declaration><Class IRI="#Estudiante"/></Declaration>
+    <Declaration><Class IRI="#Profesor"/></Declaration>
+    <Declaration><Class IRI="#Asesor"/></Declaration>
+    <Declaration><Class IRI="#ProgramaEducativo"/></Declaration>
+    <Declaration><Class IRI="#PlanDeEstudios"/></Declaration>
+    <Declaration><Class IRI="#Materia"/></Declaration>
+    <Declaration><Class IRI="#MateriaObligatoria"/></Declaration>
+    <Declaration><Class IRI="#MateriaOptativa"/></Declaration>
+    <Declaration><Class IRI="#MateriaElectiva"/></Declaration>
+    <Declaration><Class IRI="#AreaConocimiento"/></Declaration>
+    <Declaration><Class IRI="#Semestre"/></Declaration>
+    <Declaration><Class IRI="#PeriodoEscolar"/></Declaration>
+    <Declaration><Class IRI="#Grupo"/></Declaration>
+    <Declaration><Class IRI="#Horario"/></Declaration>
+    <Declaration><Class IRI="#Aula"/></Declaration>
+    <Declaration><Class IRI="#RegistroAcademico"/></Declaration>
+    <Declaration><Class IRI="#RegistroAprobado"/></Declaration>
+    <Declaration><Class IRI="#RegistroReprobado"/></Declaration>
+    <Declaration><Class IRI="#RegistroEnCurso"/></Declaration>
+    <Declaration><Class IRI="#RestriccionDeCarga"/></Declaration>
+    <Declaration><Class IRI="#Recomendacion"/></Declaration>
+    <Declaration><Class IRI="#Modalidad"/></Declaration>
+    <Declaration><Class IRI="#ModalidadPresencial"/></Declaration>
+    <Declaration><Class IRI="#ModalidadEnLinea"/></Declaration>
+    <Declaration><Class IRI="#ModalidadHibrida"/></Declaration>
+    <Declaration><Class IRI="#Preferencia"/></Declaration>
+    <Declaration><Class IRI="#PreferenciaHorario"/></Declaration>
+    <Declaration><Class IRI="#PreferenciaModalidad"/></Declaration>
+    <Declaration><Class IRI="#PreferenciaCarga"/></Declaration>
+    <Declaration><Class IRI="#Agente"/></Declaration>
+    <Declaration><Class IRI="#AgenteHistorial"/></Declaration>
+    <Declaration><Class IRI="#AgenteCarga"/></Declaration>
+    <Declaration><Class IRI="#AgenteHorarios"/></Declaration>
+    <Declaration><Class IRI="#AgenteManager"/></Declaration>
+    <Declaration><Class IRI="#TrazaEjecucion"/></Declaration>
+    <SubClassOf><Class IRI="#Estudiante"/><Class IRI="#Persona"/></SubClassOf>
+    <SubClassOf><Class IRI="#Profesor"/><Class IRI="#Persona"/></SubClassOf>
+    <SubClassOf><Class IRI="#Asesor"/><Class IRI="#Persona"/></SubClassOf>
+    <SubClassOf><Class IRI="#MateriaObligatoria"/><Class IRI="#Materia"/></SubClassOf>
+    <SubClassOf><Class IRI="#MateriaOptativa"/><Class IRI="#Materia"/></SubClassOf>
+    <SubClassOf><Class IRI="#MateriaElectiva"/><Class IRI="#Materia"/></SubClassOf>
+    <SubClassOf><Class IRI="#RegistroAprobado"/><Class IRI="#RegistroAcademico"/></SubClassOf>
+    <SubClassOf><Class IRI="#RegistroReprobado"/><Class IRI="#RegistroAcademico"/></SubClassOf>
+    <SubClassOf><Class IRI="#RegistroEnCurso"/><Class IRI="#RegistroAcademico"/></SubClassOf>
+    <SubClassOf><Class IRI="#ModalidadPresencial"/><Class IRI="#Modalidad"/></SubClassOf>
+    <SubClassOf><Class IRI="#ModalidadEnLinea"/><Class IRI="#Modalidad"/></SubClassOf>
+    <SubClassOf><Class IRI="#ModalidadHibrida"/><Class IRI="#Modalidad"/></SubClassOf>
+    <SubClassOf><Class IRI="#PreferenciaHorario"/><Class IRI="#Preferencia"/></SubClassOf>
+    <SubClassOf><Class IRI="#PreferenciaModalidad"/><Class IRI="#Preferencia"/></SubClassOf>
+    <SubClassOf><Class IRI="#PreferenciaCarga"/><Class IRI="#Preferencia"/></SubClassOf>
+    <SubClassOf><Class IRI="#AgenteHistorial"/><Class IRI="#Agente"/></SubClassOf>
+    <SubClassOf><Class IRI="#AgenteCarga"/><Class IRI="#Agente"/></SubClassOf>
+    <SubClassOf><Class IRI="#AgenteHorarios"/><Class IRI="#Agente"/></SubClassOf>
+    <SubClassOf><Class IRI="#AgenteManager"/><Class IRI="#Agente"/></SubClassOf>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#Persona</IRI><Literal xml:lang="es">Persona</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#Persona</IRI><Literal xml:lang="es">Superclase de los actores del sistema.</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#Estudiante</IRI><Literal xml:lang="es">Estudiante</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#Estudiante</IRI><Literal xml:lang="es">Usuario al que se recomienda la carga académica.</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#Profesor</IRI><Literal xml:lang="es">Profesor</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#Profesor</IRI><Literal xml:lang="es">Docente que imparte grupos.</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#Asesor</IRI><Literal xml:lang="es">Asesor</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#Asesor</IRI><Literal xml:lang="es">Tutor académico que valida recomendaciones.</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#ProgramaEducativo</IRI><Literal xml:lang="es">ProgramaEducativo</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#ProgramaEducativo</IRI><Literal xml:lang="es">Carrera o licenciatura a la que pertenece el plan.</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#PlanDeEstudios</IRI><Literal xml:lang="es">PlanDeEstudios</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#PlanDeEstudios</IRI><Literal xml:lang="es">Versión vigente del currículo de un programa.</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#Materia</IRI><Literal xml:lang="es">Materia</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#Materia</IRI><Literal xml:lang="es">Unidad curricular del plan; clase central.</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#MateriaObligatoria</IRI><Literal xml:lang="es">MateriaObligatoria</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#MateriaObligatoria</IRI><Literal xml:lang="es">Materia de cursado forzoso.</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#MateriaOptativa</IRI><Literal xml:lang="es">MateriaOptativa</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#MateriaOptativa</IRI><Literal xml:lang="es">Materia elegible de una lista del plan.</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#MateriaElectiva</IRI><Literal xml:lang="es">MateriaElectiva</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#MateriaElectiva</IRI><Literal xml:lang="es">Materia de libre elección.</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#AreaConocimiento</IRI><Literal xml:lang="es">AreaConocimiento</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#AreaConocimiento</IRI><Literal xml:lang="es">Agrupación temática (matemáticas, programación, etc.).</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#Semestre</IRI><Literal xml:lang="es">Semestre</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#Semestre</IRI><Literal xml:lang="es">Posición sugerida de la materia en la retícula.</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#PeriodoEscolar</IRI><Literal xml:lang="es">PeriodoEscolar</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#PeriodoEscolar</IRI><Literal xml:lang="es">Ciclo en que se inscribe (ej. Ene-Jun 2027).</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#Grupo</IRI><Literal xml:lang="es">Grupo</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#Grupo</IRI><Literal xml:lang="es">Oferta concreta de una materia con horario y cupo.</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#Horario</IRI><Literal xml:lang="es">Horario</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#Horario</IRI><Literal xml:lang="es">Día y franja horaria de un grupo.</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#Aula</IRI><Literal xml:lang="es">Aula</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#Aula</IRI><Literal xml:lang="es">Espacio físico de un grupo.</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#RegistroAcademico</IRI><Literal xml:lang="es">RegistroAcademico</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#RegistroAcademico</IRI><Literal xml:lang="es">Cursado de una materia por un estudiante.</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#RegistroAprobado</IRI><Literal xml:lang="es">RegistroAprobado</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#RegistroAprobado</IRI><Literal xml:lang="es">Materia acreditada.</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#RegistroReprobado</IRI><Literal xml:lang="es">RegistroReprobado</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#RegistroReprobado</IRI><Literal xml:lang="es">Materia no acreditada.</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#RegistroEnCurso</IRI><Literal xml:lang="es">RegistroEnCurso</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#RegistroEnCurso</IRI><Literal xml:lang="es">Materia actualmente cursando.</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#RestriccionDeCarga</IRI><Literal xml:lang="es">RestriccionDeCarga</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#RestriccionDeCarga</IRI><Literal xml:lang="es">Límites de créditos o materias por periodo.</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#Recomendacion</IRI><Literal xml:lang="es">Recomendacion</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#Recomendacion</IRI><Literal xml:lang="es">Resultado del agente para un estudiante y periodo.</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#Modalidad</IRI><Literal xml:lang="es">Modalidad</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#Modalidad</IRI><Literal xml:lang="es">Forma de impartir un grupo.</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#ModalidadPresencial</IRI><Literal xml:lang="es">ModalidadPresencial</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#ModalidadPresencial</IRI><Literal xml:lang="es">Clases en el campus.</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#ModalidadEnLinea</IRI><Literal xml:lang="es">ModalidadEnLinea</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#ModalidadEnLinea</IRI><Literal xml:lang="es">Clases totalmente remotas.</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#ModalidadHibrida</IRI><Literal xml:lang="es">ModalidadHibrida</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#ModalidadHibrida</IRI><Literal xml:lang="es">Combinación de presencial y remoto.</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#Preferencia</IRI><Literal xml:lang="es">Preferencia</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#Preferencia</IRI><Literal xml:lang="es">Preferencia del alumno extraída de su lenguaje natural por el LLM.</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#PreferenciaHorario</IRI><Literal xml:lang="es">PreferenciaHorario</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#PreferenciaHorario</IRI><Literal xml:lang="es">Preferencia de turno u horas (ej. clases por la tarde).</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#PreferenciaModalidad</IRI><Literal xml:lang="es">PreferenciaModalidad</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#PreferenciaModalidad</IRI><Literal xml:lang="es">Preferencia por presencial, en línea o híbrido.</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#PreferenciaCarga</IRI><Literal xml:lang="es">PreferenciaCarga</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#PreferenciaCarga</IRI><Literal xml:lang="es">Preferencia por carga ligera o número de materias/créditos.</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#Agente</IRI><Literal xml:lang="es">Agente</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#Agente</IRI><Literal xml:lang="es">Agente de software del sistema multiagente.</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#AgenteHistorial</IRI><Literal xml:lang="es">AgenteHistorial</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#AgenteHistorial</IRI><Literal xml:lang="es">Analista de historial y requisitos.</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#AgenteCarga</IRI><Literal xml:lang="es">AgenteCarga</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#AgenteCarga</IRI><Literal xml:lang="es">Analista de carga académica.</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#AgenteHorarios</IRI><Literal xml:lang="es">AgenteHorarios</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#AgenteHorarios</IRI><Literal xml:lang="es">Analista de horarios y preferencias.</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#AgenteManager</IRI><Literal xml:lang="es">AgenteManager</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#AgenteManager</IRI><Literal xml:lang="es">Coordinador y recomendador.</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#TrazaEjecucion</IRI><Literal xml:lang="es">TrazaEjecucion</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#TrazaEjecucion</IRI><Literal xml:lang="es">Evento registrado por el Trace Collector durante la ejecución de un agente.</Literal></AnnotationAssertion>
+    <!-- OBJECT PROPERTIES -->
+    <Declaration><ObjectProperty IRI="#perteneceAPlan"/></Declaration>
+    <Declaration><ObjectProperty IRI="#contieneMateria"/></Declaration>
+    <Declaration><ObjectProperty IRI="#tienePlan"/></Declaration>
+    <Declaration><ObjectProperty IRI="#esPlanDe"/></Declaration>
+    <Declaration><ObjectProperty IRI="#cursaPrograma"/></Declaration>
+    <Declaration><ObjectProperty IRI="#tieneEstudiante"/></Declaration>
+    <Declaration><ObjectProperty IRI="#tienePrerrequisito"/></Declaration>
+    <Declaration><ObjectProperty IRI="#esPrerrequisitoDe"/></Declaration>
+    <Declaration><ObjectProperty IRI="#esCorrequisitoDe"/></Declaration>
+    <Declaration><ObjectProperty IRI="#ubicadaEnSemestre"/></Declaration>
+    <Declaration><ObjectProperty IRI="#incluyeMateria"/></Declaration>
+    <Declaration><ObjectProperty IRI="#perteneceAArea"/></Declaration>
+    <Declaration><ObjectProperty IRI="#agrupaMateria"/></Declaration>
+    <Declaration><ObjectProperty IRI="#tieneRegistro"/></Declaration>
+    <Declaration><ObjectProperty IRI="#registroDe"/></Declaration>
+    <Declaration><ObjectProperty IRI="#registraMateria"/></Declaration>
+    <Declaration><ObjectProperty IRI="#tieneRegistros"/></Declaration>
+    <Declaration><ObjectProperty IRI="#registradoEnPeriodo"/></Declaration>
+    <Declaration><ObjectProperty IRI="#contieneRegistro"/></Declaration>
+    <Declaration><ObjectProperty IRI="#ofreceMateria"/></Declaration>
+    <Declaration><ObjectProperty IRI="#seOfertaEnGrupo"/></Declaration>
+    <Declaration><ObjectProperty IRI="#impartidoPor"/></Declaration>
+    <Declaration><ObjectProperty IRI="#imparteGrupo"/></Declaration>
+    <Declaration><ObjectProperty IRI="#tieneHorario"/></Declaration>
+    <Declaration><ObjectProperty IRI="#horarioDe"/></Declaration>
+    <Declaration><ObjectProperty IRI="#seOfertaEnPeriodo"/></Declaration>
+    <Declaration><ObjectProperty IRI="#ofertaGrupo"/></Declaration>
+    <Declaration><ObjectProperty IRI="#asignadoAAula"/></Declaration>
+    <Declaration><ObjectProperty IRI="#aulaDe"/></Declaration>
+    <Declaration><ObjectProperty IRI="#tieneAsesor"/></Declaration>
+    <Declaration><ObjectProperty IRI="#asesoraA"/></Declaration>
+    <Declaration><ObjectProperty IRI="#recomiendaA"/></Declaration>
+    <Declaration><ObjectProperty IRI="#tieneRecomendacion"/></Declaration>
+    <Declaration><ObjectProperty IRI="#sugiereMateria"/></Declaration>
+    <Declaration><ObjectProperty IRI="#esSugeridaEn"/></Declaration>
+    <Declaration><ObjectProperty IRI="#sujetaARestriccion"/></Declaration>
+    <Declaration><ObjectProperty IRI="#restringeRecomendacion"/></Declaration>
+    <Declaration><ObjectProperty IRI="#tieneModalidad"/></Declaration>
+    <Declaration><ObjectProperty IRI="#modalidadDeGrupo"/></Declaration>
+    <Declaration><ObjectProperty IRI="#tienePreferencia"/></Declaration>
+    <Declaration><ObjectProperty IRI="#esPreferenciaDe"/></Declaration>
+    <Declaration><ObjectProperty IRI="#prefiereModalidad"/></Declaration>
+    <Declaration><ObjectProperty IRI="#enConflictoCon"/></Declaration>
+    <Declaration><ObjectProperty IRI="#haAprobado"/></Declaration>
+    <Declaration><ObjectProperty IRI="#aprobadaPor"/></Declaration>
+    <Declaration><ObjectProperty IRI="#puedeCursar"/></Declaration>
+    <Declaration><ObjectProperty IRI="#puedeSerCursadaPor"/></Declaration>
+    <Declaration><ObjectProperty IRI="#recomendacionParaPeriodo"/></Declaration>
+    <Declaration><ObjectProperty IRI="#periodoTieneRecomendacion"/></Declaration>
+    <Declaration><ObjectProperty IRI="#incluyeGrupo"/></Declaration>
+    <Declaration><ObjectProperty IRI="#incluidoEnRecomendacion"/></Declaration>
+    <Declaration><ObjectProperty IRI="#generadaPor"/></Declaration>
+    <Declaration><ObjectProperty IRI="#generaRecomendacion"/></Declaration>
+    <Declaration><ObjectProperty IRI="#trazaDeAgente"/></Declaration>
+    <Declaration><ObjectProperty IRI="#registraTraza"/></Declaration>
+    <Declaration><ObjectProperty IRI="#trazaDeRecomendacion"/></Declaration>
+    <Declaration><ObjectProperty IRI="#tieneTraza"/></Declaration>
+    <InverseObjectProperties><ObjectProperty IRI="#perteneceAPlan"/><ObjectProperty IRI="#contieneMateria"/></InverseObjectProperties>
+    <FunctionalObjectProperty><ObjectProperty IRI="#perteneceAPlan"/></FunctionalObjectProperty>
+    <ObjectPropertyDomain><ObjectProperty IRI="#perteneceAPlan"/><Class IRI="#Materia"/></ObjectPropertyDomain>
+    <ObjectPropertyRange><ObjectProperty IRI="#perteneceAPlan"/><Class IRI="#PlanDeEstudios"/></ObjectPropertyRange>
+    <ObjectPropertyDomain><ObjectProperty IRI="#contieneMateria"/><Class IRI="#PlanDeEstudios"/></ObjectPropertyDomain>
+    <ObjectPropertyRange><ObjectProperty IRI="#contieneMateria"/><Class IRI="#Materia"/></ObjectPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#perteneceAPlan</IRI><Literal xml:lang="es">perteneceAPlan</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#perteneceAPlan</IRI><Literal xml:lang="es">Cada materia pertenece a un plan.</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#contieneMateria</IRI><Literal xml:lang="es">contieneMateria</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#contieneMateria</IRI><Literal xml:lang="es">Inversa de perteneceAPlan.</Literal></AnnotationAssertion>
+    <InverseObjectProperties><ObjectProperty IRI="#tienePlan"/><ObjectProperty IRI="#esPlanDe"/></InverseObjectProperties>
+    <InverseFunctionalObjectProperty><ObjectProperty IRI="#tienePlan"/></InverseFunctionalObjectProperty>
+    <ObjectPropertyDomain><ObjectProperty IRI="#tienePlan"/><Class IRI="#ProgramaEducativo"/></ObjectPropertyDomain>
+    <ObjectPropertyRange><ObjectProperty IRI="#tienePlan"/><Class IRI="#PlanDeEstudios"/></ObjectPropertyRange>
+    <FunctionalObjectProperty><ObjectProperty IRI="#esPlanDe"/></FunctionalObjectProperty>
+    <ObjectPropertyDomain><ObjectProperty IRI="#esPlanDe"/><Class IRI="#PlanDeEstudios"/></ObjectPropertyDomain>
+    <ObjectPropertyRange><ObjectProperty IRI="#esPlanDe"/><Class IRI="#ProgramaEducativo"/></ObjectPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#tienePlan</IRI><Literal xml:lang="es">tienePlan</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#tienePlan</IRI><Literal xml:lang="es">Un programa tiene planes; cada plan es de un solo programa.</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#esPlanDe</IRI><Literal xml:lang="es">esPlanDe</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#esPlanDe</IRI><Literal xml:lang="es">Inversa de tienePlan.</Literal></AnnotationAssertion>
+    <InverseObjectProperties><ObjectProperty IRI="#cursaPrograma"/><ObjectProperty IRI="#tieneEstudiante"/></InverseObjectProperties>
+    <FunctionalObjectProperty><ObjectProperty IRI="#cursaPrograma"/></FunctionalObjectProperty>
+    <ObjectPropertyDomain><ObjectProperty IRI="#cursaPrograma"/><Class IRI="#Estudiante"/></ObjectPropertyDomain>
+    <ObjectPropertyRange><ObjectProperty IRI="#cursaPrograma"/><Class IRI="#ProgramaEducativo"/></ObjectPropertyRange>
+    <ObjectPropertyDomain><ObjectProperty IRI="#tieneEstudiante"/><Class IRI="#ProgramaEducativo"/></ObjectPropertyDomain>
+    <ObjectPropertyRange><ObjectProperty IRI="#tieneEstudiante"/><Class IRI="#Estudiante"/></ObjectPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#cursaPrograma</IRI><Literal xml:lang="es">cursaPrograma</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#cursaPrograma</IRI><Literal xml:lang="es">Un estudiante pertenece a un solo programa.</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#tieneEstudiante</IRI><Literal xml:lang="es">tieneEstudiante</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#tieneEstudiante</IRI><Literal xml:lang="es">Inversa de cursaPrograma.</Literal></AnnotationAssertion>
+    <InverseObjectProperties><ObjectProperty IRI="#tienePrerrequisito"/><ObjectProperty IRI="#esPrerrequisitoDe"/></InverseObjectProperties>
+    <AsymmetricObjectProperty><ObjectProperty IRI="#tienePrerrequisito"/></AsymmetricObjectProperty>
+    <IrreflexiveObjectProperty><ObjectProperty IRI="#tienePrerrequisito"/></IrreflexiveObjectProperty>
+    <ObjectPropertyDomain><ObjectProperty IRI="#tienePrerrequisito"/><Class IRI="#Materia"/></ObjectPropertyDomain>
+    <ObjectPropertyRange><ObjectProperty IRI="#tienePrerrequisito"/><Class IRI="#Materia"/></ObjectPropertyRange>
+    <ObjectPropertyDomain><ObjectProperty IRI="#esPrerrequisitoDe"/><Class IRI="#Materia"/></ObjectPropertyDomain>
+    <ObjectPropertyRange><ObjectProperty IRI="#esPrerrequisitoDe"/><Class IRI="#Materia"/></ObjectPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#tienePrerrequisito</IRI><Literal xml:lang="es">tienePrerrequisito</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#tienePrerrequisito</IRI><Literal xml:lang="es">Seriación directa entre materias.</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#esPrerrequisitoDe</IRI><Literal xml:lang="es">esPrerrequisitoDe</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#esPrerrequisitoDe</IRI><Literal xml:lang="es">Inversa de tienePrerrequisito.</Literal></AnnotationAssertion>
+    <SymmetricObjectProperty><ObjectProperty IRI="#esCorrequisitoDe"/></SymmetricObjectProperty>
+    <IrreflexiveObjectProperty><ObjectProperty IRI="#esCorrequisitoDe"/></IrreflexiveObjectProperty>
+    <ObjectPropertyDomain><ObjectProperty IRI="#esCorrequisitoDe"/><Class IRI="#Materia"/></ObjectPropertyDomain>
+    <ObjectPropertyRange><ObjectProperty IRI="#esCorrequisitoDe"/><Class IRI="#Materia"/></ObjectPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#esCorrequisitoDe</IRI><Literal xml:lang="es">esCorrequisitoDe</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#esCorrequisitoDe</IRI><Literal xml:lang="es">Materias que deben cursarse en el mismo periodo.</Literal></AnnotationAssertion>
+    <InverseObjectProperties><ObjectProperty IRI="#ubicadaEnSemestre"/><ObjectProperty IRI="#incluyeMateria"/></InverseObjectProperties>
+    <FunctionalObjectProperty><ObjectProperty IRI="#ubicadaEnSemestre"/></FunctionalObjectProperty>
+    <ObjectPropertyDomain><ObjectProperty IRI="#ubicadaEnSemestre"/><Class IRI="#Materia"/></ObjectPropertyDomain>
+    <ObjectPropertyRange><ObjectProperty IRI="#ubicadaEnSemestre"/><Class IRI="#Semestre"/></ObjectPropertyRange>
+    <ObjectPropertyDomain><ObjectProperty IRI="#incluyeMateria"/><Class IRI="#Semestre"/></ObjectPropertyDomain>
+    <ObjectPropertyRange><ObjectProperty IRI="#incluyeMateria"/><Class IRI="#Materia"/></ObjectPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#ubicadaEnSemestre</IRI><Literal xml:lang="es">ubicadaEnSemestre</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#ubicadaEnSemestre</IRI><Literal xml:lang="es">Posición de la materia en la retícula.</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#incluyeMateria</IRI><Literal xml:lang="es">incluyeMateria</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#incluyeMateria</IRI><Literal xml:lang="es">Inversa de ubicadaEnSemestre.</Literal></AnnotationAssertion>
+    <InverseObjectProperties><ObjectProperty IRI="#perteneceAArea"/><ObjectProperty IRI="#agrupaMateria"/></InverseObjectProperties>
+    <ObjectPropertyDomain><ObjectProperty IRI="#perteneceAArea"/><Class IRI="#Materia"/></ObjectPropertyDomain>
+    <ObjectPropertyRange><ObjectProperty IRI="#perteneceAArea"/><Class IRI="#AreaConocimiento"/></ObjectPropertyRange>
+    <ObjectPropertyDomain><ObjectProperty IRI="#agrupaMateria"/><Class IRI="#AreaConocimiento"/></ObjectPropertyDomain>
+    <ObjectPropertyRange><ObjectProperty IRI="#agrupaMateria"/><Class IRI="#Materia"/></ObjectPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#perteneceAArea</IRI><Literal xml:lang="es">perteneceAArea</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#perteneceAArea</IRI><Literal xml:lang="es">Clasificación temática de la materia.</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#agrupaMateria</IRI><Literal xml:lang="es">agrupaMateria</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#agrupaMateria</IRI><Literal xml:lang="es">Inversa de perteneceAArea.</Literal></AnnotationAssertion>
+    <InverseObjectProperties><ObjectProperty IRI="#tieneRegistro"/><ObjectProperty IRI="#registroDe"/></InverseObjectProperties>
+    <InverseFunctionalObjectProperty><ObjectProperty IRI="#tieneRegistro"/></InverseFunctionalObjectProperty>
+    <ObjectPropertyDomain><ObjectProperty IRI="#tieneRegistro"/><Class IRI="#Estudiante"/></ObjectPropertyDomain>
+    <ObjectPropertyRange><ObjectProperty IRI="#tieneRegistro"/><Class IRI="#RegistroAcademico"/></ObjectPropertyRange>
+    <FunctionalObjectProperty><ObjectProperty IRI="#registroDe"/></FunctionalObjectProperty>
+    <ObjectPropertyDomain><ObjectProperty IRI="#registroDe"/><Class IRI="#RegistroAcademico"/></ObjectPropertyDomain>
+    <ObjectPropertyRange><ObjectProperty IRI="#registroDe"/><Class IRI="#Estudiante"/></ObjectPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#tieneRegistro</IRI><Literal xml:lang="es">tieneRegistro</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#tieneRegistro</IRI><Literal xml:lang="es">Historial del estudiante.</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#registroDe</IRI><Literal xml:lang="es">registroDe</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#registroDe</IRI><Literal xml:lang="es">Inversa de tieneRegistro.</Literal></AnnotationAssertion>
+    <InverseObjectProperties><ObjectProperty IRI="#registraMateria"/><ObjectProperty IRI="#tieneRegistros"/></InverseObjectProperties>
+    <FunctionalObjectProperty><ObjectProperty IRI="#registraMateria"/></FunctionalObjectProperty>
+    <ObjectPropertyDomain><ObjectProperty IRI="#registraMateria"/><Class IRI="#RegistroAcademico"/></ObjectPropertyDomain>
+    <ObjectPropertyRange><ObjectProperty IRI="#registraMateria"/><Class IRI="#Materia"/></ObjectPropertyRange>
+    <ObjectPropertyDomain><ObjectProperty IRI="#tieneRegistros"/><Class IRI="#Materia"/></ObjectPropertyDomain>
+    <ObjectPropertyRange><ObjectProperty IRI="#tieneRegistros"/><Class IRI="#RegistroAcademico"/></ObjectPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#registraMateria</IRI><Literal xml:lang="es">registraMateria</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#registraMateria</IRI><Literal xml:lang="es">Materia a la que corresponde el registro.</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#tieneRegistros</IRI><Literal xml:lang="es">tieneRegistros</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#tieneRegistros</IRI><Literal xml:lang="es">Inversa de registraMateria.</Literal></AnnotationAssertion>
+    <InverseObjectProperties><ObjectProperty IRI="#registradoEnPeriodo"/><ObjectProperty IRI="#contieneRegistro"/></InverseObjectProperties>
+    <FunctionalObjectProperty><ObjectProperty IRI="#registradoEnPeriodo"/></FunctionalObjectProperty>
+    <ObjectPropertyDomain><ObjectProperty IRI="#registradoEnPeriodo"/><Class IRI="#RegistroAcademico"/></ObjectPropertyDomain>
+    <ObjectPropertyRange><ObjectProperty IRI="#registradoEnPeriodo"/><Class IRI="#PeriodoEscolar"/></ObjectPropertyRange>
+    <ObjectPropertyDomain><ObjectProperty IRI="#contieneRegistro"/><Class IRI="#PeriodoEscolar"/></ObjectPropertyDomain>
+    <ObjectPropertyRange><ObjectProperty IRI="#contieneRegistro"/><Class IRI="#RegistroAcademico"/></ObjectPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#registradoEnPeriodo</IRI><Literal xml:lang="es">registradoEnPeriodo</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#registradoEnPeriodo</IRI><Literal xml:lang="es">Cuándo se cursó.</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#contieneRegistro</IRI><Literal xml:lang="es">contieneRegistro</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#contieneRegistro</IRI><Literal xml:lang="es">Inversa de registradoEnPeriodo.</Literal></AnnotationAssertion>
+    <InverseObjectProperties><ObjectProperty IRI="#ofreceMateria"/><ObjectProperty IRI="#seOfertaEnGrupo"/></InverseObjectProperties>
+    <FunctionalObjectProperty><ObjectProperty IRI="#ofreceMateria"/></FunctionalObjectProperty>
+    <ObjectPropertyDomain><ObjectProperty IRI="#ofreceMateria"/><Class IRI="#Grupo"/></ObjectPropertyDomain>
+    <ObjectPropertyRange><ObjectProperty IRI="#ofreceMateria"/><Class IRI="#Materia"/></ObjectPropertyRange>
+    <ObjectPropertyDomain><ObjectProperty IRI="#seOfertaEnGrupo"/><Class IRI="#Materia"/></ObjectPropertyDomain>
+    <ObjectPropertyRange><ObjectProperty IRI="#seOfertaEnGrupo"/><Class IRI="#Grupo"/></ObjectPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#ofreceMateria</IRI><Literal xml:lang="es">ofreceMateria</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#ofreceMateria</IRI><Literal xml:lang="es">Materia que ofrece el grupo.</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#seOfertaEnGrupo</IRI><Literal xml:lang="es">seOfertaEnGrupo</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#seOfertaEnGrupo</IRI><Literal xml:lang="es">Inversa de ofreceMateria.</Literal></AnnotationAssertion>
+    <InverseObjectProperties><ObjectProperty IRI="#impartidoPor"/><ObjectProperty IRI="#imparteGrupo"/></InverseObjectProperties>
+    <FunctionalObjectProperty><ObjectProperty IRI="#impartidoPor"/></FunctionalObjectProperty>
+    <ObjectPropertyDomain><ObjectProperty IRI="#impartidoPor"/><Class IRI="#Grupo"/></ObjectPropertyDomain>
+    <ObjectPropertyRange><ObjectProperty IRI="#impartidoPor"/><Class IRI="#Profesor"/></ObjectPropertyRange>
+    <ObjectPropertyDomain><ObjectProperty IRI="#imparteGrupo"/><Class IRI="#Profesor"/></ObjectPropertyDomain>
+    <ObjectPropertyRange><ObjectProperty IRI="#imparteGrupo"/><Class IRI="#Grupo"/></ObjectPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#impartidoPor</IRI><Literal xml:lang="es">impartidoPor</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#impartidoPor</IRI><Literal xml:lang="es">Profesor titular del grupo.</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#imparteGrupo</IRI><Literal xml:lang="es">imparteGrupo</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#imparteGrupo</IRI><Literal xml:lang="es">Inversa de impartidoPor.</Literal></AnnotationAssertion>
+    <InverseObjectProperties><ObjectProperty IRI="#tieneHorario"/><ObjectProperty IRI="#horarioDe"/></InverseObjectProperties>
+    <ObjectPropertyDomain><ObjectProperty IRI="#tieneHorario"/><Class IRI="#Grupo"/></ObjectPropertyDomain>
+    <ObjectPropertyRange><ObjectProperty IRI="#tieneHorario"/><Class IRI="#Horario"/></ObjectPropertyRange>
+    <ObjectPropertyDomain><ObjectProperty IRI="#horarioDe"/><Class IRI="#Horario"/></ObjectPropertyDomain>
+    <ObjectPropertyRange><ObjectProperty IRI="#horarioDe"/><Class IRI="#Grupo"/></ObjectPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#tieneHorario</IRI><Literal xml:lang="es">tieneHorario</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#tieneHorario</IRI><Literal xml:lang="es">Un grupo puede reunirse varios días.</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#horarioDe</IRI><Literal xml:lang="es">horarioDe</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#horarioDe</IRI><Literal xml:lang="es">Inversa de tieneHorario.</Literal></AnnotationAssertion>
+    <InverseObjectProperties><ObjectProperty IRI="#seOfertaEnPeriodo"/><ObjectProperty IRI="#ofertaGrupo"/></InverseObjectProperties>
+    <FunctionalObjectProperty><ObjectProperty IRI="#seOfertaEnPeriodo"/></FunctionalObjectProperty>
+    <ObjectPropertyDomain><ObjectProperty IRI="#seOfertaEnPeriodo"/><Class IRI="#Grupo"/></ObjectPropertyDomain>
+    <ObjectPropertyRange><ObjectProperty IRI="#seOfertaEnPeriodo"/><Class IRI="#PeriodoEscolar"/></ObjectPropertyRange>
+    <ObjectPropertyDomain><ObjectProperty IRI="#ofertaGrupo"/><Class IRI="#PeriodoEscolar"/></ObjectPropertyDomain>
+    <ObjectPropertyRange><ObjectProperty IRI="#ofertaGrupo"/><Class IRI="#Grupo"/></ObjectPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#seOfertaEnPeriodo</IRI><Literal xml:lang="es">seOfertaEnPeriodo</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#seOfertaEnPeriodo</IRI><Literal xml:lang="es">Periodo en que existe el grupo.</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#ofertaGrupo</IRI><Literal xml:lang="es">ofertaGrupo</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#ofertaGrupo</IRI><Literal xml:lang="es">Inversa de seOfertaEnPeriodo.</Literal></AnnotationAssertion>
+    <InverseObjectProperties><ObjectProperty IRI="#asignadoAAula"/><ObjectProperty IRI="#aulaDe"/></InverseObjectProperties>
+    <FunctionalObjectProperty><ObjectProperty IRI="#asignadoAAula"/></FunctionalObjectProperty>
+    <ObjectPropertyDomain><ObjectProperty IRI="#asignadoAAula"/><Class IRI="#Grupo"/></ObjectPropertyDomain>
+    <ObjectPropertyRange><ObjectProperty IRI="#asignadoAAula"/><Class IRI="#Aula"/></ObjectPropertyRange>
+    <ObjectPropertyDomain><ObjectProperty IRI="#aulaDe"/><Class IRI="#Aula"/></ObjectPropertyDomain>
+    <ObjectPropertyRange><ObjectProperty IRI="#aulaDe"/><Class IRI="#Grupo"/></ObjectPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#asignadoAAula</IRI><Literal xml:lang="es">asignadoAAula</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#asignadoAAula</IRI><Literal xml:lang="es">Aula del grupo (opcional).</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#aulaDe</IRI><Literal xml:lang="es">aulaDe</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#aulaDe</IRI><Literal xml:lang="es">Inversa de asignadoAAula.</Literal></AnnotationAssertion>
+    <InverseObjectProperties><ObjectProperty IRI="#tieneAsesor"/><ObjectProperty IRI="#asesoraA"/></InverseObjectProperties>
+    <FunctionalObjectProperty><ObjectProperty IRI="#tieneAsesor"/></FunctionalObjectProperty>
+    <ObjectPropertyDomain><ObjectProperty IRI="#tieneAsesor"/><Class IRI="#Estudiante"/></ObjectPropertyDomain>
+    <ObjectPropertyRange><ObjectProperty IRI="#tieneAsesor"/><Class IRI="#Asesor"/></ObjectPropertyRange>
+    <ObjectPropertyDomain><ObjectProperty IRI="#asesoraA"/><Class IRI="#Asesor"/></ObjectPropertyDomain>
+    <ObjectPropertyRange><ObjectProperty IRI="#asesoraA"/><Class IRI="#Estudiante"/></ObjectPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#tieneAsesor</IRI><Literal xml:lang="es">tieneAsesor</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#tieneAsesor</IRI><Literal xml:lang="es">Tutor asignado al estudiante.</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#asesoraA</IRI><Literal xml:lang="es">asesoraA</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#asesoraA</IRI><Literal xml:lang="es">Inversa de tieneAsesor.</Literal></AnnotationAssertion>
+    <InverseObjectProperties><ObjectProperty IRI="#recomiendaA"/><ObjectProperty IRI="#tieneRecomendacion"/></InverseObjectProperties>
+    <FunctionalObjectProperty><ObjectProperty IRI="#recomiendaA"/></FunctionalObjectProperty>
+    <ObjectPropertyDomain><ObjectProperty IRI="#recomiendaA"/><Class IRI="#Recomendacion"/></ObjectPropertyDomain>
+    <ObjectPropertyRange><ObjectProperty IRI="#recomiendaA"/><Class IRI="#Estudiante"/></ObjectPropertyRange>
+    <ObjectPropertyDomain><ObjectProperty IRI="#tieneRecomendacion"/><Class IRI="#Estudiante"/></ObjectPropertyDomain>
+    <ObjectPropertyRange><ObjectProperty IRI="#tieneRecomendacion"/><Class IRI="#Recomendacion"/></ObjectPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#recomiendaA</IRI><Literal xml:lang="es">recomiendaA</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#recomiendaA</IRI><Literal xml:lang="es">Destinatario de la recomendación.</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#tieneRecomendacion</IRI><Literal xml:lang="es">tieneRecomendacion</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#tieneRecomendacion</IRI><Literal xml:lang="es">Inversa de recomiendaA.</Literal></AnnotationAssertion>
+    <InverseObjectProperties><ObjectProperty IRI="#sugiereMateria"/><ObjectProperty IRI="#esSugeridaEn"/></InverseObjectProperties>
+    <ObjectPropertyDomain><ObjectProperty IRI="#sugiereMateria"/><Class IRI="#Recomendacion"/></ObjectPropertyDomain>
+    <ObjectPropertyRange><ObjectProperty IRI="#sugiereMateria"/><Class IRI="#Materia"/></ObjectPropertyRange>
+    <ObjectPropertyDomain><ObjectProperty IRI="#esSugeridaEn"/><Class IRI="#Materia"/></ObjectPropertyDomain>
+    <ObjectPropertyRange><ObjectProperty IRI="#esSugeridaEn"/><Class IRI="#Recomendacion"/></ObjectPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#sugiereMateria</IRI><Literal xml:lang="es">sugiereMateria</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#sugiereMateria</IRI><Literal xml:lang="es">Materias sugeridas.</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#esSugeridaEn</IRI><Literal xml:lang="es">esSugeridaEn</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#esSugeridaEn</IRI><Literal xml:lang="es">Inversa de sugiereMateria.</Literal></AnnotationAssertion>
+    <InverseObjectProperties><ObjectProperty IRI="#sujetaARestriccion"/><ObjectProperty IRI="#restringeRecomendacion"/></InverseObjectProperties>
+    <FunctionalObjectProperty><ObjectProperty IRI="#sujetaARestriccion"/></FunctionalObjectProperty>
+    <ObjectPropertyDomain><ObjectProperty IRI="#sujetaARestriccion"/><Class IRI="#Recomendacion"/></ObjectPropertyDomain>
+    <ObjectPropertyRange><ObjectProperty IRI="#sujetaARestriccion"/><Class IRI="#RestriccionDeCarga"/></ObjectPropertyRange>
+    <ObjectPropertyDomain><ObjectProperty IRI="#restringeRecomendacion"/><Class IRI="#RestriccionDeCarga"/></ObjectPropertyDomain>
+    <ObjectPropertyRange><ObjectProperty IRI="#restringeRecomendacion"/><Class IRI="#Recomendacion"/></ObjectPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#sujetaARestriccion</IRI><Literal xml:lang="es">sujetaARestriccion</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#sujetaARestriccion</IRI><Literal xml:lang="es">Restricción de carga que aplicó.</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#restringeRecomendacion</IRI><Literal xml:lang="es">restringeRecomendacion</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#restringeRecomendacion</IRI><Literal xml:lang="es">Inversa de sujetaARestriccion.</Literal></AnnotationAssertion>
+    <InverseObjectProperties><ObjectProperty IRI="#tieneModalidad"/><ObjectProperty IRI="#modalidadDeGrupo"/></InverseObjectProperties>
+    <FunctionalObjectProperty><ObjectProperty IRI="#tieneModalidad"/></FunctionalObjectProperty>
+    <ObjectPropertyDomain><ObjectProperty IRI="#tieneModalidad"/><Class IRI="#Grupo"/></ObjectPropertyDomain>
+    <ObjectPropertyRange><ObjectProperty IRI="#tieneModalidad"/><Class IRI="#Modalidad"/></ObjectPropertyRange>
+    <ObjectPropertyDomain><ObjectProperty IRI="#modalidadDeGrupo"/><Class IRI="#Modalidad"/></ObjectPropertyDomain>
+    <ObjectPropertyRange><ObjectProperty IRI="#modalidadDeGrupo"/><Class IRI="#Grupo"/></ObjectPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#tieneModalidad</IRI><Literal xml:lang="es">tieneModalidad</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#tieneModalidad</IRI><Literal xml:lang="es">Modalidad del grupo.</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#modalidadDeGrupo</IRI><Literal xml:lang="es">modalidadDeGrupo</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#modalidadDeGrupo</IRI><Literal xml:lang="es">Inversa de tieneModalidad.</Literal></AnnotationAssertion>
+    <InverseObjectProperties><ObjectProperty IRI="#tienePreferencia"/><ObjectProperty IRI="#esPreferenciaDe"/></InverseObjectProperties>
+    <InverseFunctionalObjectProperty><ObjectProperty IRI="#tienePreferencia"/></InverseFunctionalObjectProperty>
+    <ObjectPropertyDomain><ObjectProperty IRI="#tienePreferencia"/><Class IRI="#Estudiante"/></ObjectPropertyDomain>
+    <ObjectPropertyRange><ObjectProperty IRI="#tienePreferencia"/><Class IRI="#Preferencia"/></ObjectPropertyRange>
+    <FunctionalObjectProperty><ObjectProperty IRI="#esPreferenciaDe"/></FunctionalObjectProperty>
+    <ObjectPropertyDomain><ObjectProperty IRI="#esPreferenciaDe"/><Class IRI="#Preferencia"/></ObjectPropertyDomain>
+    <ObjectPropertyRange><ObjectProperty IRI="#esPreferenciaDe"/><Class IRI="#Estudiante"/></ObjectPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#tienePreferencia</IRI><Literal xml:lang="es">tienePreferencia</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#tienePreferencia</IRI><Literal xml:lang="es">Preferencias que el LLM extrae del chat.</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#esPreferenciaDe</IRI><Literal xml:lang="es">esPreferenciaDe</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#esPreferenciaDe</IRI><Literal xml:lang="es">Inversa de tienePreferencia.</Literal></AnnotationAssertion>
+    <FunctionalObjectProperty><ObjectProperty IRI="#prefiereModalidad"/></FunctionalObjectProperty>
+    <ObjectPropertyDomain><ObjectProperty IRI="#prefiereModalidad"/><Class IRI="#PreferenciaModalidad"/></ObjectPropertyDomain>
+    <ObjectPropertyRange><ObjectProperty IRI="#prefiereModalidad"/><Class IRI="#Modalidad"/></ObjectPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#prefiereModalidad</IRI><Literal xml:lang="es">prefiereModalidad</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#prefiereModalidad</IRI><Literal xml:lang="es">Modalidad deseada.</Literal></AnnotationAssertion>
+    <SymmetricObjectProperty><ObjectProperty IRI="#enConflictoCon"/></SymmetricObjectProperty>
+    <IrreflexiveObjectProperty><ObjectProperty IRI="#enConflictoCon"/></IrreflexiveObjectProperty>
+    <ObjectPropertyDomain><ObjectProperty IRI="#enConflictoCon"/><Class IRI="#Grupo"/></ObjectPropertyDomain>
+    <ObjectPropertyRange><ObjectProperty IRI="#enConflictoCon"/><Class IRI="#Grupo"/></ObjectPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#enConflictoCon</IRI><Literal xml:lang="es">enConflictoCon</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#enConflictoCon</IRI><Literal xml:lang="es">Grupos con traslape de horario.</Literal></AnnotationAssertion>
+    <InverseObjectProperties><ObjectProperty IRI="#haAprobado"/><ObjectProperty IRI="#aprobadaPor"/></InverseObjectProperties>
+    <ObjectPropertyDomain><ObjectProperty IRI="#haAprobado"/><Class IRI="#Estudiante"/></ObjectPropertyDomain>
+    <ObjectPropertyRange><ObjectProperty IRI="#haAprobado"/><Class IRI="#Materia"/></ObjectPropertyRange>
+    <ObjectPropertyDomain><ObjectProperty IRI="#aprobadaPor"/><Class IRI="#Materia"/></ObjectPropertyDomain>
+    <ObjectPropertyRange><ObjectProperty IRI="#aprobadaPor"/><Class IRI="#Estudiante"/></ObjectPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#haAprobado</IRI><Literal xml:lang="es">haAprobado</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#haAprobado</IRI><Literal xml:lang="es">Materias acreditadas (derivada del kárdex).</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#aprobadaPor</IRI><Literal xml:lang="es">aprobadaPor</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#aprobadaPor</IRI><Literal xml:lang="es">Inversa de haAprobado.</Literal></AnnotationAssertion>
+    <InverseObjectProperties><ObjectProperty IRI="#puedeCursar"/><ObjectProperty IRI="#puedeSerCursadaPor"/></InverseObjectProperties>
+    <ObjectPropertyDomain><ObjectProperty IRI="#puedeCursar"/><Class IRI="#Estudiante"/></ObjectPropertyDomain>
+    <ObjectPropertyRange><ObjectProperty IRI="#puedeCursar"/><Class IRI="#Materia"/></ObjectPropertyRange>
+    <ObjectPropertyDomain><ObjectProperty IRI="#puedeSerCursadaPor"/><Class IRI="#Materia"/></ObjectPropertyDomain>
+    <ObjectPropertyRange><ObjectProperty IRI="#puedeSerCursadaPor"/><Class IRI="#Estudiante"/></ObjectPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#puedeCursar</IRI><Literal xml:lang="es">puedeCursar</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#puedeCursar</IRI><Literal xml:lang="es">Materias que cumplen requisitos (inferida).</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#puedeSerCursadaPor</IRI><Literal xml:lang="es">puedeSerCursadaPor</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#puedeSerCursadaPor</IRI><Literal xml:lang="es">Inversa de puedeCursar.</Literal></AnnotationAssertion>
+    <InverseObjectProperties><ObjectProperty IRI="#recomendacionParaPeriodo"/><ObjectProperty IRI="#periodoTieneRecomendacion"/></InverseObjectProperties>
+    <FunctionalObjectProperty><ObjectProperty IRI="#recomendacionParaPeriodo"/></FunctionalObjectProperty>
+    <ObjectPropertyDomain><ObjectProperty IRI="#recomendacionParaPeriodo"/><Class IRI="#Recomendacion"/></ObjectPropertyDomain>
+    <ObjectPropertyRange><ObjectProperty IRI="#recomendacionParaPeriodo"/><Class IRI="#PeriodoEscolar"/></ObjectPropertyRange>
+    <ObjectPropertyDomain><ObjectProperty IRI="#periodoTieneRecomendacion"/><Class IRI="#PeriodoEscolar"/></ObjectPropertyDomain>
+    <ObjectPropertyRange><ObjectProperty IRI="#periodoTieneRecomendacion"/><Class IRI="#Recomendacion"/></ObjectPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#recomendacionParaPeriodo</IRI><Literal xml:lang="es">recomendacionParaPeriodo</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#recomendacionParaPeriodo</IRI><Literal xml:lang="es">Periodo de la recomendación.</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#periodoTieneRecomendacion</IRI><Literal xml:lang="es">periodoTieneRecomendacion</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#periodoTieneRecomendacion</IRI><Literal xml:lang="es">Inversa de recomendacionParaPeriodo.</Literal></AnnotationAssertion>
+    <InverseObjectProperties><ObjectProperty IRI="#incluyeGrupo"/><ObjectProperty IRI="#incluidoEnRecomendacion"/></InverseObjectProperties>
+    <ObjectPropertyDomain><ObjectProperty IRI="#incluyeGrupo"/><Class IRI="#Recomendacion"/></ObjectPropertyDomain>
+    <ObjectPropertyRange><ObjectProperty IRI="#incluyeGrupo"/><Class IRI="#Grupo"/></ObjectPropertyRange>
+    <ObjectPropertyDomain><ObjectProperty IRI="#incluidoEnRecomendacion"/><Class IRI="#Grupo"/></ObjectPropertyDomain>
+    <ObjectPropertyRange><ObjectProperty IRI="#incluidoEnRecomendacion"/><Class IRI="#Recomendacion"/></ObjectPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#incluyeGrupo</IRI><Literal xml:lang="es">incluyeGrupo</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#incluyeGrupo</IRI><Literal xml:lang="es">Grupos concretos recomendados.</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#incluidoEnRecomendacion</IRI><Literal xml:lang="es">incluidoEnRecomendacion</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#incluidoEnRecomendacion</IRI><Literal xml:lang="es">Inversa de incluyeGrupo.</Literal></AnnotationAssertion>
+    <InverseObjectProperties><ObjectProperty IRI="#generadaPor"/><ObjectProperty IRI="#generaRecomendacion"/></InverseObjectProperties>
+    <FunctionalObjectProperty><ObjectProperty IRI="#generadaPor"/></FunctionalObjectProperty>
+    <ObjectPropertyDomain><ObjectProperty IRI="#generadaPor"/><Class IRI="#Recomendacion"/></ObjectPropertyDomain>
+    <ObjectPropertyRange><ObjectProperty IRI="#generadaPor"/><Class IRI="#Agente"/></ObjectPropertyRange>
+    <ObjectPropertyDomain><ObjectProperty IRI="#generaRecomendacion"/><Class IRI="#Agente"/></ObjectPropertyDomain>
+    <ObjectPropertyRange><ObjectProperty IRI="#generaRecomendacion"/><Class IRI="#Recomendacion"/></ObjectPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#generadaPor</IRI><Literal xml:lang="es">generadaPor</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#generadaPor</IRI><Literal xml:lang="es">Agente emisor de la propuesta.</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#generaRecomendacion</IRI><Literal xml:lang="es">generaRecomendacion</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#generaRecomendacion</IRI><Literal xml:lang="es">Inversa de generadaPor.</Literal></AnnotationAssertion>
+    <InverseObjectProperties><ObjectProperty IRI="#trazaDeAgente"/><ObjectProperty IRI="#registraTraza"/></InverseObjectProperties>
+    <FunctionalObjectProperty><ObjectProperty IRI="#trazaDeAgente"/></FunctionalObjectProperty>
+    <ObjectPropertyDomain><ObjectProperty IRI="#trazaDeAgente"/><Class IRI="#TrazaEjecucion"/></ObjectPropertyDomain>
+    <ObjectPropertyRange><ObjectProperty IRI="#trazaDeAgente"/><Class IRI="#Agente"/></ObjectPropertyRange>
+    <ObjectPropertyDomain><ObjectProperty IRI="#registraTraza"/><Class IRI="#Agente"/></ObjectPropertyDomain>
+    <ObjectPropertyRange><ObjectProperty IRI="#registraTraza"/><Class IRI="#TrazaEjecucion"/></ObjectPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#trazaDeAgente</IRI><Literal xml:lang="es">trazaDeAgente</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#trazaDeAgente</IRI><Literal xml:lang="es">Agente que originó la traza.</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#registraTraza</IRI><Literal xml:lang="es">registraTraza</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#registraTraza</IRI><Literal xml:lang="es">Inversa de trazaDeAgente.</Literal></AnnotationAssertion>
+    <InverseObjectProperties><ObjectProperty IRI="#trazaDeRecomendacion"/><ObjectProperty IRI="#tieneTraza"/></InverseObjectProperties>
+    <FunctionalObjectProperty><ObjectProperty IRI="#trazaDeRecomendacion"/></FunctionalObjectProperty>
+    <ObjectPropertyDomain><ObjectProperty IRI="#trazaDeRecomendacion"/><Class IRI="#TrazaEjecucion"/></ObjectPropertyDomain>
+    <ObjectPropertyRange><ObjectProperty IRI="#trazaDeRecomendacion"/><Class IRI="#Recomendacion"/></ObjectPropertyRange>
+    <ObjectPropertyDomain><ObjectProperty IRI="#tieneTraza"/><Class IRI="#Recomendacion"/></ObjectPropertyDomain>
+    <ObjectPropertyRange><ObjectProperty IRI="#tieneTraza"/><Class IRI="#TrazaEjecucion"/></ObjectPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#trazaDeRecomendacion</IRI><Literal xml:lang="es">trazaDeRecomendacion</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#trazaDeRecomendacion</IRI><Literal xml:lang="es">Recomendación auditada por la traza.</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#tieneTraza</IRI><Literal xml:lang="es">tieneTraza</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#tieneTraza</IRI><Literal xml:lang="es">Inversa de trazaDeRecomendacion.</Literal></AnnotationAssertion>
+    <!-- DATA PROPERTIES -->
+    <Declaration><DataProperty IRI="#claveMateria"/></Declaration>
+    <Declaration><DataProperty IRI="#nombreMateria"/></Declaration>
+    <Declaration><DataProperty IRI="#creditos"/></Declaration>
+    <Declaration><DataProperty IRI="#horasTeoria"/></Declaration>
+    <Declaration><DataProperty IRI="#horasPractica"/></Declaration>
+    <Declaration><DataProperty IRI="#semestreSugerido"/></Declaration>
+    <Declaration><DataProperty IRI="#nombrePrograma"/></Declaration>
+    <Declaration><DataProperty IRI="#anioPlan"/></Declaration>
+    <Declaration><DataProperty IRI="#creditosTotalesPlan"/></Declaration>
+    <Declaration><DataProperty IRI="#matricula"/></Declaration>
+    <Declaration><DataProperty IRI="#nombrePersona"/></Declaration>
+    <Declaration><DataProperty IRI="#correoInstitucional"/></Declaration>
+    <Declaration><DataProperty IRI="#promedioGeneral"/></Declaration>
+    <Declaration><DataProperty IRI="#creditosAcumulados"/></Declaration>
+    <Declaration><DataProperty IRI="#semestreActual"/></Declaration>
+    <Declaration><DataProperty IRI="#calificacion"/></Declaration>
+    <Declaration><DataProperty IRI="#numeroOportunidad"/></Declaration>
+    <Declaration><DataProperty IRI="#calificacionMinimaAprobatoria"/></Declaration>
+    <Declaration><DataProperty IRI="#clavePeriodo"/></Declaration>
+    <Declaration><DataProperty IRI="#fechaInicio"/></Declaration>
+    <Declaration><DataProperty IRI="#fechaFin"/></Declaration>
+    <Declaration><DataProperty IRI="#cupo"/></Declaration>
+    <Declaration><DataProperty IRI="#claveGrupo"/></Declaration>
+    <Declaration><DataProperty IRI="#diaSemana"/></Declaration>
+    <Declaration><DataProperty IRI="#inicioMinutos"/></Declaration>
+    <Declaration><DataProperty IRI="#finMinutos"/></Declaration>
+    <Declaration><DataProperty IRI="#cargaMinimaCreditos"/></Declaration>
+    <Declaration><DataProperty IRI="#cargaMaximaCreditos"/></Declaration>
+    <Declaration><DataProperty IRI="#puntajeRecomendacion"/></Declaration>
+    <Declaration><DataProperty IRI="#justificacionTexto"/></Declaration>
+    <Declaration><DataProperty IRI="#fechaGeneracion"/></Declaration>
+    <Declaration><DataProperty IRI="#turno"/></Declaration>
+    <Declaration><DataProperty IRI="#nombreModalidad"/></Declaration>
+    <Declaration><DataProperty IRI="#textoOriginal"/></Declaration>
+    <Declaration><DataProperty IRI="#prioridad"/></Declaration>
+    <Declaration><DataProperty IRI="#valorPreferencia"/></Declaration>
+    <Declaration><DataProperty IRI="#creditosObjetivo"/></Declaration>
+    <Declaration><DataProperty IRI="#maxMateriasDeseadas"/></Declaration>
+    <Declaration><DataProperty IRI="#avanceAcademico"/></Declaration>
+    <Declaration><DataProperty IRI="#compatibilidadHorario"/></Declaration>
+    <Declaration><DataProperty IRI="#cargaEquilibrada"/></Declaration>
+    <Declaration><DataProperty IRI="#cumplimientoPreferencias"/></Declaration>
+    <Declaration><DataProperty IRI="#nombreAgente"/></Declaration>
+    <Declaration><DataProperty IRI="#rolAgente"/></Declaration>
+    <Declaration><DataProperty IRI="#valorShapley"/></Declaration>
+    <Declaration><DataProperty IRI="#marcaTiempo"/></Declaration>
+    <Declaration><DataProperty IRI="#tareaEjecutada"/></Declaration>
+    <Declaration><DataProperty IRI="#tiempoEjecucion"/></Declaration>
+    <Declaration><DataProperty IRI="#exito"/></Declaration>
+    <Declaration><DataProperty IRI="#scoreTraza"/></Declaration>
+    <FunctionalDataProperty><DataProperty IRI="#claveMateria"/></FunctionalDataProperty>
+    <DataPropertyDomain><DataProperty IRI="#claveMateria"/><Class IRI="#Materia"/></DataPropertyDomain>
+    <DataPropertyRange><DataProperty IRI="#claveMateria"/><Datatype abbreviatedIRI="xsd:string"/></DataPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#claveMateria</IRI><Literal xml:lang="es">claveMateria</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#claveMateria</IRI><Literal xml:lang="es">Identificador único.</Literal></AnnotationAssertion>
+    <FunctionalDataProperty><DataProperty IRI="#nombreMateria"/></FunctionalDataProperty>
+    <DataPropertyDomain><DataProperty IRI="#nombreMateria"/><Class IRI="#Materia"/></DataPropertyDomain>
+    <DataPropertyRange><DataProperty IRI="#nombreMateria"/><Datatype abbreviatedIRI="xsd:string"/></DataPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#nombreMateria</IRI><Literal xml:lang="es">nombreMateria</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#nombreMateria</IRI><Literal xml:lang="es">Nombre oficial.</Literal></AnnotationAssertion>
+    <FunctionalDataProperty><DataProperty IRI="#creditos"/></FunctionalDataProperty>
+    <DataPropertyDomain><DataProperty IRI="#creditos"/><Class IRI="#Materia"/></DataPropertyDomain>
+    <DataPropertyRange><DataProperty IRI="#creditos"/><Datatype abbreviatedIRI="xsd:integer"/></DataPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#creditos</IRI><Literal xml:lang="es">creditos</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#creditos</IRI><Literal xml:lang="es">Base del cálculo de carga.</Literal></AnnotationAssertion>
+    <FunctionalDataProperty><DataProperty IRI="#horasTeoria"/></FunctionalDataProperty>
+    <DataPropertyDomain><DataProperty IRI="#horasTeoria"/><Class IRI="#Materia"/></DataPropertyDomain>
+    <DataPropertyRange><DataProperty IRI="#horasTeoria"/><Datatype abbreviatedIRI="xsd:integer"/></DataPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#horasTeoria</IRI><Literal xml:lang="es">horasTeoria</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#horasTeoria</IRI><Literal xml:lang="es">Horas teóricas por semana.</Literal></AnnotationAssertion>
+    <FunctionalDataProperty><DataProperty IRI="#horasPractica"/></FunctionalDataProperty>
+    <DataPropertyDomain><DataProperty IRI="#horasPractica"/><Class IRI="#Materia"/></DataPropertyDomain>
+    <DataPropertyRange><DataProperty IRI="#horasPractica"/><Datatype abbreviatedIRI="xsd:integer"/></DataPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#horasPractica</IRI><Literal xml:lang="es">horasPractica</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#horasPractica</IRI><Literal xml:lang="es">Horas prácticas por semana.</Literal></AnnotationAssertion>
+    <FunctionalDataProperty><DataProperty IRI="#semestreSugerido"/></FunctionalDataProperty>
+    <DataPropertyDomain><DataProperty IRI="#semestreSugerido"/><Class IRI="#Semestre"/></DataPropertyDomain>
+    <DataPropertyRange><DataProperty IRI="#semestreSugerido"/><Datatype abbreviatedIRI="xsd:integer"/></DataPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#semestreSugerido</IRI><Literal xml:lang="es">semestreSugerido</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#semestreSugerido</IRI><Literal xml:lang="es">Número de semestre.</Literal></AnnotationAssertion>
+    <FunctionalDataProperty><DataProperty IRI="#nombrePrograma"/></FunctionalDataProperty>
+    <DataPropertyDomain><DataProperty IRI="#nombrePrograma"/><Class IRI="#ProgramaEducativo"/></DataPropertyDomain>
+    <DataPropertyRange><DataProperty IRI="#nombrePrograma"/><Datatype abbreviatedIRI="xsd:string"/></DataPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#nombrePrograma</IRI><Literal xml:lang="es">nombrePrograma</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#nombrePrograma</IRI><Literal xml:lang="es">Nombre de la carrera.</Literal></AnnotationAssertion>
+    <FunctionalDataProperty><DataProperty IRI="#anioPlan"/></FunctionalDataProperty>
+    <DataPropertyDomain><DataProperty IRI="#anioPlan"/><Class IRI="#PlanDeEstudios"/></DataPropertyDomain>
+    <DataPropertyRange><DataProperty IRI="#anioPlan"/><Datatype abbreviatedIRI="xsd:integer"/></DataPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#anioPlan</IRI><Literal xml:lang="es">anioPlan</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#anioPlan</IRI><Literal xml:lang="es">Versión del plan.</Literal></AnnotationAssertion>
+    <FunctionalDataProperty><DataProperty IRI="#creditosTotalesPlan"/></FunctionalDataProperty>
+    <DataPropertyDomain><DataProperty IRI="#creditosTotalesPlan"/><Class IRI="#PlanDeEstudios"/></DataPropertyDomain>
+    <DataPropertyRange><DataProperty IRI="#creditosTotalesPlan"/><Datatype abbreviatedIRI="xsd:integer"/></DataPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#creditosTotalesPlan</IRI><Literal xml:lang="es">creditosTotalesPlan</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#creditosTotalesPlan</IRI><Literal xml:lang="es">Meta de graduación.</Literal></AnnotationAssertion>
+    <FunctionalDataProperty><DataProperty IRI="#matricula"/></FunctionalDataProperty>
+    <DataPropertyDomain><DataProperty IRI="#matricula"/><Class IRI="#Estudiante"/></DataPropertyDomain>
+    <DataPropertyRange><DataProperty IRI="#matricula"/><Datatype abbreviatedIRI="xsd:string"/></DataPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#matricula</IRI><Literal xml:lang="es">matricula</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#matricula</IRI><Literal xml:lang="es">Identificador del alumno.</Literal></AnnotationAssertion>
+    <FunctionalDataProperty><DataProperty IRI="#nombrePersona"/></FunctionalDataProperty>
+    <DataPropertyDomain><DataProperty IRI="#nombrePersona"/><Class IRI="#Persona"/></DataPropertyDomain>
+    <DataPropertyRange><DataProperty IRI="#nombrePersona"/><Datatype abbreviatedIRI="xsd:string"/></DataPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#nombrePersona</IRI><Literal xml:lang="es">nombrePersona</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#nombrePersona</IRI><Literal xml:lang="es">Nombre completo.</Literal></AnnotationAssertion>
+    <FunctionalDataProperty><DataProperty IRI="#correoInstitucional"/></FunctionalDataProperty>
+    <DataPropertyDomain><DataProperty IRI="#correoInstitucional"/><Class IRI="#Persona"/></DataPropertyDomain>
+    <DataPropertyRange><DataProperty IRI="#correoInstitucional"/><Datatype abbreviatedIRI="xsd:string"/></DataPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#correoInstitucional</IRI><Literal xml:lang="es">correoInstitucional</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#correoInstitucional</IRI><Literal xml:lang="es">Contacto.</Literal></AnnotationAssertion>
+    <FunctionalDataProperty><DataProperty IRI="#promedioGeneral"/></FunctionalDataProperty>
+    <DataPropertyDomain><DataProperty IRI="#promedioGeneral"/><Class IRI="#Estudiante"/></DataPropertyDomain>
+    <DataPropertyRange><DataProperty IRI="#promedioGeneral"/><Datatype abbreviatedIRI="xsd:decimal"/></DataPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#promedioGeneral</IRI><Literal xml:lang="es">promedioGeneral</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#promedioGeneral</IRI><Literal xml:lang="es">Criterio de priorización.</Literal></AnnotationAssertion>
+    <FunctionalDataProperty><DataProperty IRI="#creditosAcumulados"/></FunctionalDataProperty>
+    <DataPropertyDomain><DataProperty IRI="#creditosAcumulados"/><Class IRI="#Estudiante"/></DataPropertyDomain>
+    <DataPropertyRange><DataProperty IRI="#creditosAcumulados"/><Datatype abbreviatedIRI="xsd:integer"/></DataPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#creditosAcumulados</IRI><Literal xml:lang="es">creditosAcumulados</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#creditosAcumulados</IRI><Literal xml:lang="es">Avance en el plan.</Literal></AnnotationAssertion>
+    <FunctionalDataProperty><DataProperty IRI="#semestreActual"/></FunctionalDataProperty>
+    <DataPropertyDomain><DataProperty IRI="#semestreActual"/><Class IRI="#Estudiante"/></DataPropertyDomain>
+    <DataPropertyRange><DataProperty IRI="#semestreActual"/><Datatype abbreviatedIRI="xsd:integer"/></DataPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#semestreActual</IRI><Literal xml:lang="es">semestreActual</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#semestreActual</IRI><Literal xml:lang="es">Ubicación del alumno.</Literal></AnnotationAssertion>
+    <FunctionalDataProperty><DataProperty IRI="#calificacion"/></FunctionalDataProperty>
+    <DataPropertyDomain><DataProperty IRI="#calificacion"/><Class IRI="#RegistroAcademico"/></DataPropertyDomain>
+    <DataPropertyRange><DataProperty IRI="#calificacion"/><Datatype abbreviatedIRI="xsd:decimal"/></DataPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#calificacion</IRI><Literal xml:lang="es">calificacion</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#calificacion</IRI><Literal xml:lang="es">Resultado del cursado.</Literal></AnnotationAssertion>
+    <FunctionalDataProperty><DataProperty IRI="#numeroOportunidad"/></FunctionalDataProperty>
+    <DataPropertyDomain><DataProperty IRI="#numeroOportunidad"/><Class IRI="#RegistroAcademico"/></DataPropertyDomain>
+    <DataPropertyRange><DataProperty IRI="#numeroOportunidad"/><Datatype abbreviatedIRI="xsd:integer"/></DataPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#numeroOportunidad</IRI><Literal xml:lang="es">numeroOportunidad</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#numeroOportunidad</IRI><Literal xml:lang="es">Controla recursamientos.</Literal></AnnotationAssertion>
+    <FunctionalDataProperty><DataProperty IRI="#calificacionMinimaAprobatoria"/></FunctionalDataProperty>
+    <DataPropertyDomain><DataProperty IRI="#calificacionMinimaAprobatoria"/><Class IRI="#PlanDeEstudios"/></DataPropertyDomain>
+    <DataPropertyRange><DataProperty IRI="#calificacionMinimaAprobatoria"/><Datatype abbreviatedIRI="xsd:decimal"/></DataPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#calificacionMinimaAprobatoria</IRI><Literal xml:lang="es">calificacionMinimaAprobatoria</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#calificacionMinimaAprobatoria</IRI><Literal xml:lang="es">Define aprobado.</Literal></AnnotationAssertion>
+    <FunctionalDataProperty><DataProperty IRI="#clavePeriodo"/></FunctionalDataProperty>
+    <DataPropertyDomain><DataProperty IRI="#clavePeriodo"/><Class IRI="#PeriodoEscolar"/></DataPropertyDomain>
+    <DataPropertyRange><DataProperty IRI="#clavePeriodo"/><Datatype abbreviatedIRI="xsd:string"/></DataPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#clavePeriodo</IRI><Literal xml:lang="es">clavePeriodo</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#clavePeriodo</IRI><Literal xml:lang="es">Ej. 2027-1.</Literal></AnnotationAssertion>
+    <FunctionalDataProperty><DataProperty IRI="#fechaInicio"/></FunctionalDataProperty>
+    <DataPropertyDomain><DataProperty IRI="#fechaInicio"/><Class IRI="#PeriodoEscolar"/></DataPropertyDomain>
+    <DataPropertyRange><DataProperty IRI="#fechaInicio"/><Datatype abbreviatedIRI="xsd:dateTime"/></DataPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#fechaInicio</IRI><Literal xml:lang="es">fechaInicio</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#fechaInicio</IRI><Literal xml:lang="es">Vigencia del periodo.</Literal></AnnotationAssertion>
+    <FunctionalDataProperty><DataProperty IRI="#fechaFin"/></FunctionalDataProperty>
+    <DataPropertyDomain><DataProperty IRI="#fechaFin"/><Class IRI="#PeriodoEscolar"/></DataPropertyDomain>
+    <DataPropertyRange><DataProperty IRI="#fechaFin"/><Datatype abbreviatedIRI="xsd:dateTime"/></DataPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#fechaFin</IRI><Literal xml:lang="es">fechaFin</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#fechaFin</IRI><Literal xml:lang="es">Vigencia del periodo.</Literal></AnnotationAssertion>
+    <FunctionalDataProperty><DataProperty IRI="#cupo"/></FunctionalDataProperty>
+    <DataPropertyDomain><DataProperty IRI="#cupo"/><Class IRI="#Grupo"/></DataPropertyDomain>
+    <DataPropertyRange><DataProperty IRI="#cupo"/><Datatype abbreviatedIRI="xsd:integer"/></DataPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#cupo</IRI><Literal xml:lang="es">cupo</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#cupo</IRI><Literal xml:lang="es">Disponibilidad.</Literal></AnnotationAssertion>
+    <FunctionalDataProperty><DataProperty IRI="#claveGrupo"/></FunctionalDataProperty>
+    <DataPropertyDomain><DataProperty IRI="#claveGrupo"/><Class IRI="#Grupo"/></DataPropertyDomain>
+    <DataPropertyRange><DataProperty IRI="#claveGrupo"/><Datatype abbreviatedIRI="xsd:string"/></DataPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#claveGrupo</IRI><Literal xml:lang="es">claveGrupo</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#claveGrupo</IRI><Literal xml:lang="es">Identificador.</Literal></AnnotationAssertion>
+    <FunctionalDataProperty><DataProperty IRI="#diaSemana"/></FunctionalDataProperty>
+    <DataPropertyDomain><DataProperty IRI="#diaSemana"/><Class IRI="#Horario"/></DataPropertyDomain>
+    <DataPropertyRange><DataProperty IRI="#diaSemana"/><Datatype abbreviatedIRI="xsd:string"/></DataPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#diaSemana</IRI><Literal xml:lang="es">diaSemana</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#diaSemana</IRI><Literal xml:lang="es">Día de clase.</Literal></AnnotationAssertion>
+    <FunctionalDataProperty><DataProperty IRI="#inicioMinutos"/></FunctionalDataProperty>
+    <DataPropertyDomain><DataProperty IRI="#inicioMinutos"/><Class IRI="#Horario"/></DataPropertyDomain>
+    <DataPropertyRange><DataProperty IRI="#inicioMinutos"/><Datatype abbreviatedIRI="xsd:integer"/></DataPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#inicioMinutos</IRI><Literal xml:lang="es">inicioMinutos</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#inicioMinutos</IRI><Literal xml:lang="es">Franja horaria.</Literal></AnnotationAssertion>
+    <FunctionalDataProperty><DataProperty IRI="#finMinutos"/></FunctionalDataProperty>
+    <DataPropertyDomain><DataProperty IRI="#finMinutos"/><Class IRI="#Horario"/></DataPropertyDomain>
+    <DataPropertyRange><DataProperty IRI="#finMinutos"/><Datatype abbreviatedIRI="xsd:integer"/></DataPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#finMinutos</IRI><Literal xml:lang="es">finMinutos</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#finMinutos</IRI><Literal xml:lang="es">Franja horaria.</Literal></AnnotationAssertion>
+    <FunctionalDataProperty><DataProperty IRI="#cargaMinimaCreditos"/></FunctionalDataProperty>
+    <DataPropertyDomain><DataProperty IRI="#cargaMinimaCreditos"/><Class IRI="#RestriccionDeCarga"/></DataPropertyDomain>
+    <DataPropertyRange><DataProperty IRI="#cargaMinimaCreditos"/><Datatype abbreviatedIRI="xsd:integer"/></DataPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#cargaMinimaCreditos</IRI><Literal xml:lang="es">cargaMinimaCreditos</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#cargaMinimaCreditos</IRI><Literal xml:lang="es">Mínimo por periodo.</Literal></AnnotationAssertion>
+    <FunctionalDataProperty><DataProperty IRI="#cargaMaximaCreditos"/></FunctionalDataProperty>
+    <DataPropertyDomain><DataProperty IRI="#cargaMaximaCreditos"/><Class IRI="#RestriccionDeCarga"/></DataPropertyDomain>
+    <DataPropertyRange><DataProperty IRI="#cargaMaximaCreditos"/><Datatype abbreviatedIRI="xsd:integer"/></DataPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#cargaMaximaCreditos</IRI><Literal xml:lang="es">cargaMaximaCreditos</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#cargaMaximaCreditos</IRI><Literal xml:lang="es">Máximo por periodo.</Literal></AnnotationAssertion>
+    <FunctionalDataProperty><DataProperty IRI="#puntajeRecomendacion"/></FunctionalDataProperty>
+    <DataPropertyDomain><DataProperty IRI="#puntajeRecomendacion"/><Class IRI="#Recomendacion"/></DataPropertyDomain>
+    <DataPropertyRange><DataProperty IRI="#puntajeRecomendacion"/><Datatype abbreviatedIRI="xsd:decimal"/></DataPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#puntajeRecomendacion</IRI><Literal xml:lang="es">puntajeRecomendacion</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#puntajeRecomendacion</IRI><Literal xml:lang="es">Prioridad de la sugerencia.</Literal></AnnotationAssertion>
+    <FunctionalDataProperty><DataProperty IRI="#justificacionTexto"/></FunctionalDataProperty>
+    <DataPropertyDomain><DataProperty IRI="#justificacionTexto"/><Class IRI="#Recomendacion"/></DataPropertyDomain>
+    <DataPropertyRange><DataProperty IRI="#justificacionTexto"/><Datatype abbreviatedIRI="xsd:string"/></DataPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#justificacionTexto</IRI><Literal xml:lang="es">justificacionTexto</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#justificacionTexto</IRI><Literal xml:lang="es">Explicación al alumno.</Literal></AnnotationAssertion>
+    <FunctionalDataProperty><DataProperty IRI="#fechaGeneracion"/></FunctionalDataProperty>
+    <DataPropertyDomain><DataProperty IRI="#fechaGeneracion"/><Class IRI="#Recomendacion"/></DataPropertyDomain>
+    <DataPropertyRange><DataProperty IRI="#fechaGeneracion"/><Datatype abbreviatedIRI="xsd:dateTime"/></DataPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#fechaGeneracion</IRI><Literal xml:lang="es">fechaGeneracion</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#fechaGeneracion</IRI><Literal xml:lang="es">Trazabilidad.</Literal></AnnotationAssertion>
+    <FunctionalDataProperty><DataProperty IRI="#turno"/></FunctionalDataProperty>
+    <DataPropertyDomain><DataProperty IRI="#turno"/><Class IRI="#Horario"/></DataPropertyDomain>
+    <DataPropertyRange><DataProperty IRI="#turno"/><Datatype abbreviatedIRI="xsd:string"/></DataPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#turno</IRI><Literal xml:lang="es">turno</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#turno</IRI><Literal xml:lang="es">Matutino o vespertino.</Literal></AnnotationAssertion>
+    <FunctionalDataProperty><DataProperty IRI="#nombreModalidad"/></FunctionalDataProperty>
+    <DataPropertyDomain><DataProperty IRI="#nombreModalidad"/><Class IRI="#Modalidad"/></DataPropertyDomain>
+    <DataPropertyRange><DataProperty IRI="#nombreModalidad"/><Datatype abbreviatedIRI="xsd:string"/></DataPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#nombreModalidad</IRI><Literal xml:lang="es">nombreModalidad</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#nombreModalidad</IRI><Literal xml:lang="es">Etiqueta legible.</Literal></AnnotationAssertion>
+    <FunctionalDataProperty><DataProperty IRI="#textoOriginal"/></FunctionalDataProperty>
+    <DataPropertyDomain><DataProperty IRI="#textoOriginal"/><Class IRI="#Preferencia"/></DataPropertyDomain>
+    <DataPropertyRange><DataProperty IRI="#textoOriginal"/><Datatype abbreviatedIRI="xsd:string"/></DataPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#textoOriginal</IRI><Literal xml:lang="es">textoOriginal</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#textoOriginal</IRI><Literal xml:lang="es">Frase del alumno que originó la preferencia.</Literal></AnnotationAssertion>
+    <FunctionalDataProperty><DataProperty IRI="#prioridad"/></FunctionalDataProperty>
+    <DataPropertyDomain><DataProperty IRI="#prioridad"/><Class IRI="#Preferencia"/></DataPropertyDomain>
+    <DataPropertyRange><DataProperty IRI="#prioridad"/><Datatype abbreviatedIRI="xsd:integer"/></DataPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#prioridad</IRI><Literal xml:lang="es">prioridad</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#prioridad</IRI><Literal xml:lang="es">Importancia de 1 a 5.</Literal></AnnotationAssertion>
+    <FunctionalDataProperty><DataProperty IRI="#valorPreferencia"/></FunctionalDataProperty>
+    <DataPropertyDomain><DataProperty IRI="#valorPreferencia"/><Class IRI="#Preferencia"/></DataPropertyDomain>
+    <DataPropertyRange><DataProperty IRI="#valorPreferencia"/><Datatype abbreviatedIRI="xsd:string"/></DataPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#valorPreferencia</IRI><Literal xml:lang="es">valorPreferencia</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#valorPreferencia</IRI><Literal xml:lang="es">Valor normalizado (tarde, ligera, en línea).</Literal></AnnotationAssertion>
+    <FunctionalDataProperty><DataProperty IRI="#creditosObjetivo"/></FunctionalDataProperty>
+    <DataPropertyDomain><DataProperty IRI="#creditosObjetivo"/><Class IRI="#PreferenciaCarga"/></DataPropertyDomain>
+    <DataPropertyRange><DataProperty IRI="#creditosObjetivo"/><Datatype abbreviatedIRI="xsd:integer"/></DataPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#creditosObjetivo</IRI><Literal xml:lang="es">creditosObjetivo</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#creditosObjetivo</IRI><Literal xml:lang="es">Créditos que desea cursar.</Literal></AnnotationAssertion>
+    <FunctionalDataProperty><DataProperty IRI="#maxMateriasDeseadas"/></FunctionalDataProperty>
+    <DataPropertyDomain><DataProperty IRI="#maxMateriasDeseadas"/><Class IRI="#PreferenciaCarga"/></DataPropertyDomain>
+    <DataPropertyRange><DataProperty IRI="#maxMateriasDeseadas"/><Datatype abbreviatedIRI="xsd:integer"/></DataPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#maxMateriasDeseadas</IRI><Literal xml:lang="es">maxMateriasDeseadas</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#maxMateriasDeseadas</IRI><Literal xml:lang="es">Máximo de materias deseadas.</Literal></AnnotationAssertion>
+    <FunctionalDataProperty><DataProperty IRI="#avanceAcademico"/></FunctionalDataProperty>
+    <DataPropertyDomain><DataProperty IRI="#avanceAcademico"/><Class IRI="#Recomendacion"/></DataPropertyDomain>
+    <DataPropertyRange><DataProperty IRI="#avanceAcademico"/><Datatype abbreviatedIRI="xsd:decimal"/></DataPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#avanceAcademico</IRI><Literal xml:lang="es">avanceAcademico</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#avanceAcademico</IRI><Literal xml:lang="es">Criterio con peso 0.30.</Literal></AnnotationAssertion>
+    <FunctionalDataProperty><DataProperty IRI="#compatibilidadHorario"/></FunctionalDataProperty>
+    <DataPropertyDomain><DataProperty IRI="#compatibilidadHorario"/><Class IRI="#Recomendacion"/></DataPropertyDomain>
+    <DataPropertyRange><DataProperty IRI="#compatibilidadHorario"/><Datatype abbreviatedIRI="xsd:decimal"/></DataPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#compatibilidadHorario</IRI><Literal xml:lang="es">compatibilidadHorario</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#compatibilidadHorario</IRI><Literal xml:lang="es">Criterio con peso 0.25.</Literal></AnnotationAssertion>
+    <FunctionalDataProperty><DataProperty IRI="#cargaEquilibrada"/></FunctionalDataProperty>
+    <DataPropertyDomain><DataProperty IRI="#cargaEquilibrada"/><Class IRI="#Recomendacion"/></DataPropertyDomain>
+    <DataPropertyRange><DataProperty IRI="#cargaEquilibrada"/><Datatype abbreviatedIRI="xsd:decimal"/></DataPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#cargaEquilibrada</IRI><Literal xml:lang="es">cargaEquilibrada</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#cargaEquilibrada</IRI><Literal xml:lang="es">Criterio con peso 0.25.</Literal></AnnotationAssertion>
+    <FunctionalDataProperty><DataProperty IRI="#cumplimientoPreferencias"/></FunctionalDataProperty>
+    <DataPropertyDomain><DataProperty IRI="#cumplimientoPreferencias"/><Class IRI="#Recomendacion"/></DataPropertyDomain>
+    <DataPropertyRange><DataProperty IRI="#cumplimientoPreferencias"/><Datatype abbreviatedIRI="xsd:decimal"/></DataPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#cumplimientoPreferencias</IRI><Literal xml:lang="es">cumplimientoPreferencias</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#cumplimientoPreferencias</IRI><Literal xml:lang="es">Criterio con peso 0.20.</Literal></AnnotationAssertion>
+    <FunctionalDataProperty><DataProperty IRI="#nombreAgente"/></FunctionalDataProperty>
+    <DataPropertyDomain><DataProperty IRI="#nombreAgente"/><Class IRI="#Agente"/></DataPropertyDomain>
+    <DataPropertyRange><DataProperty IRI="#nombreAgente"/><Datatype abbreviatedIRI="xsd:string"/></DataPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#nombreAgente</IRI><Literal xml:lang="es">nombreAgente</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#nombreAgente</IRI><Literal xml:lang="es">Nombre del agente.</Literal></AnnotationAssertion>
+    <FunctionalDataProperty><DataProperty IRI="#rolAgente"/></FunctionalDataProperty>
+    <DataPropertyDomain><DataProperty IRI="#rolAgente"/><Class IRI="#Agente"/></DataPropertyDomain>
+    <DataPropertyRange><DataProperty IRI="#rolAgente"/><Datatype abbreviatedIRI="xsd:string"/></DataPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#rolAgente</IRI><Literal xml:lang="es">rolAgente</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#rolAgente</IRI><Literal xml:lang="es">Role del agente en CrewAI.</Literal></AnnotationAssertion>
+    <FunctionalDataProperty><DataProperty IRI="#valorShapley"/></FunctionalDataProperty>
+    <DataPropertyDomain><DataProperty IRI="#valorShapley"/><Class IRI="#Agente"/></DataPropertyDomain>
+    <DataPropertyRange><DataProperty IRI="#valorShapley"/><Datatype abbreviatedIRI="xsd:decimal"/></DataPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#valorShapley</IRI><Literal xml:lang="es">valorShapley</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#valorShapley</IRI><Literal xml:lang="es">Contribución calculada.</Literal></AnnotationAssertion>
+    <FunctionalDataProperty><DataProperty IRI="#marcaTiempo"/></FunctionalDataProperty>
+    <DataPropertyDomain><DataProperty IRI="#marcaTiempo"/><Class IRI="#TrazaEjecucion"/></DataPropertyDomain>
+    <DataPropertyRange><DataProperty IRI="#marcaTiempo"/><Datatype abbreviatedIRI="xsd:dateTime"/></DataPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#marcaTiempo</IRI><Literal xml:lang="es">marcaTiempo</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#marcaTiempo</IRI><Literal xml:lang="es">Momento del evento.</Literal></AnnotationAssertion>
+    <FunctionalDataProperty><DataProperty IRI="#tareaEjecutada"/></FunctionalDataProperty>
+    <DataPropertyDomain><DataProperty IRI="#tareaEjecutada"/><Class IRI="#TrazaEjecucion"/></DataPropertyDomain>
+    <DataPropertyRange><DataProperty IRI="#tareaEjecutada"/><Datatype abbreviatedIRI="xsd:string"/></DataPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#tareaEjecutada</IRI><Literal xml:lang="es">tareaEjecutada</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#tareaEjecutada</IRI><Literal xml:lang="es">Tarea realizada.</Literal></AnnotationAssertion>
+    <FunctionalDataProperty><DataProperty IRI="#tiempoEjecucion"/></FunctionalDataProperty>
+    <DataPropertyDomain><DataProperty IRI="#tiempoEjecucion"/><Class IRI="#TrazaEjecucion"/></DataPropertyDomain>
+    <DataPropertyRange><DataProperty IRI="#tiempoEjecucion"/><Datatype abbreviatedIRI="xsd:decimal"/></DataPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#tiempoEjecucion</IRI><Literal xml:lang="es">tiempoEjecucion</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#tiempoEjecucion</IRI><Literal xml:lang="es">Segundos de ejecución.</Literal></AnnotationAssertion>
+    <FunctionalDataProperty><DataProperty IRI="#exito"/></FunctionalDataProperty>
+    <DataPropertyDomain><DataProperty IRI="#exito"/><Class IRI="#TrazaEjecucion"/></DataPropertyDomain>
+    <DataPropertyRange><DataProperty IRI="#exito"/><Datatype abbreviatedIRI="xsd:boolean"/></DataPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#exito</IRI><Literal xml:lang="es">exito</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#exito</IRI><Literal xml:lang="es">Si terminó bien.</Literal></AnnotationAssertion>
+    <FunctionalDataProperty><DataProperty IRI="#scoreTraza"/></FunctionalDataProperty>
+    <DataPropertyDomain><DataProperty IRI="#scoreTraza"/><Class IRI="#TrazaEjecucion"/></DataPropertyDomain>
+    <DataPropertyRange><DataProperty IRI="#scoreTraza"/><Datatype abbreviatedIRI="xsd:decimal"/></DataPropertyRange>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:label"/><IRI>#scoreTraza</IRI><Literal xml:lang="es">scoreTraza</Literal></AnnotationAssertion>
+    <AnnotationAssertion><AnnotationProperty abbreviatedIRI="rdfs:comment"/><IRI>#scoreTraza</IRI><Literal xml:lang="es">Puntuación registrada.</Literal></AnnotationAssertion>
+</Ontology>

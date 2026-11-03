@@ -1,0 +1,839 @@
+{
+ "programa": {
+  "nombre": "Ingeniería en Sistemas (EJEMPLO)",
+  "creditosTotales": 300
+ },
+ "plan": {
+  "anio": 2024,
+  "calificacionMinimaAprobatoria": 7.0,
+  "cargaMinimaCreditos": 18,
+  "cargaMaximaCreditos": 36
+ },
+ "periodo": {
+  "clave": "2027-1",
+  "nombre": "Ene-Jun 2027"
+ },
+ "profesores": [
+  {
+   "clave": "P1",
+   "nombre": "Profesor 1 (ejemplo)"
+  },
+  {
+   "clave": "P2",
+   "nombre": "Profesor 2 (ejemplo)"
+  },
+  {
+   "clave": "P3",
+   "nombre": "Profesor 3 (ejemplo)"
+  },
+  {
+   "clave": "P4",
+   "nombre": "Profesor 4 (ejemplo)"
+  },
+  {
+   "clave": "P5",
+   "nombre": "Profesor 5 (ejemplo)"
+  }
+ ],
+ "materias": [
+  {
+   "clave": "MAT101",
+   "nombre": "Cálculo Diferencial",
+   "creditos": 8,
+   "semestre": 1,
+   "tipo": "obligatoria",
+   "prereq": [],
+   "dificultad": 4
+  },
+  {
+   "clave": "PRO101",
+   "nombre": "Programación I",
+   "creditos": 8,
+   "semestre": 1,
+   "tipo": "obligatoria",
+   "prereq": [],
+   "dificultad": 3
+  },
+  {
+   "clave": "MAT102",
+   "nombre": "Cálculo Integral",
+   "creditos": 8,
+   "semestre": 2,
+   "tipo": "obligatoria",
+   "prereq": [
+    "MAT101"
+   ],
+   "dificultad": 4
+  },
+  {
+   "clave": "PRO102",
+   "nombre": "Programación II",
+   "creditos": 8,
+   "semestre": 2,
+   "tipo": "obligatoria",
+   "prereq": [
+    "PRO101"
+   ],
+   "dificultad": 3
+  },
+  {
+   "clave": "MAT201",
+   "nombre": "Álgebra Lineal",
+   "creditos": 6,
+   "semestre": 3,
+   "tipo": "obligatoria",
+   "prereq": [
+    "MAT101"
+   ],
+   "dificultad": 3
+  },
+  {
+   "clave": "PRO201",
+   "nombre": "Estructuras de Datos",
+   "creditos": 8,
+   "semestre": 3,
+   "tipo": "obligatoria",
+   "prereq": [
+    "PRO102"
+   ],
+   "dificultad": 4
+  },
+  {
+   "clave": "BD201",
+   "nombre": "Bases de Datos",
+   "creditos": 8,
+   "semestre": 3,
+   "tipo": "obligatoria",
+   "prereq": [
+    "PRO102"
+   ],
+   "dificultad": 3
+  },
+  {
+   "clave": "RED301",
+   "nombre": "Redes de Computadoras",
+   "creditos": 6,
+   "semestre": 4,
+   "tipo": "obligatoria",
+   "prereq": [
+    "PRO102"
+   ],
+   "dificultad": 3
+  },
+  {
+   "clave": "SO301",
+   "nombre": "Sistemas Operativos",
+   "creditos": 8,
+   "semestre": 4,
+   "tipo": "obligatoria",
+   "prereq": [
+    "PRO201"
+   ],
+   "dificultad": 4
+  },
+  {
+   "clave": "EST301",
+   "nombre": "Probabilidad y Estadística",
+   "creditos": 6,
+   "semestre": 4,
+   "tipo": "obligatoria",
+   "prereq": [
+    "MAT102"
+   ],
+   "dificultad": 3
+  },
+  {
+   "clave": "IA401",
+   "nombre": "Inteligencia Artificial",
+   "creditos": 8,
+   "semestre": 5,
+   "tipo": "obligatoria",
+   "prereq": [
+    "PRO201",
+    "EST301"
+   ],
+   "dificultad": 5
+  },
+  {
+   "clave": "ING401",
+   "nombre": "Ingeniería de Software",
+   "creditos": 8,
+   "semestre": 5,
+   "tipo": "obligatoria",
+   "prereq": [
+    "BD201"
+   ],
+   "dificultad": 3
+  },
+  {
+   "clave": "OPT501",
+   "nombre": "Computación en la Nube",
+   "creditos": 6,
+   "semestre": 6,
+   "tipo": "optativa",
+   "prereq": [
+    "SO301"
+   ],
+   "dificultad": 3
+  },
+  {
+   "clave": "ELE501",
+   "nombre": "Ética Profesional",
+   "creditos": 4,
+   "semestre": 6,
+   "tipo": "electiva",
+   "prereq": [],
+   "dificultad": 1
+  }
+ ],
+ "grupos": [
+  {
+   "clave": "MAT101-A",
+   "materia": "MAT101",
+   "profesor": "P1",
+   "modalidad": "presencial",
+   "cupo": 30,
+   "horarios": [
+    {
+     "dia": "Lun",
+     "ini": 420,
+     "fin": 540
+    },
+    {
+     "dia": "Mié",
+     "ini": 420,
+     "fin": 540
+    }
+   ]
+  },
+  {
+   "clave": "MAT101-B",
+   "materia": "MAT101",
+   "profesor": "P3",
+   "modalidad": "enlinea",
+   "cupo": 30,
+   "horarios": [
+    {
+     "dia": "Mar",
+     "ini": 960,
+     "fin": 1080
+    },
+    {
+     "dia": "Jue",
+     "ini": 960,
+     "fin": 1080
+    }
+   ]
+  },
+  {
+   "clave": "PRO101-A",
+   "materia": "PRO101",
+   "profesor": "P2",
+   "modalidad": "presencial",
+   "cupo": 30,
+   "horarios": [
+    {
+     "dia": "Mar",
+     "ini": 540,
+     "fin": 660
+    },
+    {
+     "dia": "Jue",
+     "ini": 540,
+     "fin": 660
+    }
+   ]
+  },
+  {
+   "clave": "PRO101-B",
+   "materia": "PRO101",
+   "profesor": "P4",
+   "modalidad": "hibrida",
+   "cupo": 30,
+   "horarios": [
+    {
+     "dia": "Lun",
+     "ini": 1080,
+     "fin": 1200
+    },
+    {
+     "dia": "Mié",
+     "ini": 1080,
+     "fin": 1200
+    }
+   ]
+  },
+  {
+   "clave": "MAT102-A",
+   "materia": "MAT102",
+   "profesor": "P3",
+   "modalidad": "presencial",
+   "cupo": 30,
+   "horarios": [
+    {
+     "dia": "Lun",
+     "ini": 660,
+     "fin": 780
+    },
+    {
+     "dia": "Mié",
+     "ini": 660,
+     "fin": 780
+    }
+   ]
+  },
+  {
+   "clave": "MAT102-B",
+   "materia": "MAT102",
+   "profesor": "P5",
+   "modalidad": "presencial",
+   "cupo": 30,
+   "horarios": [
+    {
+     "dia": "Mar",
+     "ini": 840,
+     "fin": 960
+    },
+    {
+     "dia": "Jue",
+     "ini": 840,
+     "fin": 960
+    }
+   ]
+  },
+  {
+   "clave": "PRO102-A",
+   "materia": "PRO102",
+   "profesor": "P4",
+   "modalidad": "presencial",
+   "cupo": 30,
+   "horarios": [
+    {
+     "dia": "Mar",
+     "ini": 420,
+     "fin": 540
+    },
+    {
+     "dia": "Jue",
+     "ini": 420,
+     "fin": 540
+    }
+   ]
+  },
+  {
+   "clave": "PRO102-B",
+   "materia": "PRO102",
+   "profesor": "P1",
+   "modalidad": "enlinea",
+   "cupo": 30,
+   "horarios": [
+    {
+     "dia": "Lun",
+     "ini": 960,
+     "fin": 1080
+    },
+    {
+     "dia": "Mié",
+     "ini": 960,
+     "fin": 1080
+    }
+   ]
+  },
+  {
+   "clave": "MAT201-A",
+   "materia": "MAT201",
+   "profesor": "P5",
+   "modalidad": "presencial",
+   "cupo": 30,
+   "horarios": [
+    {
+     "dia": "Lun",
+     "ini": 540,
+     "fin": 660
+    },
+    {
+     "dia": "Mié",
+     "ini": 540,
+     "fin": 660
+    }
+   ]
+  },
+  {
+   "clave": "MAT201-B",
+   "materia": "MAT201",
+   "profesor": "P2",
+   "modalidad": "hibrida",
+   "cupo": 30,
+   "horarios": [
+    {
+     "dia": "Mar",
+     "ini": 1080,
+     "fin": 1200
+    },
+    {
+     "dia": "Jue",
+     "ini": 1080,
+     "fin": 1200
+    }
+   ]
+  },
+  {
+   "clave": "PRO201-A",
+   "materia": "PRO201",
+   "profesor": "P1",
+   "modalidad": "presencial",
+   "cupo": 30,
+   "horarios": [
+    {
+     "dia": "Mar",
+     "ini": 660,
+     "fin": 780
+    },
+    {
+     "dia": "Jue",
+     "ini": 660,
+     "fin": 780
+    }
+   ]
+  },
+  {
+   "clave": "PRO201-B",
+   "materia": "PRO201",
+   "profesor": "P3",
+   "modalidad": "presencial",
+   "cupo": 30,
+   "horarios": [
+    {
+     "dia": "Lun",
+     "ini": 840,
+     "fin": 960
+    },
+    {
+     "dia": "Mié",
+     "ini": 840,
+     "fin": 960
+    }
+   ]
+  },
+  {
+   "clave": "BD201-A",
+   "materia": "BD201",
+   "profesor": "P2",
+   "modalidad": "presencial",
+   "cupo": 30,
+   "horarios": [
+    {
+     "dia": "Lun",
+     "ini": 420,
+     "fin": 540
+    },
+    {
+     "dia": "Mié",
+     "ini": 420,
+     "fin": 540
+    }
+   ]
+  },
+  {
+   "clave": "BD201-B",
+   "materia": "BD201",
+   "profesor": "P4",
+   "modalidad": "enlinea",
+   "cupo": 30,
+   "horarios": [
+    {
+     "dia": "Mar",
+     "ini": 960,
+     "fin": 1080
+    },
+    {
+     "dia": "Jue",
+     "ini": 960,
+     "fin": 1080
+    }
+   ]
+  },
+  {
+   "clave": "RED301-A",
+   "materia": "RED301",
+   "profesor": "P3",
+   "modalidad": "presencial",
+   "cupo": 30,
+   "horarios": [
+    {
+     "dia": "Mar",
+     "ini": 540,
+     "fin": 660
+    },
+    {
+     "dia": "Jue",
+     "ini": 540,
+     "fin": 660
+    }
+   ]
+  },
+  {
+   "clave": "RED301-B",
+   "materia": "RED301",
+   "profesor": "P5",
+   "modalidad": "hibrida",
+   "cupo": 30,
+   "horarios": [
+    {
+     "dia": "Lun",
+     "ini": 1080,
+     "fin": 1200
+    },
+    {
+     "dia": "Mié",
+     "ini": 1080,
+     "fin": 1200
+    }
+   ]
+  },
+  {
+   "clave": "SO301-A",
+   "materia": "SO301",
+   "profesor": "P4",
+   "modalidad": "presencial",
+   "cupo": 30,
+   "horarios": [
+    {
+     "dia": "Lun",
+     "ini": 660,
+     "fin": 780
+    },
+    {
+     "dia": "Mié",
+     "ini": 660,
+     "fin": 780
+    }
+   ]
+  },
+  {
+   "clave": "SO301-B",
+   "materia": "SO301",
+   "profesor": "P1",
+   "modalidad": "presencial",
+   "cupo": 30,
+   "horarios": [
+    {
+     "dia": "Mar",
+     "ini": 840,
+     "fin": 960
+    },
+    {
+     "dia": "Jue",
+     "ini": 840,
+     "fin": 960
+    }
+   ]
+  },
+  {
+   "clave": "EST301-A",
+   "materia": "EST301",
+   "profesor": "P5",
+   "modalidad": "presencial",
+   "cupo": 30,
+   "horarios": [
+    {
+     "dia": "Mar",
+     "ini": 420,
+     "fin": 540
+    },
+    {
+     "dia": "Jue",
+     "ini": 420,
+     "fin": 540
+    }
+   ]
+  },
+  {
+   "clave": "EST301-B",
+   "materia": "EST301",
+   "profesor": "P2",
+   "modalidad": "enlinea",
+   "cupo": 30,
+   "horarios": [
+    {
+     "dia": "Lun",
+     "ini": 960,
+     "fin": 1080
+    },
+    {
+     "dia": "Mié",
+     "ini": 960,
+     "fin": 1080
+    }
+   ]
+  },
+  {
+   "clave": "IA401-A",
+   "materia": "IA401",
+   "profesor": "P1",
+   "modalidad": "presencial",
+   "cupo": 30,
+   "horarios": [
+    {
+     "dia": "Lun",
+     "ini": 540,
+     "fin": 660
+    },
+    {
+     "dia": "Mié",
+     "ini": 540,
+     "fin": 660
+    }
+   ]
+  },
+  {
+   "clave": "IA401-B",
+   "materia": "IA401",
+   "profesor": "P3",
+   "modalidad": "hibrida",
+   "cupo": 30,
+   "horarios": [
+    {
+     "dia": "Mar",
+     "ini": 1080,
+     "fin": 1200
+    },
+    {
+     "dia": "Jue",
+     "ini": 1080,
+     "fin": 1200
+    }
+   ]
+  },
+  {
+   "clave": "ING401-A",
+   "materia": "ING401",
+   "profesor": "P2",
+   "modalidad": "presencial",
+   "cupo": 30,
+   "horarios": [
+    {
+     "dia": "Mar",
+     "ini": 660,
+     "fin": 780
+    },
+    {
+     "dia": "Jue",
+     "ini": 660,
+     "fin": 780
+    }
+   ]
+  },
+  {
+   "clave": "ING401-B",
+   "materia": "ING401",
+   "profesor": "P4",
+   "modalidad": "presencial",
+   "cupo": 30,
+   "horarios": [
+    {
+     "dia": "Lun",
+     "ini": 840,
+     "fin": 960
+    },
+    {
+     "dia": "Mié",
+     "ini": 840,
+     "fin": 960
+    }
+   ]
+  },
+  {
+   "clave": "OPT501-A",
+   "materia": "OPT501",
+   "profesor": "P3",
+   "modalidad": "presencial",
+   "cupo": 30,
+   "horarios": [
+    {
+     "dia": "Vie",
+     "ini": 960,
+     "fin": 1140
+    }
+   ]
+  },
+  {
+   "clave": "ELE501-A",
+   "materia": "ELE501",
+   "profesor": "P4",
+   "modalidad": "presencial",
+   "cupo": 30,
+   "horarios": [
+    {
+     "dia": "Vie",
+     "ini": 960,
+     "fin": 1140
+    }
+   ]
+  }
+ ],
+ "estudiantes": [
+  {
+   "matricula": "E1",
+   "nombre": "Alumno regular (ejemplo)",
+   "semestre": 4,
+   "kardex": [
+    {
+     "materia": "MAT101",
+     "estado": "aprobado",
+     "calificacion": 8.5,
+     "intento": 1
+    },
+    {
+     "materia": "PRO101",
+     "estado": "aprobado",
+     "calificacion": 8.5,
+     "intento": 1
+    },
+    {
+     "materia": "MAT102",
+     "estado": "aprobado",
+     "calificacion": 8.5,
+     "intento": 1
+    },
+    {
+     "materia": "PRO102",
+     "estado": "aprobado",
+     "calificacion": 8.5,
+     "intento": 1
+    },
+    {
+     "materia": "MAT201",
+     "estado": "aprobado",
+     "calificacion": 8.5,
+     "intento": 1
+    },
+    {
+     "materia": "PRO201",
+     "estado": "aprobado",
+     "calificacion": 8.5,
+     "intento": 1
+    },
+    {
+     "materia": "BD201",
+     "estado": "aprobado",
+     "calificacion": 8.5,
+     "intento": 1
+    }
+   ],
+   "mensaje": "Quiero una carga normal y, de preferencia, clases por la tarde."
+  },
+  {
+   "matricula": "E2",
+   "nombre": "Alumno con materias reprobadas (ejemplo)",
+   "semestre": 4,
+   "kardex": [
+    {
+     "materia": "MAT101",
+     "estado": "aprobado",
+     "calificacion": 8.5,
+     "intento": 1
+    },
+    {
+     "materia": "PRO101",
+     "estado": "aprobado",
+     "calificacion": 8.5,
+     "intento": 1
+    },
+    {
+     "materia": "PRO102",
+     "estado": "aprobado",
+     "calificacion": 8.5,
+     "intento": 1
+    },
+    {
+     "materia": "MAT201",
+     "estado": "aprobado",
+     "calificacion": 8.5,
+     "intento": 1
+    },
+    {
+     "materia": "MAT102",
+     "estado": "reprobado",
+     "calificacion": 5.0,
+     "intento": 1
+    },
+    {
+     "materia": "PRO201",
+     "estado": "reprobado",
+     "calificacion": 5.0,
+     "intento": 1
+    }
+   ],
+   "mensaje": "Prefiero una carga ligera y que las clases sean presenciales."
+  },
+  {
+   "matricula": "E3",
+   "nombre": "Alumno avanzado (ejemplo)",
+   "semestre": 6,
+   "kardex": [
+    {
+     "materia": "MAT101",
+     "estado": "aprobado",
+     "calificacion": 8.5,
+     "intento": 1
+    },
+    {
+     "materia": "PRO101",
+     "estado": "aprobado",
+     "calificacion": 8.5,
+     "intento": 1
+    },
+    {
+     "materia": "MAT102",
+     "estado": "aprobado",
+     "calificacion": 8.5,
+     "intento": 1
+    },
+    {
+     "materia": "PRO102",
+     "estado": "aprobado",
+     "calificacion": 8.5,
+     "intento": 1
+    },
+    {
+     "materia": "MAT201",
+     "estado": "aprobado",
+     "calificacion": 8.5,
+     "intento": 1
+    },
+    {
+     "materia": "PRO201",
+     "estado": "aprobado",
+     "calificacion": 8.5,
+     "intento": 1
+    },
+    {
+     "materia": "BD201",
+     "estado": "aprobado",
+     "calificacion": 8.5,
+     "intento": 1
+    },
+    {
+     "materia": "RED301",
+     "estado": "aprobado",
+     "calificacion": 8.5,
+     "intento": 1
+    },
+    {
+     "materia": "SO301",
+     "estado": "aprobado",
+     "calificacion": 8.5,
+     "intento": 1
+    },
+    {
+     "materia": "EST301",
+     "estado": "aprobado",
+     "calificacion": 8.5,
+     "intento": 1
+    }
+   ],
+   "mensaje": "Quiero clases en línea y por la tarde, con una carga ligera."
+  }
+ ]
+}

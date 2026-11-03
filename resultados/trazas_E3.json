@@ -1,0 +1,151 @@
+[
+ {
+  "timestamp": "2026-10-31T15:11:43",
+  "agent": "AgenteHorarios",
+  "task": "interpretar_preferencias",
+  "input": "Quiero clases en línea y por la tarde, con una carga ligera.",
+  "output": {
+   "turno": "vespertino",
+   "modalidad": "enlinea",
+   "carga": "ligera"
+  },
+  "execution_time": 0.0,
+  "success": true,
+  "score": null
+ },
+ {
+  "timestamp": "2026-10-31T15:11:43",
+  "agent": "AgenteHistorial",
+  "task": "verificar_prerrequisitos",
+  "input": "E3",
+  "output": [
+   "IA401",
+   "ING401",
+   "OPT501",
+   "ELE501"
+  ],
+  "execution_time": 0.0002,
+  "success": true,
+  "score": null
+ },
+ {
+  "timestamp": "2026-10-31T15:11:43",
+  "agent": "AgenteHistorial",
+  "task": "proponer_carga",
+  "input": {
+   "estudiante": "E3",
+   "preferencias": {
+    "turno": "vespertino",
+    "modalidad": "enlinea",
+    "carga": "ligera"
+   },
+   "creditos": [
+    18,
+    36
+   ]
+  },
+  "output": [
+   "IA401-A",
+   "ING401-A"
+  ],
+  "execution_time": 0.0003,
+  "success": true,
+  "score": 55.0
+ },
+ {
+  "timestamp": "2026-10-31T15:11:43",
+  "agent": "AgenteCarga",
+  "task": "proponer_carga",
+  "input": {
+   "estudiante": "E3",
+   "preferencias": {
+    "turno": "vespertino",
+    "modalidad": "enlinea",
+    "carga": "ligera"
+   },
+   "creditos": [
+    18,
+    36
+   ]
+  },
+  "output": [
+   "BD201-A",
+   "ELE501-A",
+   "IA401-A"
+  ],
+  "execution_time": 0.3177,
+  "success": true,
+  "score": 66.89
+ },
+ {
+  "timestamp": "2026-10-31T15:11:44",
+  "agent": "AgenteHorarios",
+  "task": "proponer_carga",
+  "input": {
+   "estudiante": "E3",
+   "preferencias": {
+    "turno": "vespertino",
+    "modalidad": "enlinea",
+    "carga": "ligera"
+   },
+   "creditos": [
+    18,
+    36
+   ]
+  },
+  "output": [
+   "BD201-B",
+   "PRO102-B"
+  ],
+  "execution_time": 0.9065,
+  "success": true,
+  "score": 45.0
+ },
+ {
+  "timestamp": "2026-10-31T15:11:44",
+  "agent": "AgenteManager",
+  "task": "integrar_propuestas",
+  "input": [
+   "AgenteHistorial",
+   "AgenteCarga",
+   "AgenteHorarios"
+  ],
+  "output": [
+   "ELE501-A",
+   "IA401-B",
+   "ING401-B"
+  ],
+  "execution_time": 0.0001,
+  "success": true,
+  "score": 85.55
+ },
+ {
+  "timestamp": "2026-10-31T15:11:44",
+  "agent": "AgenteManager",
+  "task": "seleccionar_mejor",
+  "input": [
+   "AgenteHistorial",
+   "AgenteCarga",
+   "AgenteHorarios",
+   "AgenteManager (integrada)"
+  ],
+  "output": "AgenteManager (integrada)",
+  "execution_time": 1.2247,
+  "success": true,
+  "score": 85.55
+ },
+ {
+  "timestamp": "2026-10-31T15:11:46",
+  "agent": "TraceCollector",
+  "task": "calcular_shapley",
+  "input": "8 coaliciones",
+  "output": {
+   "Historial": 29.44,
+   "Carga": 37.0,
+   "Horarios": 19.11
+  },
+  "execution_time": 1.4752,
+  "success": true,
+  "score": null
+ }
+]

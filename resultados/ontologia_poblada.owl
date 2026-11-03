@@ -1,0 +1,2360 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#"
+         xmlns:owl="http://www.w3.org/2002/07/owl#"
+         xml:base="http://www.ibero.mx/ontologias/plan-estudios"
+         xmlns="http://www.ibero.mx/ontologias/plan-estudios#">
+
+<owl:Ontology rdf:about="http://www.ibero.mx/ontologias/plan-estudios">
+  <rdfs:label xml:lang="es">Ontología del plan de estudios para la recomendación de carga académica</rdfs:label>
+</owl:Ontology>
+
+<owl:ObjectProperty rdf:about="#perteneceAPlan">
+  <owl:inverseOf rdf:resource="#contieneMateria"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Materia"/>
+  <rdfs:range rdf:resource="#PlanDeEstudios"/>
+  <rdfs:label xml:lang="es">perteneceAPlan</rdfs:label>
+  <rdfs:comment xml:lang="es">Cada materia pertenece a un plan.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#contieneMateria">
+  <rdfs:domain rdf:resource="#PlanDeEstudios"/>
+  <rdfs:range rdf:resource="#Materia"/>
+  <rdfs:label xml:lang="es">contieneMateria</rdfs:label>
+  <rdfs:comment xml:lang="es">Inversa de perteneceAPlan.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#tienePlan">
+  <owl:inverseOf rdf:resource="#esPlanDe"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+  <rdfs:domain rdf:resource="#ProgramaEducativo"/>
+  <rdfs:range rdf:resource="#PlanDeEstudios"/>
+  <rdfs:label xml:lang="es">tienePlan</rdfs:label>
+  <rdfs:comment xml:lang="es">Un programa tiene planes; cada plan es de un solo programa.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#esPlanDe">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#PlanDeEstudios"/>
+  <rdfs:range rdf:resource="#ProgramaEducativo"/>
+  <rdfs:label xml:lang="es">esPlanDe</rdfs:label>
+  <rdfs:comment xml:lang="es">Inversa de tienePlan.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#cursaPrograma">
+  <owl:inverseOf rdf:resource="#tieneEstudiante"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Estudiante"/>
+  <rdfs:range rdf:resource="#ProgramaEducativo"/>
+  <rdfs:label xml:lang="es">cursaPrograma</rdfs:label>
+  <rdfs:comment xml:lang="es">Un estudiante pertenece a un solo programa.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#tieneEstudiante">
+  <rdfs:domain rdf:resource="#ProgramaEducativo"/>
+  <rdfs:range rdf:resource="#Estudiante"/>
+  <rdfs:label xml:lang="es">tieneEstudiante</rdfs:label>
+  <rdfs:comment xml:lang="es">Inversa de cursaPrograma.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#tienePrerrequisito">
+  <owl:inverseOf rdf:resource="#esPrerrequisitoDe"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#AsymmetricProperty"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+  <rdfs:domain rdf:resource="#Materia"/>
+  <rdfs:range rdf:resource="#Materia"/>
+  <rdfs:label xml:lang="es">tienePrerrequisito</rdfs:label>
+  <rdfs:comment xml:lang="es">Seriación directa entre materias.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#esPrerrequisitoDe">
+  <rdfs:domain rdf:resource="#Materia"/>
+  <rdfs:range rdf:resource="#Materia"/>
+  <rdfs:label xml:lang="es">esPrerrequisitoDe</rdfs:label>
+  <rdfs:comment xml:lang="es">Inversa de tienePrerrequisito.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#esCorrequisitoDe">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+  <rdfs:domain rdf:resource="#Materia"/>
+  <rdfs:range rdf:resource="#Materia"/>
+  <rdfs:label xml:lang="es">esCorrequisitoDe</rdfs:label>
+  <rdfs:comment xml:lang="es">Materias que deben cursarse en el mismo periodo.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#ubicadaEnSemestre">
+  <owl:inverseOf rdf:resource="#incluyeMateria"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Materia"/>
+  <rdfs:range rdf:resource="#Semestre"/>
+  <rdfs:label xml:lang="es">ubicadaEnSemestre</rdfs:label>
+  <rdfs:comment xml:lang="es">Posición de la materia en la retícula.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#incluyeMateria">
+  <rdfs:domain rdf:resource="#Semestre"/>
+  <rdfs:range rdf:resource="#Materia"/>
+  <rdfs:label xml:lang="es">incluyeMateria</rdfs:label>
+  <rdfs:comment xml:lang="es">Inversa de ubicadaEnSemestre.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#perteneceAArea">
+  <owl:inverseOf rdf:resource="#agrupaMateria"/>
+  <rdfs:domain rdf:resource="#Materia"/>
+  <rdfs:range rdf:resource="#AreaConocimiento"/>
+  <rdfs:label xml:lang="es">perteneceAArea</rdfs:label>
+  <rdfs:comment xml:lang="es">Clasificación temática de la materia.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#agrupaMateria">
+  <rdfs:domain rdf:resource="#AreaConocimiento"/>
+  <rdfs:range rdf:resource="#Materia"/>
+  <rdfs:label xml:lang="es">agrupaMateria</rdfs:label>
+  <rdfs:comment xml:lang="es">Inversa de perteneceAArea.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#tieneRegistro">
+  <owl:inverseOf rdf:resource="#registroDe"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Estudiante"/>
+  <rdfs:range rdf:resource="#RegistroAcademico"/>
+  <rdfs:label xml:lang="es">tieneRegistro</rdfs:label>
+  <rdfs:comment xml:lang="es">Historial del estudiante.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#registroDe">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#RegistroAcademico"/>
+  <rdfs:range rdf:resource="#Estudiante"/>
+  <rdfs:label xml:lang="es">registroDe</rdfs:label>
+  <rdfs:comment xml:lang="es">Inversa de tieneRegistro.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#registraMateria">
+  <owl:inverseOf rdf:resource="#tieneRegistros"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#RegistroAcademico"/>
+  <rdfs:range rdf:resource="#Materia"/>
+  <rdfs:label xml:lang="es">registraMateria</rdfs:label>
+  <rdfs:comment xml:lang="es">Materia a la que corresponde el registro.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#tieneRegistros">
+  <rdfs:domain rdf:resource="#Materia"/>
+  <rdfs:range rdf:resource="#RegistroAcademico"/>
+  <rdfs:label xml:lang="es">tieneRegistros</rdfs:label>
+  <rdfs:comment xml:lang="es">Inversa de registraMateria.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#registradoEnPeriodo">
+  <owl:inverseOf rdf:resource="#contieneRegistro"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#RegistroAcademico"/>
+  <rdfs:range rdf:resource="#PeriodoEscolar"/>
+  <rdfs:label xml:lang="es">registradoEnPeriodo</rdfs:label>
+  <rdfs:comment xml:lang="es">Cuándo se cursó.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#contieneRegistro">
+  <rdfs:domain rdf:resource="#PeriodoEscolar"/>
+  <rdfs:range rdf:resource="#RegistroAcademico"/>
+  <rdfs:label xml:lang="es">contieneRegistro</rdfs:label>
+  <rdfs:comment xml:lang="es">Inversa de registradoEnPeriodo.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#ofreceMateria">
+  <owl:inverseOf rdf:resource="#seOfertaEnGrupo"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Grupo"/>
+  <rdfs:range rdf:resource="#Materia"/>
+  <rdfs:label xml:lang="es">ofreceMateria</rdfs:label>
+  <rdfs:comment xml:lang="es">Materia que ofrece el grupo.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#seOfertaEnGrupo">
+  <rdfs:domain rdf:resource="#Materia"/>
+  <rdfs:range rdf:resource="#Grupo"/>
+  <rdfs:label xml:lang="es">seOfertaEnGrupo</rdfs:label>
+  <rdfs:comment xml:lang="es">Inversa de ofreceMateria.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#impartidoPor">
+  <owl:inverseOf rdf:resource="#imparteGrupo"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Grupo"/>
+  <rdfs:range rdf:resource="#Profesor"/>
+  <rdfs:label xml:lang="es">impartidoPor</rdfs:label>
+  <rdfs:comment xml:lang="es">Profesor titular del grupo.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#imparteGrupo">
+  <rdfs:domain rdf:resource="#Profesor"/>
+  <rdfs:range rdf:resource="#Grupo"/>
+  <rdfs:label xml:lang="es">imparteGrupo</rdfs:label>
+  <rdfs:comment xml:lang="es">Inversa de impartidoPor.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#tieneHorario">
+  <owl:inverseOf rdf:resource="#horarioDe"/>
+  <rdfs:domain rdf:resource="#Grupo"/>
+  <rdfs:range rdf:resource="#Horario"/>
+  <rdfs:label xml:lang="es">tieneHorario</rdfs:label>
+  <rdfs:comment xml:lang="es">Un grupo puede reunirse varios días.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#horarioDe">
+  <rdfs:domain rdf:resource="#Horario"/>
+  <rdfs:range rdf:resource="#Grupo"/>
+  <rdfs:label xml:lang="es">horarioDe</rdfs:label>
+  <rdfs:comment xml:lang="es">Inversa de tieneHorario.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#seOfertaEnPeriodo">
+  <owl:inverseOf rdf:resource="#ofertaGrupo"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Grupo"/>
+  <rdfs:range rdf:resource="#PeriodoEscolar"/>
+  <rdfs:label xml:lang="es">seOfertaEnPeriodo</rdfs:label>
+  <rdfs:comment xml:lang="es">Periodo en que existe el grupo.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#ofertaGrupo">
+  <rdfs:domain rdf:resource="#PeriodoEscolar"/>
+  <rdfs:range rdf:resource="#Grupo"/>
+  <rdfs:label xml:lang="es">ofertaGrupo</rdfs:label>
+  <rdfs:comment xml:lang="es">Inversa de seOfertaEnPeriodo.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#asignadoAAula">
+  <owl:inverseOf rdf:resource="#aulaDe"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Grupo"/>
+  <rdfs:range rdf:resource="#Aula"/>
+  <rdfs:label xml:lang="es">asignadoAAula</rdfs:label>
+  <rdfs:comment xml:lang="es">Aula del grupo (opcional).</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#aulaDe">
+  <rdfs:domain rdf:resource="#Aula"/>
+  <rdfs:range rdf:resource="#Grupo"/>
+  <rdfs:label xml:lang="es">aulaDe</rdfs:label>
+  <rdfs:comment xml:lang="es">Inversa de asignadoAAula.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#tieneAsesor">
+  <owl:inverseOf rdf:resource="#asesoraA"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Estudiante"/>
+  <rdfs:range rdf:resource="#Asesor"/>
+  <rdfs:label xml:lang="es">tieneAsesor</rdfs:label>
+  <rdfs:comment xml:lang="es">Tutor asignado al estudiante.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#asesoraA">
+  <rdfs:domain rdf:resource="#Asesor"/>
+  <rdfs:range rdf:resource="#Estudiante"/>
+  <rdfs:label xml:lang="es">asesoraA</rdfs:label>
+  <rdfs:comment xml:lang="es">Inversa de tieneAsesor.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#recomiendaA">
+  <owl:inverseOf rdf:resource="#tieneRecomendacion"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Recomendacion"/>
+  <rdfs:range rdf:resource="#Estudiante"/>
+  <rdfs:label xml:lang="es">recomiendaA</rdfs:label>
+  <rdfs:comment xml:lang="es">Destinatario de la recomendación.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#tieneRecomendacion">
+  <rdfs:domain rdf:resource="#Estudiante"/>
+  <rdfs:range rdf:resource="#Recomendacion"/>
+  <rdfs:label xml:lang="es">tieneRecomendacion</rdfs:label>
+  <rdfs:comment xml:lang="es">Inversa de recomiendaA.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#sugiereMateria">
+  <owl:inverseOf rdf:resource="#esSugeridaEn"/>
+  <rdfs:domain rdf:resource="#Recomendacion"/>
+  <rdfs:range rdf:resource="#Materia"/>
+  <rdfs:label xml:lang="es">sugiereMateria</rdfs:label>
+  <rdfs:comment xml:lang="es">Materias sugeridas.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#esSugeridaEn">
+  <rdfs:domain rdf:resource="#Materia"/>
+  <rdfs:range rdf:resource="#Recomendacion"/>
+  <rdfs:label xml:lang="es">esSugeridaEn</rdfs:label>
+  <rdfs:comment xml:lang="es">Inversa de sugiereMateria.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#sujetaARestriccion">
+  <owl:inverseOf rdf:resource="#restringeRecomendacion"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Recomendacion"/>
+  <rdfs:range rdf:resource="#RestriccionDeCarga"/>
+  <rdfs:label xml:lang="es">sujetaARestriccion</rdfs:label>
+  <rdfs:comment xml:lang="es">Restricción de carga que aplicó.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#restringeRecomendacion">
+  <rdfs:domain rdf:resource="#RestriccionDeCarga"/>
+  <rdfs:range rdf:resource="#Recomendacion"/>
+  <rdfs:label xml:lang="es">restringeRecomendacion</rdfs:label>
+  <rdfs:comment xml:lang="es">Inversa de sujetaARestriccion.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#tieneModalidad">
+  <owl:inverseOf rdf:resource="#modalidadDeGrupo"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Grupo"/>
+  <rdfs:range rdf:resource="#Modalidad"/>
+  <rdfs:label xml:lang="es">tieneModalidad</rdfs:label>
+  <rdfs:comment xml:lang="es">Modalidad del grupo.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#modalidadDeGrupo">
+  <rdfs:domain rdf:resource="#Modalidad"/>
+  <rdfs:range rdf:resource="#Grupo"/>
+  <rdfs:label xml:lang="es">modalidadDeGrupo</rdfs:label>
+  <rdfs:comment xml:lang="es">Inversa de tieneModalidad.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#tienePreferencia">
+  <owl:inverseOf rdf:resource="#esPreferenciaDe"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#InverseFunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Estudiante"/>
+  <rdfs:range rdf:resource="#Preferencia"/>
+  <rdfs:label xml:lang="es">tienePreferencia</rdfs:label>
+  <rdfs:comment xml:lang="es">Preferencias que el LLM extrae del chat.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#esPreferenciaDe">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Preferencia"/>
+  <rdfs:range rdf:resource="#Estudiante"/>
+  <rdfs:label xml:lang="es">esPreferenciaDe</rdfs:label>
+  <rdfs:comment xml:lang="es">Inversa de tienePreferencia.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#prefiereModalidad">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#PreferenciaModalidad"/>
+  <rdfs:range rdf:resource="#Modalidad"/>
+  <rdfs:label xml:lang="es">prefiereModalidad</rdfs:label>
+  <rdfs:comment xml:lang="es">Modalidad deseada.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#enConflictoCon">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#SymmetricProperty"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#IrreflexiveProperty"/>
+  <rdfs:domain rdf:resource="#Grupo"/>
+  <rdfs:range rdf:resource="#Grupo"/>
+  <rdfs:label xml:lang="es">enConflictoCon</rdfs:label>
+  <rdfs:comment xml:lang="es">Grupos con traslape de horario.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#haAprobado">
+  <owl:inverseOf rdf:resource="#aprobadaPor"/>
+  <rdfs:domain rdf:resource="#Estudiante"/>
+  <rdfs:range rdf:resource="#Materia"/>
+  <rdfs:label xml:lang="es">haAprobado</rdfs:label>
+  <rdfs:comment xml:lang="es">Materias acreditadas (derivada del kárdex).</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#aprobadaPor">
+  <rdfs:domain rdf:resource="#Materia"/>
+  <rdfs:range rdf:resource="#Estudiante"/>
+  <rdfs:label xml:lang="es">aprobadaPor</rdfs:label>
+  <rdfs:comment xml:lang="es">Inversa de haAprobado.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#puedeCursar">
+  <owl:inverseOf rdf:resource="#puedeSerCursadaPor"/>
+  <rdfs:domain rdf:resource="#Estudiante"/>
+  <rdfs:range rdf:resource="#Materia"/>
+  <rdfs:label xml:lang="es">puedeCursar</rdfs:label>
+  <rdfs:comment xml:lang="es">Materias que cumplen requisitos (inferida).</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#puedeSerCursadaPor">
+  <rdfs:domain rdf:resource="#Materia"/>
+  <rdfs:range rdf:resource="#Estudiante"/>
+  <rdfs:label xml:lang="es">puedeSerCursadaPor</rdfs:label>
+  <rdfs:comment xml:lang="es">Inversa de puedeCursar.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#recomendacionParaPeriodo">
+  <owl:inverseOf rdf:resource="#periodoTieneRecomendacion"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Recomendacion"/>
+  <rdfs:range rdf:resource="#PeriodoEscolar"/>
+  <rdfs:label xml:lang="es">recomendacionParaPeriodo</rdfs:label>
+  <rdfs:comment xml:lang="es">Periodo de la recomendación.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#periodoTieneRecomendacion">
+  <rdfs:domain rdf:resource="#PeriodoEscolar"/>
+  <rdfs:range rdf:resource="#Recomendacion"/>
+  <rdfs:label xml:lang="es">periodoTieneRecomendacion</rdfs:label>
+  <rdfs:comment xml:lang="es">Inversa de recomendacionParaPeriodo.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#incluyeGrupo">
+  <owl:inverseOf rdf:resource="#incluidoEnRecomendacion"/>
+  <rdfs:domain rdf:resource="#Recomendacion"/>
+  <rdfs:range rdf:resource="#Grupo"/>
+  <rdfs:label xml:lang="es">incluyeGrupo</rdfs:label>
+  <rdfs:comment xml:lang="es">Grupos concretos recomendados.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#incluidoEnRecomendacion">
+  <rdfs:domain rdf:resource="#Grupo"/>
+  <rdfs:range rdf:resource="#Recomendacion"/>
+  <rdfs:label xml:lang="es">incluidoEnRecomendacion</rdfs:label>
+  <rdfs:comment xml:lang="es">Inversa de incluyeGrupo.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#generadaPor">
+  <owl:inverseOf rdf:resource="#generaRecomendacion"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Recomendacion"/>
+  <rdfs:range rdf:resource="#Agente"/>
+  <rdfs:label xml:lang="es">generadaPor</rdfs:label>
+  <rdfs:comment xml:lang="es">Agente emisor de la propuesta.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#generaRecomendacion">
+  <rdfs:domain rdf:resource="#Agente"/>
+  <rdfs:range rdf:resource="#Recomendacion"/>
+  <rdfs:label xml:lang="es">generaRecomendacion</rdfs:label>
+  <rdfs:comment xml:lang="es">Inversa de generadaPor.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#trazaDeAgente">
+  <owl:inverseOf rdf:resource="#registraTraza"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#TrazaEjecucion"/>
+  <rdfs:range rdf:resource="#Agente"/>
+  <rdfs:label xml:lang="es">trazaDeAgente</rdfs:label>
+  <rdfs:comment xml:lang="es">Agente que originó la traza.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#registraTraza">
+  <rdfs:domain rdf:resource="#Agente"/>
+  <rdfs:range rdf:resource="#TrazaEjecucion"/>
+  <rdfs:label xml:lang="es">registraTraza</rdfs:label>
+  <rdfs:comment xml:lang="es">Inversa de trazaDeAgente.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#trazaDeRecomendacion">
+  <owl:inverseOf rdf:resource="#tieneTraza"/>
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#TrazaEjecucion"/>
+  <rdfs:range rdf:resource="#Recomendacion"/>
+  <rdfs:label xml:lang="es">trazaDeRecomendacion</rdfs:label>
+  <rdfs:comment xml:lang="es">Recomendación auditada por la traza.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:ObjectProperty rdf:about="#tieneTraza">
+  <rdfs:domain rdf:resource="#Recomendacion"/>
+  <rdfs:range rdf:resource="#TrazaEjecucion"/>
+  <rdfs:label xml:lang="es">tieneTraza</rdfs:label>
+  <rdfs:comment xml:lang="es">Inversa de trazaDeRecomendacion.</rdfs:comment>
+</owl:ObjectProperty>
+
+<owl:DatatypeProperty rdf:about="#claveMateria">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Materia"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  <rdfs:label xml:lang="es">claveMateria</rdfs:label>
+  <rdfs:comment xml:lang="es">Identificador único.</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#nombreMateria">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Materia"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  <rdfs:label xml:lang="es">nombreMateria</rdfs:label>
+  <rdfs:comment xml:lang="es">Nombre oficial.</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#creditos">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Materia"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  <rdfs:label xml:lang="es">creditos</rdfs:label>
+  <rdfs:comment xml:lang="es">Base del cálculo de carga.</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#horasTeoria">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Materia"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  <rdfs:label xml:lang="es">horasTeoria</rdfs:label>
+  <rdfs:comment xml:lang="es">Horas teóricas por semana.</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#horasPractica">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Materia"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  <rdfs:label xml:lang="es">horasPractica</rdfs:label>
+  <rdfs:comment xml:lang="es">Horas prácticas por semana.</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#semestreSugerido">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Semestre"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  <rdfs:label xml:lang="es">semestreSugerido</rdfs:label>
+  <rdfs:comment xml:lang="es">Número de semestre.</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#nombrePrograma">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#ProgramaEducativo"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  <rdfs:label xml:lang="es">nombrePrograma</rdfs:label>
+  <rdfs:comment xml:lang="es">Nombre de la carrera.</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#anioPlan">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#PlanDeEstudios"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  <rdfs:label xml:lang="es">anioPlan</rdfs:label>
+  <rdfs:comment xml:lang="es">Versión del plan.</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#creditosTotalesPlan">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#PlanDeEstudios"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  <rdfs:label xml:lang="es">creditosTotalesPlan</rdfs:label>
+  <rdfs:comment xml:lang="es">Meta de graduación.</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#matricula">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Estudiante"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  <rdfs:label xml:lang="es">matricula</rdfs:label>
+  <rdfs:comment xml:lang="es">Identificador del alumno.</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#nombrePersona">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Persona"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  <rdfs:label xml:lang="es">nombrePersona</rdfs:label>
+  <rdfs:comment xml:lang="es">Nombre completo.</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#correoInstitucional">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Persona"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  <rdfs:label xml:lang="es">correoInstitucional</rdfs:label>
+  <rdfs:comment xml:lang="es">Contacto.</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#promedioGeneral">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Estudiante"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  <rdfs:label xml:lang="es">promedioGeneral</rdfs:label>
+  <rdfs:comment xml:lang="es">Criterio de priorización.</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#creditosAcumulados">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Estudiante"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  <rdfs:label xml:lang="es">creditosAcumulados</rdfs:label>
+  <rdfs:comment xml:lang="es">Avance en el plan.</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#semestreActual">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Estudiante"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  <rdfs:label xml:lang="es">semestreActual</rdfs:label>
+  <rdfs:comment xml:lang="es">Ubicación del alumno.</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#calificacion">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#RegistroAcademico"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  <rdfs:label xml:lang="es">calificacion</rdfs:label>
+  <rdfs:comment xml:lang="es">Resultado del cursado.</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#numeroOportunidad">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#RegistroAcademico"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  <rdfs:label xml:lang="es">numeroOportunidad</rdfs:label>
+  <rdfs:comment xml:lang="es">Controla recursamientos.</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#calificacionMinimaAprobatoria">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#PlanDeEstudios"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  <rdfs:label xml:lang="es">calificacionMinimaAprobatoria</rdfs:label>
+  <rdfs:comment xml:lang="es">Define aprobado.</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#clavePeriodo">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#PeriodoEscolar"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  <rdfs:label xml:lang="es">clavePeriodo</rdfs:label>
+  <rdfs:comment xml:lang="es">Ej. 2027-1.</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#fechaInicio">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#PeriodoEscolar"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+  <rdfs:label xml:lang="es">fechaInicio</rdfs:label>
+  <rdfs:comment xml:lang="es">Vigencia del periodo.</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#fechaFin">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#PeriodoEscolar"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+  <rdfs:label xml:lang="es">fechaFin</rdfs:label>
+  <rdfs:comment xml:lang="es">Vigencia del periodo.</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#cupo">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Grupo"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  <rdfs:label xml:lang="es">cupo</rdfs:label>
+  <rdfs:comment xml:lang="es">Disponibilidad.</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#claveGrupo">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Grupo"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  <rdfs:label xml:lang="es">claveGrupo</rdfs:label>
+  <rdfs:comment xml:lang="es">Identificador.</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#diaSemana">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Horario"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  <rdfs:label xml:lang="es">diaSemana</rdfs:label>
+  <rdfs:comment xml:lang="es">Día de clase.</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#inicioMinutos">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Horario"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  <rdfs:label xml:lang="es">inicioMinutos</rdfs:label>
+  <rdfs:comment xml:lang="es">Franja horaria.</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#finMinutos">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Horario"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  <rdfs:label xml:lang="es">finMinutos</rdfs:label>
+  <rdfs:comment xml:lang="es">Franja horaria.</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#cargaMinimaCreditos">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#RestriccionDeCarga"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  <rdfs:label xml:lang="es">cargaMinimaCreditos</rdfs:label>
+  <rdfs:comment xml:lang="es">Mínimo por periodo.</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#cargaMaximaCreditos">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#RestriccionDeCarga"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  <rdfs:label xml:lang="es">cargaMaximaCreditos</rdfs:label>
+  <rdfs:comment xml:lang="es">Máximo por periodo.</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#puntajeRecomendacion">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Recomendacion"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  <rdfs:label xml:lang="es">puntajeRecomendacion</rdfs:label>
+  <rdfs:comment xml:lang="es">Prioridad de la sugerencia.</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#justificacionTexto">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Recomendacion"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  <rdfs:label xml:lang="es">justificacionTexto</rdfs:label>
+  <rdfs:comment xml:lang="es">Explicación al alumno.</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#fechaGeneracion">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Recomendacion"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+  <rdfs:label xml:lang="es">fechaGeneracion</rdfs:label>
+  <rdfs:comment xml:lang="es">Trazabilidad.</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#turno">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Horario"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  <rdfs:label xml:lang="es">turno</rdfs:label>
+  <rdfs:comment xml:lang="es">Matutino o vespertino.</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#nombreModalidad">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Modalidad"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  <rdfs:label xml:lang="es">nombreModalidad</rdfs:label>
+  <rdfs:comment xml:lang="es">Etiqueta legible.</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#textoOriginal">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Preferencia"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  <rdfs:label xml:lang="es">textoOriginal</rdfs:label>
+  <rdfs:comment xml:lang="es">Frase del alumno que originó la preferencia.</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#prioridad">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Preferencia"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  <rdfs:label xml:lang="es">prioridad</rdfs:label>
+  <rdfs:comment xml:lang="es">Importancia de 1 a 5.</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#valorPreferencia">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Preferencia"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  <rdfs:label xml:lang="es">valorPreferencia</rdfs:label>
+  <rdfs:comment xml:lang="es">Valor normalizado (tarde, ligera, en línea).</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#creditosObjetivo">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#PreferenciaCarga"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  <rdfs:label xml:lang="es">creditosObjetivo</rdfs:label>
+  <rdfs:comment xml:lang="es">Créditos que desea cursar.</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#maxMateriasDeseadas">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#PreferenciaCarga"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+  <rdfs:label xml:lang="es">maxMateriasDeseadas</rdfs:label>
+  <rdfs:comment xml:lang="es">Máximo de materias deseadas.</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#avanceAcademico">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Recomendacion"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  <rdfs:label xml:lang="es">avanceAcademico</rdfs:label>
+  <rdfs:comment xml:lang="es">Criterio con peso 0.30.</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#compatibilidadHorario">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Recomendacion"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  <rdfs:label xml:lang="es">compatibilidadHorario</rdfs:label>
+  <rdfs:comment xml:lang="es">Criterio con peso 0.25.</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#cargaEquilibrada">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Recomendacion"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  <rdfs:label xml:lang="es">cargaEquilibrada</rdfs:label>
+  <rdfs:comment xml:lang="es">Criterio con peso 0.25.</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#cumplimientoPreferencias">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Recomendacion"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  <rdfs:label xml:lang="es">cumplimientoPreferencias</rdfs:label>
+  <rdfs:comment xml:lang="es">Criterio con peso 0.20.</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#nombreAgente">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Agente"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  <rdfs:label xml:lang="es">nombreAgente</rdfs:label>
+  <rdfs:comment xml:lang="es">Nombre del agente.</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#rolAgente">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Agente"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  <rdfs:label xml:lang="es">rolAgente</rdfs:label>
+  <rdfs:comment xml:lang="es">Role del agente en CrewAI.</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#valorShapley">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#Agente"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  <rdfs:label xml:lang="es">valorShapley</rdfs:label>
+  <rdfs:comment xml:lang="es">Contribución calculada.</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#marcaTiempo">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#TrazaEjecucion"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#dateTime"/>
+  <rdfs:label xml:lang="es">marcaTiempo</rdfs:label>
+  <rdfs:comment xml:lang="es">Momento del evento.</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#tareaEjecutada">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#TrazaEjecucion"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+  <rdfs:label xml:lang="es">tareaEjecutada</rdfs:label>
+  <rdfs:comment xml:lang="es">Tarea realizada.</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#tiempoEjecucion">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#TrazaEjecucion"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  <rdfs:label xml:lang="es">tiempoEjecucion</rdfs:label>
+  <rdfs:comment xml:lang="es">Segundos de ejecución.</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#exito">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#TrazaEjecucion"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+  <rdfs:label xml:lang="es">exito</rdfs:label>
+  <rdfs:comment xml:lang="es">Si terminó bien.</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:DatatypeProperty rdf:about="#scoreTraza">
+  <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+  <rdfs:domain rdf:resource="#TrazaEjecucion"/>
+  <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#decimal"/>
+  <rdfs:label xml:lang="es">scoreTraza</rdfs:label>
+  <rdfs:comment xml:lang="es">Puntuación registrada.</rdfs:comment>
+</owl:DatatypeProperty>
+
+<owl:Class rdf:about="#Persona">
+  <rdfs:label xml:lang="es">Persona</rdfs:label>
+  <rdfs:comment xml:lang="es">Superclase de los actores del sistema.</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#Estudiante">
+  <rdfs:subClassOf rdf:resource="#Persona"/>
+  <rdfs:label xml:lang="es">Estudiante</rdfs:label>
+  <rdfs:comment xml:lang="es">Usuario al que se recomienda la carga académica.</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#Profesor">
+  <rdfs:subClassOf rdf:resource="#Persona"/>
+  <rdfs:label xml:lang="es">Profesor</rdfs:label>
+  <rdfs:comment xml:lang="es">Docente que imparte grupos.</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#Asesor">
+  <rdfs:subClassOf rdf:resource="#Persona"/>
+  <rdfs:label xml:lang="es">Asesor</rdfs:label>
+  <rdfs:comment xml:lang="es">Tutor académico que valida recomendaciones.</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#ProgramaEducativo">
+  <rdfs:label xml:lang="es">ProgramaEducativo</rdfs:label>
+  <rdfs:comment xml:lang="es">Carrera o licenciatura a la que pertenece el plan.</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#PlanDeEstudios">
+  <rdfs:label xml:lang="es">PlanDeEstudios</rdfs:label>
+  <rdfs:comment xml:lang="es">Versión vigente del currículo de un programa.</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#Materia">
+  <rdfs:label xml:lang="es">Materia</rdfs:label>
+  <rdfs:comment xml:lang="es">Unidad curricular del plan; clase central.</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#MateriaObligatoria">
+  <rdfs:subClassOf rdf:resource="#Materia"/>
+  <rdfs:label xml:lang="es">MateriaObligatoria</rdfs:label>
+  <rdfs:comment xml:lang="es">Materia de cursado forzoso.</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#MateriaOptativa">
+  <rdfs:subClassOf rdf:resource="#Materia"/>
+  <rdfs:label xml:lang="es">MateriaOptativa</rdfs:label>
+  <rdfs:comment xml:lang="es">Materia elegible de una lista del plan.</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#MateriaElectiva">
+  <rdfs:subClassOf rdf:resource="#Materia"/>
+  <rdfs:label xml:lang="es">MateriaElectiva</rdfs:label>
+  <rdfs:comment xml:lang="es">Materia de libre elección.</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#AreaConocimiento">
+  <rdfs:label xml:lang="es">AreaConocimiento</rdfs:label>
+  <rdfs:comment xml:lang="es">Agrupación temática (matemáticas, programación, etc.).</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#Semestre">
+  <rdfs:label xml:lang="es">Semestre</rdfs:label>
+  <rdfs:comment xml:lang="es">Posición sugerida de la materia en la retícula.</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#PeriodoEscolar">
+  <rdfs:label xml:lang="es">PeriodoEscolar</rdfs:label>
+  <rdfs:comment xml:lang="es">Ciclo en que se inscribe (ej. Ene-Jun 2027).</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#Grupo">
+  <rdfs:label xml:lang="es">Grupo</rdfs:label>
+  <rdfs:comment xml:lang="es">Oferta concreta de una materia con horario y cupo.</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#Horario">
+  <rdfs:label xml:lang="es">Horario</rdfs:label>
+  <rdfs:comment xml:lang="es">Día y franja horaria de un grupo.</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#Aula">
+  <rdfs:label xml:lang="es">Aula</rdfs:label>
+  <rdfs:comment xml:lang="es">Espacio físico de un grupo.</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#RegistroAcademico">
+  <rdfs:label xml:lang="es">RegistroAcademico</rdfs:label>
+  <rdfs:comment xml:lang="es">Cursado de una materia por un estudiante.</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#RegistroAprobado">
+  <rdfs:subClassOf rdf:resource="#RegistroAcademico"/>
+  <rdfs:label xml:lang="es">RegistroAprobado</rdfs:label>
+  <rdfs:comment xml:lang="es">Materia acreditada.</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#RegistroReprobado">
+  <rdfs:subClassOf rdf:resource="#RegistroAcademico"/>
+  <rdfs:label xml:lang="es">RegistroReprobado</rdfs:label>
+  <rdfs:comment xml:lang="es">Materia no acreditada.</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#RegistroEnCurso">
+  <rdfs:subClassOf rdf:resource="#RegistroAcademico"/>
+  <rdfs:label xml:lang="es">RegistroEnCurso</rdfs:label>
+  <rdfs:comment xml:lang="es">Materia actualmente cursando.</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#RestriccionDeCarga">
+  <rdfs:label xml:lang="es">RestriccionDeCarga</rdfs:label>
+  <rdfs:comment xml:lang="es">Límites de créditos o materias por periodo.</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#Recomendacion">
+  <rdfs:label xml:lang="es">Recomendacion</rdfs:label>
+  <rdfs:comment xml:lang="es">Resultado del agente para un estudiante y periodo.</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#Modalidad">
+  <rdfs:label xml:lang="es">Modalidad</rdfs:label>
+  <rdfs:comment xml:lang="es">Forma de impartir un grupo.</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#ModalidadPresencial">
+  <rdfs:subClassOf rdf:resource="#Modalidad"/>
+  <rdfs:label xml:lang="es">ModalidadPresencial</rdfs:label>
+  <rdfs:comment xml:lang="es">Clases en el campus.</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#ModalidadEnLinea">
+  <rdfs:subClassOf rdf:resource="#Modalidad"/>
+  <rdfs:label xml:lang="es">ModalidadEnLinea</rdfs:label>
+  <rdfs:comment xml:lang="es">Clases totalmente remotas.</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#ModalidadHibrida">
+  <rdfs:subClassOf rdf:resource="#Modalidad"/>
+  <rdfs:label xml:lang="es">ModalidadHibrida</rdfs:label>
+  <rdfs:comment xml:lang="es">Combinación de presencial y remoto.</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#Preferencia">
+  <rdfs:label xml:lang="es">Preferencia</rdfs:label>
+  <rdfs:comment xml:lang="es">Preferencia del alumno extraída de su lenguaje natural por el LLM.</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#PreferenciaHorario">
+  <rdfs:subClassOf rdf:resource="#Preferencia"/>
+  <rdfs:label xml:lang="es">PreferenciaHorario</rdfs:label>
+  <rdfs:comment xml:lang="es">Preferencia de turno u horas (ej. clases por la tarde).</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#PreferenciaModalidad">
+  <rdfs:subClassOf rdf:resource="#Preferencia"/>
+  <rdfs:label xml:lang="es">PreferenciaModalidad</rdfs:label>
+  <rdfs:comment xml:lang="es">Preferencia por presencial, en línea o híbrido.</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#PreferenciaCarga">
+  <rdfs:subClassOf rdf:resource="#Preferencia"/>
+  <rdfs:label xml:lang="es">PreferenciaCarga</rdfs:label>
+  <rdfs:comment xml:lang="es">Preferencia por carga ligera o número de materias/créditos.</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#Agente">
+  <rdfs:label xml:lang="es">Agente</rdfs:label>
+  <rdfs:comment xml:lang="es">Agente de software del sistema multiagente.</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#AgenteHistorial">
+  <rdfs:subClassOf rdf:resource="#Agente"/>
+  <rdfs:label xml:lang="es">AgenteHistorial</rdfs:label>
+  <rdfs:comment xml:lang="es">Analista de historial y requisitos.</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#AgenteCarga">
+  <rdfs:subClassOf rdf:resource="#Agente"/>
+  <rdfs:label xml:lang="es">AgenteCarga</rdfs:label>
+  <rdfs:comment xml:lang="es">Analista de carga académica.</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#AgenteHorarios">
+  <rdfs:subClassOf rdf:resource="#Agente"/>
+  <rdfs:label xml:lang="es">AgenteHorarios</rdfs:label>
+  <rdfs:comment xml:lang="es">Analista de horarios y preferencias.</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#AgenteManager">
+  <rdfs:subClassOf rdf:resource="#Agente"/>
+  <rdfs:label xml:lang="es">AgenteManager</rdfs:label>
+  <rdfs:comment xml:lang="es">Coordinador y recomendador.</rdfs:comment>
+</owl:Class>
+
+<owl:Class rdf:about="#TrazaEjecucion">
+  <rdfs:label xml:lang="es">TrazaEjecucion</rdfs:label>
+  <rdfs:comment xml:lang="es">Evento registrado por el Trace Collector durante la ejecución de un agente.</rdfs:comment>
+</owl:Class>
+
+<owl:NamedIndividual rdf:about="#prog_1">
+  <rdf:type rdf:resource="#ProgramaEducativo"/>
+  <tienePlan rdf:resource="#plan_1"/>
+  <nombrePrograma rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ingeniería en Sistemas (EJEMPLO)</nombrePrograma>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#plan_1">
+  <rdf:type rdf:resource="#PlanDeEstudios"/>
+  <anioPlan rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2024</anioPlan>
+  <calificacionMinimaAprobatoria rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">7.0</calificacionMinimaAprobatoria>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#restr_1">
+  <rdf:type rdf:resource="#RestriccionDeCarga"/>
+  <cargaMinimaCreditos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">18</cargaMinimaCreditos>
+  <cargaMaximaCreditos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">36</cargaMaximaCreditos>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#per_2027-1">
+  <rdf:type rdf:resource="#PeriodoEscolar"/>
+  <clavePeriodo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">2027-1</clavePeriodo>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#mod_presencial">
+  <rdf:type rdf:resource="#ModalidadPresencial"/>
+  <nombreModalidad rdf:datatype="http://www.w3.org/2001/XMLSchema#string">presencial</nombreModalidad>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#mod_enlinea">
+  <rdf:type rdf:resource="#ModalidadEnLinea"/>
+  <nombreModalidad rdf:datatype="http://www.w3.org/2001/XMLSchema#string">enlinea</nombreModalidad>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#mod_hibrida">
+  <rdf:type rdf:resource="#ModalidadHibrida"/>
+  <nombreModalidad rdf:datatype="http://www.w3.org/2001/XMLSchema#string">hibrida</nombreModalidad>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#prof_P1">
+  <rdf:type rdf:resource="#Profesor"/>
+  <nombrePersona rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Profesor 1 (ejemplo)</nombrePersona>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#prof_P2">
+  <rdf:type rdf:resource="#Profesor"/>
+  <nombrePersona rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Profesor 2 (ejemplo)</nombrePersona>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#prof_P3">
+  <rdf:type rdf:resource="#Profesor"/>
+  <nombrePersona rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Profesor 3 (ejemplo)</nombrePersona>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#prof_P4">
+  <rdf:type rdf:resource="#Profesor"/>
+  <nombrePersona rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Profesor 4 (ejemplo)</nombrePersona>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#prof_P5">
+  <rdf:type rdf:resource="#Profesor"/>
+  <nombrePersona rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Profesor 5 (ejemplo)</nombrePersona>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#mat_MAT101">
+  <rdf:type rdf:resource="#MateriaObligatoria"/>
+  <ubicadaEnSemestre rdf:resource="#sem_1"/>
+  <perteneceAPlan rdf:resource="#plan_1"/>
+  <claveMateria rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MAT101</claveMateria>
+  <nombreMateria rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cálculo Diferencial</nombreMateria>
+  <creditos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">8</creditos>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#sem_1">
+  <rdf:type rdf:resource="#Semestre"/>
+  <semestreSugerido rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</semestreSugerido>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#mat_PRO101">
+  <rdf:type rdf:resource="#MateriaObligatoria"/>
+  <ubicadaEnSemestre rdf:resource="#sem_1"/>
+  <perteneceAPlan rdf:resource="#plan_1"/>
+  <claveMateria rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PRO101</claveMateria>
+  <nombreMateria rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Programación I</nombreMateria>
+  <creditos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">8</creditos>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#mat_MAT102">
+  <rdf:type rdf:resource="#MateriaObligatoria"/>
+  <ubicadaEnSemestre rdf:resource="#sem_2"/>
+  <perteneceAPlan rdf:resource="#plan_1"/>
+  <tienePrerrequisito rdf:resource="#mat_MAT101"/>
+  <claveMateria rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MAT102</claveMateria>
+  <nombreMateria rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Cálculo Integral</nombreMateria>
+  <creditos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">8</creditos>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#sem_2">
+  <rdf:type rdf:resource="#Semestre"/>
+  <semestreSugerido rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">2</semestreSugerido>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#mat_PRO102">
+  <rdf:type rdf:resource="#MateriaObligatoria"/>
+  <ubicadaEnSemestre rdf:resource="#sem_2"/>
+  <perteneceAPlan rdf:resource="#plan_1"/>
+  <tienePrerrequisito rdf:resource="#mat_PRO101"/>
+  <claveMateria rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PRO102</claveMateria>
+  <nombreMateria rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Programación II</nombreMateria>
+  <creditos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">8</creditos>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#mat_MAT201">
+  <rdf:type rdf:resource="#MateriaObligatoria"/>
+  <ubicadaEnSemestre rdf:resource="#sem_3"/>
+  <perteneceAPlan rdf:resource="#plan_1"/>
+  <tienePrerrequisito rdf:resource="#mat_MAT101"/>
+  <claveMateria rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MAT201</claveMateria>
+  <nombreMateria rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Álgebra Lineal</nombreMateria>
+  <creditos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</creditos>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#sem_3">
+  <rdf:type rdf:resource="#Semestre"/>
+  <semestreSugerido rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">3</semestreSugerido>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#mat_PRO201">
+  <rdf:type rdf:resource="#MateriaObligatoria"/>
+  <ubicadaEnSemestre rdf:resource="#sem_3"/>
+  <perteneceAPlan rdf:resource="#plan_1"/>
+  <tienePrerrequisito rdf:resource="#mat_PRO102"/>
+  <claveMateria rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PRO201</claveMateria>
+  <nombreMateria rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Estructuras de Datos</nombreMateria>
+  <creditos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">8</creditos>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#mat_BD201">
+  <rdf:type rdf:resource="#MateriaObligatoria"/>
+  <ubicadaEnSemestre rdf:resource="#sem_3"/>
+  <perteneceAPlan rdf:resource="#plan_1"/>
+  <tienePrerrequisito rdf:resource="#mat_PRO102"/>
+  <claveMateria rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BD201</claveMateria>
+  <nombreMateria rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Bases de Datos</nombreMateria>
+  <creditos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">8</creditos>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#mat_RED301">
+  <rdf:type rdf:resource="#MateriaObligatoria"/>
+  <ubicadaEnSemestre rdf:resource="#sem_4"/>
+  <perteneceAPlan rdf:resource="#plan_1"/>
+  <tienePrerrequisito rdf:resource="#mat_PRO102"/>
+  <claveMateria rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RED301</claveMateria>
+  <nombreMateria rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Redes de Computadoras</nombreMateria>
+  <creditos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</creditos>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#sem_4">
+  <rdf:type rdf:resource="#Semestre"/>
+  <semestreSugerido rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</semestreSugerido>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#mat_SO301">
+  <rdf:type rdf:resource="#MateriaObligatoria"/>
+  <ubicadaEnSemestre rdf:resource="#sem_4"/>
+  <perteneceAPlan rdf:resource="#plan_1"/>
+  <tienePrerrequisito rdf:resource="#mat_PRO201"/>
+  <claveMateria rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SO301</claveMateria>
+  <nombreMateria rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sistemas Operativos</nombreMateria>
+  <creditos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">8</creditos>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#mat_EST301">
+  <rdf:type rdf:resource="#MateriaObligatoria"/>
+  <ubicadaEnSemestre rdf:resource="#sem_4"/>
+  <perteneceAPlan rdf:resource="#plan_1"/>
+  <tienePrerrequisito rdf:resource="#mat_MAT102"/>
+  <claveMateria rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EST301</claveMateria>
+  <nombreMateria rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Probabilidad y Estadística</nombreMateria>
+  <creditos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</creditos>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#mat_IA401">
+  <rdf:type rdf:resource="#MateriaObligatoria"/>
+  <ubicadaEnSemestre rdf:resource="#sem_5"/>
+  <perteneceAPlan rdf:resource="#plan_1"/>
+  <tienePrerrequisito rdf:resource="#mat_PRO201"/>
+  <tienePrerrequisito rdf:resource="#mat_EST301"/>
+  <claveMateria rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IA401</claveMateria>
+  <nombreMateria rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Inteligencia Artificial</nombreMateria>
+  <creditos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">8</creditos>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#sem_5">
+  <rdf:type rdf:resource="#Semestre"/>
+  <semestreSugerido rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">5</semestreSugerido>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#mat_ING401">
+  <rdf:type rdf:resource="#MateriaObligatoria"/>
+  <ubicadaEnSemestre rdf:resource="#sem_5"/>
+  <perteneceAPlan rdf:resource="#plan_1"/>
+  <tienePrerrequisito rdf:resource="#mat_BD201"/>
+  <claveMateria rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ING401</claveMateria>
+  <nombreMateria rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ingeniería de Software</nombreMateria>
+  <creditos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">8</creditos>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#mat_OPT501">
+  <rdf:type rdf:resource="#MateriaOptativa"/>
+  <ubicadaEnSemestre rdf:resource="#sem_6"/>
+  <perteneceAPlan rdf:resource="#plan_1"/>
+  <tienePrerrequisito rdf:resource="#mat_SO301"/>
+  <claveMateria rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OPT501</claveMateria>
+  <nombreMateria rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Computación en la Nube</nombreMateria>
+  <creditos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</creditos>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#sem_6">
+  <rdf:type rdf:resource="#Semestre"/>
+  <semestreSugerido rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</semestreSugerido>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#mat_ELE501">
+  <rdf:type rdf:resource="#MateriaElectiva"/>
+  <ubicadaEnSemestre rdf:resource="#sem_6"/>
+  <perteneceAPlan rdf:resource="#plan_1"/>
+  <claveMateria rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ELE501</claveMateria>
+  <nombreMateria rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Ética Profesional</nombreMateria>
+  <creditos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</creditos>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#grp_MAT101-A">
+  <rdf:type rdf:resource="#Grupo"/>
+  <ofreceMateria rdf:resource="#mat_MAT101"/>
+  <impartidoPor rdf:resource="#prof_P1"/>
+  <tieneModalidad rdf:resource="#mod_presencial"/>
+  <seOfertaEnPeriodo rdf:resource="#per_2027-1"/>
+  <tieneHorario rdf:resource="#hor_MAT101-A_0"/>
+  <tieneHorario rdf:resource="#hor_MAT101-A_1"/>
+  <claveGrupo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MAT101-A</claveGrupo>
+  <cupo rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">30</cupo>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hor_MAT101-A_0">
+  <rdf:type rdf:resource="#Horario"/>
+  <diaSemana rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Lun</diaSemana>
+  <inicioMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">420</inicioMinutos>
+  <finMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">540</finMinutos>
+  <turno rdf:datatype="http://www.w3.org/2001/XMLSchema#string">matutino</turno>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hor_MAT101-A_1">
+  <rdf:type rdf:resource="#Horario"/>
+  <diaSemana rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mié</diaSemana>
+  <inicioMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">420</inicioMinutos>
+  <finMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">540</finMinutos>
+  <turno rdf:datatype="http://www.w3.org/2001/XMLSchema#string">matutino</turno>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#grp_MAT101-B">
+  <rdf:type rdf:resource="#Grupo"/>
+  <ofreceMateria rdf:resource="#mat_MAT101"/>
+  <impartidoPor rdf:resource="#prof_P3"/>
+  <tieneModalidad rdf:resource="#mod_enlinea"/>
+  <seOfertaEnPeriodo rdf:resource="#per_2027-1"/>
+  <tieneHorario rdf:resource="#hor_MAT101-B_0"/>
+  <tieneHorario rdf:resource="#hor_MAT101-B_1"/>
+  <claveGrupo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MAT101-B</claveGrupo>
+  <cupo rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">30</cupo>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hor_MAT101-B_0">
+  <rdf:type rdf:resource="#Horario"/>
+  <diaSemana rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mar</diaSemana>
+  <inicioMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">960</inicioMinutos>
+  <finMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1080</finMinutos>
+  <turno rdf:datatype="http://www.w3.org/2001/XMLSchema#string">vespertino</turno>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hor_MAT101-B_1">
+  <rdf:type rdf:resource="#Horario"/>
+  <diaSemana rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Jue</diaSemana>
+  <inicioMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">960</inicioMinutos>
+  <finMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1080</finMinutos>
+  <turno rdf:datatype="http://www.w3.org/2001/XMLSchema#string">vespertino</turno>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#grp_PRO101-A">
+  <rdf:type rdf:resource="#Grupo"/>
+  <ofreceMateria rdf:resource="#mat_PRO101"/>
+  <impartidoPor rdf:resource="#prof_P2"/>
+  <tieneModalidad rdf:resource="#mod_presencial"/>
+  <seOfertaEnPeriodo rdf:resource="#per_2027-1"/>
+  <tieneHorario rdf:resource="#hor_PRO101-A_0"/>
+  <tieneHorario rdf:resource="#hor_PRO101-A_1"/>
+  <claveGrupo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PRO101-A</claveGrupo>
+  <cupo rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">30</cupo>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hor_PRO101-A_0">
+  <rdf:type rdf:resource="#Horario"/>
+  <diaSemana rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mar</diaSemana>
+  <inicioMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">540</inicioMinutos>
+  <finMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">660</finMinutos>
+  <turno rdf:datatype="http://www.w3.org/2001/XMLSchema#string">matutino</turno>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hor_PRO101-A_1">
+  <rdf:type rdf:resource="#Horario"/>
+  <diaSemana rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Jue</diaSemana>
+  <inicioMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">540</inicioMinutos>
+  <finMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">660</finMinutos>
+  <turno rdf:datatype="http://www.w3.org/2001/XMLSchema#string">matutino</turno>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#grp_PRO101-B">
+  <rdf:type rdf:resource="#Grupo"/>
+  <ofreceMateria rdf:resource="#mat_PRO101"/>
+  <impartidoPor rdf:resource="#prof_P4"/>
+  <tieneModalidad rdf:resource="#mod_hibrida"/>
+  <seOfertaEnPeriodo rdf:resource="#per_2027-1"/>
+  <tieneHorario rdf:resource="#hor_PRO101-B_0"/>
+  <tieneHorario rdf:resource="#hor_PRO101-B_1"/>
+  <claveGrupo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PRO101-B</claveGrupo>
+  <cupo rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">30</cupo>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hor_PRO101-B_0">
+  <rdf:type rdf:resource="#Horario"/>
+  <diaSemana rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Lun</diaSemana>
+  <inicioMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1080</inicioMinutos>
+  <finMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1200</finMinutos>
+  <turno rdf:datatype="http://www.w3.org/2001/XMLSchema#string">vespertino</turno>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hor_PRO101-B_1">
+  <rdf:type rdf:resource="#Horario"/>
+  <diaSemana rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mié</diaSemana>
+  <inicioMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1080</inicioMinutos>
+  <finMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1200</finMinutos>
+  <turno rdf:datatype="http://www.w3.org/2001/XMLSchema#string">vespertino</turno>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#grp_MAT102-A">
+  <rdf:type rdf:resource="#Grupo"/>
+  <ofreceMateria rdf:resource="#mat_MAT102"/>
+  <impartidoPor rdf:resource="#prof_P3"/>
+  <tieneModalidad rdf:resource="#mod_presencial"/>
+  <seOfertaEnPeriodo rdf:resource="#per_2027-1"/>
+  <tieneHorario rdf:resource="#hor_MAT102-A_0"/>
+  <tieneHorario rdf:resource="#hor_MAT102-A_1"/>
+  <claveGrupo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MAT102-A</claveGrupo>
+  <cupo rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">30</cupo>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hor_MAT102-A_0">
+  <rdf:type rdf:resource="#Horario"/>
+  <diaSemana rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Lun</diaSemana>
+  <inicioMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">660</inicioMinutos>
+  <finMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">780</finMinutos>
+  <turno rdf:datatype="http://www.w3.org/2001/XMLSchema#string">matutino</turno>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hor_MAT102-A_1">
+  <rdf:type rdf:resource="#Horario"/>
+  <diaSemana rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mié</diaSemana>
+  <inicioMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">660</inicioMinutos>
+  <finMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">780</finMinutos>
+  <turno rdf:datatype="http://www.w3.org/2001/XMLSchema#string">matutino</turno>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#grp_MAT102-B">
+  <rdf:type rdf:resource="#Grupo"/>
+  <ofreceMateria rdf:resource="#mat_MAT102"/>
+  <impartidoPor rdf:resource="#prof_P5"/>
+  <tieneModalidad rdf:resource="#mod_presencial"/>
+  <seOfertaEnPeriodo rdf:resource="#per_2027-1"/>
+  <tieneHorario rdf:resource="#hor_MAT102-B_0"/>
+  <tieneHorario rdf:resource="#hor_MAT102-B_1"/>
+  <claveGrupo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MAT102-B</claveGrupo>
+  <cupo rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">30</cupo>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hor_MAT102-B_0">
+  <rdf:type rdf:resource="#Horario"/>
+  <diaSemana rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mar</diaSemana>
+  <inicioMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">840</inicioMinutos>
+  <finMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">960</finMinutos>
+  <turno rdf:datatype="http://www.w3.org/2001/XMLSchema#string">vespertino</turno>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hor_MAT102-B_1">
+  <rdf:type rdf:resource="#Horario"/>
+  <diaSemana rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Jue</diaSemana>
+  <inicioMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">840</inicioMinutos>
+  <finMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">960</finMinutos>
+  <turno rdf:datatype="http://www.w3.org/2001/XMLSchema#string">vespertino</turno>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#grp_PRO102-A">
+  <rdf:type rdf:resource="#Grupo"/>
+  <ofreceMateria rdf:resource="#mat_PRO102"/>
+  <impartidoPor rdf:resource="#prof_P4"/>
+  <tieneModalidad rdf:resource="#mod_presencial"/>
+  <seOfertaEnPeriodo rdf:resource="#per_2027-1"/>
+  <tieneHorario rdf:resource="#hor_PRO102-A_0"/>
+  <tieneHorario rdf:resource="#hor_PRO102-A_1"/>
+  <claveGrupo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PRO102-A</claveGrupo>
+  <cupo rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">30</cupo>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hor_PRO102-A_0">
+  <rdf:type rdf:resource="#Horario"/>
+  <diaSemana rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mar</diaSemana>
+  <inicioMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">420</inicioMinutos>
+  <finMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">540</finMinutos>
+  <turno rdf:datatype="http://www.w3.org/2001/XMLSchema#string">matutino</turno>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hor_PRO102-A_1">
+  <rdf:type rdf:resource="#Horario"/>
+  <diaSemana rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Jue</diaSemana>
+  <inicioMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">420</inicioMinutos>
+  <finMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">540</finMinutos>
+  <turno rdf:datatype="http://www.w3.org/2001/XMLSchema#string">matutino</turno>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#grp_PRO102-B">
+  <rdf:type rdf:resource="#Grupo"/>
+  <ofreceMateria rdf:resource="#mat_PRO102"/>
+  <impartidoPor rdf:resource="#prof_P1"/>
+  <tieneModalidad rdf:resource="#mod_enlinea"/>
+  <seOfertaEnPeriodo rdf:resource="#per_2027-1"/>
+  <tieneHorario rdf:resource="#hor_PRO102-B_0"/>
+  <tieneHorario rdf:resource="#hor_PRO102-B_1"/>
+  <claveGrupo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PRO102-B</claveGrupo>
+  <cupo rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">30</cupo>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hor_PRO102-B_0">
+  <rdf:type rdf:resource="#Horario"/>
+  <diaSemana rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Lun</diaSemana>
+  <inicioMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">960</inicioMinutos>
+  <finMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1080</finMinutos>
+  <turno rdf:datatype="http://www.w3.org/2001/XMLSchema#string">vespertino</turno>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hor_PRO102-B_1">
+  <rdf:type rdf:resource="#Horario"/>
+  <diaSemana rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mié</diaSemana>
+  <inicioMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">960</inicioMinutos>
+  <finMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1080</finMinutos>
+  <turno rdf:datatype="http://www.w3.org/2001/XMLSchema#string">vespertino</turno>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#grp_MAT201-A">
+  <rdf:type rdf:resource="#Grupo"/>
+  <ofreceMateria rdf:resource="#mat_MAT201"/>
+  <impartidoPor rdf:resource="#prof_P5"/>
+  <tieneModalidad rdf:resource="#mod_presencial"/>
+  <seOfertaEnPeriodo rdf:resource="#per_2027-1"/>
+  <tieneHorario rdf:resource="#hor_MAT201-A_0"/>
+  <tieneHorario rdf:resource="#hor_MAT201-A_1"/>
+  <claveGrupo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MAT201-A</claveGrupo>
+  <cupo rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">30</cupo>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hor_MAT201-A_0">
+  <rdf:type rdf:resource="#Horario"/>
+  <diaSemana rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Lun</diaSemana>
+  <inicioMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">540</inicioMinutos>
+  <finMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">660</finMinutos>
+  <turno rdf:datatype="http://www.w3.org/2001/XMLSchema#string">matutino</turno>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hor_MAT201-A_1">
+  <rdf:type rdf:resource="#Horario"/>
+  <diaSemana rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mié</diaSemana>
+  <inicioMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">540</inicioMinutos>
+  <finMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">660</finMinutos>
+  <turno rdf:datatype="http://www.w3.org/2001/XMLSchema#string">matutino</turno>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#grp_MAT201-B">
+  <rdf:type rdf:resource="#Grupo"/>
+  <ofreceMateria rdf:resource="#mat_MAT201"/>
+  <impartidoPor rdf:resource="#prof_P2"/>
+  <tieneModalidad rdf:resource="#mod_hibrida"/>
+  <seOfertaEnPeriodo rdf:resource="#per_2027-1"/>
+  <tieneHorario rdf:resource="#hor_MAT201-B_0"/>
+  <tieneHorario rdf:resource="#hor_MAT201-B_1"/>
+  <claveGrupo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MAT201-B</claveGrupo>
+  <cupo rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">30</cupo>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hor_MAT201-B_0">
+  <rdf:type rdf:resource="#Horario"/>
+  <diaSemana rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mar</diaSemana>
+  <inicioMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1080</inicioMinutos>
+  <finMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1200</finMinutos>
+  <turno rdf:datatype="http://www.w3.org/2001/XMLSchema#string">vespertino</turno>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hor_MAT201-B_1">
+  <rdf:type rdf:resource="#Horario"/>
+  <diaSemana rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Jue</diaSemana>
+  <inicioMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1080</inicioMinutos>
+  <finMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1200</finMinutos>
+  <turno rdf:datatype="http://www.w3.org/2001/XMLSchema#string">vespertino</turno>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#grp_PRO201-A">
+  <rdf:type rdf:resource="#Grupo"/>
+  <ofreceMateria rdf:resource="#mat_PRO201"/>
+  <impartidoPor rdf:resource="#prof_P1"/>
+  <tieneModalidad rdf:resource="#mod_presencial"/>
+  <seOfertaEnPeriodo rdf:resource="#per_2027-1"/>
+  <tieneHorario rdf:resource="#hor_PRO201-A_0"/>
+  <tieneHorario rdf:resource="#hor_PRO201-A_1"/>
+  <claveGrupo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PRO201-A</claveGrupo>
+  <cupo rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">30</cupo>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hor_PRO201-A_0">
+  <rdf:type rdf:resource="#Horario"/>
+  <diaSemana rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mar</diaSemana>
+  <inicioMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">660</inicioMinutos>
+  <finMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">780</finMinutos>
+  <turno rdf:datatype="http://www.w3.org/2001/XMLSchema#string">matutino</turno>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hor_PRO201-A_1">
+  <rdf:type rdf:resource="#Horario"/>
+  <diaSemana rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Jue</diaSemana>
+  <inicioMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">660</inicioMinutos>
+  <finMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">780</finMinutos>
+  <turno rdf:datatype="http://www.w3.org/2001/XMLSchema#string">matutino</turno>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#grp_PRO201-B">
+  <rdf:type rdf:resource="#Grupo"/>
+  <ofreceMateria rdf:resource="#mat_PRO201"/>
+  <impartidoPor rdf:resource="#prof_P3"/>
+  <tieneModalidad rdf:resource="#mod_presencial"/>
+  <seOfertaEnPeriodo rdf:resource="#per_2027-1"/>
+  <tieneHorario rdf:resource="#hor_PRO201-B_0"/>
+  <tieneHorario rdf:resource="#hor_PRO201-B_1"/>
+  <claveGrupo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">PRO201-B</claveGrupo>
+  <cupo rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">30</cupo>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hor_PRO201-B_0">
+  <rdf:type rdf:resource="#Horario"/>
+  <diaSemana rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Lun</diaSemana>
+  <inicioMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">840</inicioMinutos>
+  <finMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">960</finMinutos>
+  <turno rdf:datatype="http://www.w3.org/2001/XMLSchema#string">vespertino</turno>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hor_PRO201-B_1">
+  <rdf:type rdf:resource="#Horario"/>
+  <diaSemana rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mié</diaSemana>
+  <inicioMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">840</inicioMinutos>
+  <finMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">960</finMinutos>
+  <turno rdf:datatype="http://www.w3.org/2001/XMLSchema#string">vespertino</turno>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#grp_BD201-A">
+  <rdf:type rdf:resource="#Grupo"/>
+  <ofreceMateria rdf:resource="#mat_BD201"/>
+  <impartidoPor rdf:resource="#prof_P2"/>
+  <tieneModalidad rdf:resource="#mod_presencial"/>
+  <seOfertaEnPeriodo rdf:resource="#per_2027-1"/>
+  <tieneHorario rdf:resource="#hor_BD201-A_0"/>
+  <tieneHorario rdf:resource="#hor_BD201-A_1"/>
+  <claveGrupo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BD201-A</claveGrupo>
+  <cupo rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">30</cupo>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hor_BD201-A_0">
+  <rdf:type rdf:resource="#Horario"/>
+  <diaSemana rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Lun</diaSemana>
+  <inicioMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">420</inicioMinutos>
+  <finMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">540</finMinutos>
+  <turno rdf:datatype="http://www.w3.org/2001/XMLSchema#string">matutino</turno>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hor_BD201-A_1">
+  <rdf:type rdf:resource="#Horario"/>
+  <diaSemana rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mié</diaSemana>
+  <inicioMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">420</inicioMinutos>
+  <finMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">540</finMinutos>
+  <turno rdf:datatype="http://www.w3.org/2001/XMLSchema#string">matutino</turno>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#grp_BD201-B">
+  <rdf:type rdf:resource="#Grupo"/>
+  <ofreceMateria rdf:resource="#mat_BD201"/>
+  <impartidoPor rdf:resource="#prof_P4"/>
+  <tieneModalidad rdf:resource="#mod_enlinea"/>
+  <seOfertaEnPeriodo rdf:resource="#per_2027-1"/>
+  <tieneHorario rdf:resource="#hor_BD201-B_0"/>
+  <tieneHorario rdf:resource="#hor_BD201-B_1"/>
+  <claveGrupo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">BD201-B</claveGrupo>
+  <cupo rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">30</cupo>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hor_BD201-B_0">
+  <rdf:type rdf:resource="#Horario"/>
+  <diaSemana rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mar</diaSemana>
+  <inicioMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">960</inicioMinutos>
+  <finMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1080</finMinutos>
+  <turno rdf:datatype="http://www.w3.org/2001/XMLSchema#string">vespertino</turno>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hor_BD201-B_1">
+  <rdf:type rdf:resource="#Horario"/>
+  <diaSemana rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Jue</diaSemana>
+  <inicioMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">960</inicioMinutos>
+  <finMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1080</finMinutos>
+  <turno rdf:datatype="http://www.w3.org/2001/XMLSchema#string">vespertino</turno>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#grp_RED301-A">
+  <rdf:type rdf:resource="#Grupo"/>
+  <ofreceMateria rdf:resource="#mat_RED301"/>
+  <impartidoPor rdf:resource="#prof_P3"/>
+  <tieneModalidad rdf:resource="#mod_presencial"/>
+  <seOfertaEnPeriodo rdf:resource="#per_2027-1"/>
+  <tieneHorario rdf:resource="#hor_RED301-A_0"/>
+  <tieneHorario rdf:resource="#hor_RED301-A_1"/>
+  <claveGrupo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RED301-A</claveGrupo>
+  <cupo rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">30</cupo>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hor_RED301-A_0">
+  <rdf:type rdf:resource="#Horario"/>
+  <diaSemana rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mar</diaSemana>
+  <inicioMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">540</inicioMinutos>
+  <finMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">660</finMinutos>
+  <turno rdf:datatype="http://www.w3.org/2001/XMLSchema#string">matutino</turno>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hor_RED301-A_1">
+  <rdf:type rdf:resource="#Horario"/>
+  <diaSemana rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Jue</diaSemana>
+  <inicioMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">540</inicioMinutos>
+  <finMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">660</finMinutos>
+  <turno rdf:datatype="http://www.w3.org/2001/XMLSchema#string">matutino</turno>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#grp_RED301-B">
+  <rdf:type rdf:resource="#Grupo"/>
+  <ofreceMateria rdf:resource="#mat_RED301"/>
+  <impartidoPor rdf:resource="#prof_P5"/>
+  <tieneModalidad rdf:resource="#mod_hibrida"/>
+  <seOfertaEnPeriodo rdf:resource="#per_2027-1"/>
+  <tieneHorario rdf:resource="#hor_RED301-B_0"/>
+  <tieneHorario rdf:resource="#hor_RED301-B_1"/>
+  <claveGrupo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">RED301-B</claveGrupo>
+  <cupo rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">30</cupo>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hor_RED301-B_0">
+  <rdf:type rdf:resource="#Horario"/>
+  <diaSemana rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Lun</diaSemana>
+  <inicioMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1080</inicioMinutos>
+  <finMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1200</finMinutos>
+  <turno rdf:datatype="http://www.w3.org/2001/XMLSchema#string">vespertino</turno>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hor_RED301-B_1">
+  <rdf:type rdf:resource="#Horario"/>
+  <diaSemana rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mié</diaSemana>
+  <inicioMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1080</inicioMinutos>
+  <finMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1200</finMinutos>
+  <turno rdf:datatype="http://www.w3.org/2001/XMLSchema#string">vespertino</turno>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#grp_SO301-A">
+  <rdf:type rdf:resource="#Grupo"/>
+  <ofreceMateria rdf:resource="#mat_SO301"/>
+  <impartidoPor rdf:resource="#prof_P4"/>
+  <tieneModalidad rdf:resource="#mod_presencial"/>
+  <seOfertaEnPeriodo rdf:resource="#per_2027-1"/>
+  <tieneHorario rdf:resource="#hor_SO301-A_0"/>
+  <tieneHorario rdf:resource="#hor_SO301-A_1"/>
+  <claveGrupo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SO301-A</claveGrupo>
+  <cupo rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">30</cupo>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hor_SO301-A_0">
+  <rdf:type rdf:resource="#Horario"/>
+  <diaSemana rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Lun</diaSemana>
+  <inicioMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">660</inicioMinutos>
+  <finMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">780</finMinutos>
+  <turno rdf:datatype="http://www.w3.org/2001/XMLSchema#string">matutino</turno>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hor_SO301-A_1">
+  <rdf:type rdf:resource="#Horario"/>
+  <diaSemana rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mié</diaSemana>
+  <inicioMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">660</inicioMinutos>
+  <finMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">780</finMinutos>
+  <turno rdf:datatype="http://www.w3.org/2001/XMLSchema#string">matutino</turno>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#grp_SO301-B">
+  <rdf:type rdf:resource="#Grupo"/>
+  <ofreceMateria rdf:resource="#mat_SO301"/>
+  <impartidoPor rdf:resource="#prof_P1"/>
+  <tieneModalidad rdf:resource="#mod_presencial"/>
+  <seOfertaEnPeriodo rdf:resource="#per_2027-1"/>
+  <tieneHorario rdf:resource="#hor_SO301-B_0"/>
+  <tieneHorario rdf:resource="#hor_SO301-B_1"/>
+  <claveGrupo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">SO301-B</claveGrupo>
+  <cupo rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">30</cupo>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hor_SO301-B_0">
+  <rdf:type rdf:resource="#Horario"/>
+  <diaSemana rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mar</diaSemana>
+  <inicioMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">840</inicioMinutos>
+  <finMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">960</finMinutos>
+  <turno rdf:datatype="http://www.w3.org/2001/XMLSchema#string">vespertino</turno>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hor_SO301-B_1">
+  <rdf:type rdf:resource="#Horario"/>
+  <diaSemana rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Jue</diaSemana>
+  <inicioMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">840</inicioMinutos>
+  <finMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">960</finMinutos>
+  <turno rdf:datatype="http://www.w3.org/2001/XMLSchema#string">vespertino</turno>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#grp_EST301-A">
+  <rdf:type rdf:resource="#Grupo"/>
+  <ofreceMateria rdf:resource="#mat_EST301"/>
+  <impartidoPor rdf:resource="#prof_P5"/>
+  <tieneModalidad rdf:resource="#mod_presencial"/>
+  <seOfertaEnPeriodo rdf:resource="#per_2027-1"/>
+  <tieneHorario rdf:resource="#hor_EST301-A_0"/>
+  <tieneHorario rdf:resource="#hor_EST301-A_1"/>
+  <claveGrupo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EST301-A</claveGrupo>
+  <cupo rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">30</cupo>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hor_EST301-A_0">
+  <rdf:type rdf:resource="#Horario"/>
+  <diaSemana rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mar</diaSemana>
+  <inicioMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">420</inicioMinutos>
+  <finMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">540</finMinutos>
+  <turno rdf:datatype="http://www.w3.org/2001/XMLSchema#string">matutino</turno>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hor_EST301-A_1">
+  <rdf:type rdf:resource="#Horario"/>
+  <diaSemana rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Jue</diaSemana>
+  <inicioMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">420</inicioMinutos>
+  <finMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">540</finMinutos>
+  <turno rdf:datatype="http://www.w3.org/2001/XMLSchema#string">matutino</turno>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#grp_EST301-B">
+  <rdf:type rdf:resource="#Grupo"/>
+  <ofreceMateria rdf:resource="#mat_EST301"/>
+  <impartidoPor rdf:resource="#prof_P2"/>
+  <tieneModalidad rdf:resource="#mod_enlinea"/>
+  <seOfertaEnPeriodo rdf:resource="#per_2027-1"/>
+  <tieneHorario rdf:resource="#hor_EST301-B_0"/>
+  <tieneHorario rdf:resource="#hor_EST301-B_1"/>
+  <claveGrupo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EST301-B</claveGrupo>
+  <cupo rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">30</cupo>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hor_EST301-B_0">
+  <rdf:type rdf:resource="#Horario"/>
+  <diaSemana rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Lun</diaSemana>
+  <inicioMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">960</inicioMinutos>
+  <finMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1080</finMinutos>
+  <turno rdf:datatype="http://www.w3.org/2001/XMLSchema#string">vespertino</turno>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hor_EST301-B_1">
+  <rdf:type rdf:resource="#Horario"/>
+  <diaSemana rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mié</diaSemana>
+  <inicioMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">960</inicioMinutos>
+  <finMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1080</finMinutos>
+  <turno rdf:datatype="http://www.w3.org/2001/XMLSchema#string">vespertino</turno>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#grp_IA401-A">
+  <rdf:type rdf:resource="#Grupo"/>
+  <ofreceMateria rdf:resource="#mat_IA401"/>
+  <impartidoPor rdf:resource="#prof_P1"/>
+  <tieneModalidad rdf:resource="#mod_presencial"/>
+  <seOfertaEnPeriodo rdf:resource="#per_2027-1"/>
+  <tieneHorario rdf:resource="#hor_IA401-A_0"/>
+  <tieneHorario rdf:resource="#hor_IA401-A_1"/>
+  <claveGrupo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IA401-A</claveGrupo>
+  <cupo rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">30</cupo>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hor_IA401-A_0">
+  <rdf:type rdf:resource="#Horario"/>
+  <diaSemana rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Lun</diaSemana>
+  <inicioMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">540</inicioMinutos>
+  <finMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">660</finMinutos>
+  <turno rdf:datatype="http://www.w3.org/2001/XMLSchema#string">matutino</turno>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hor_IA401-A_1">
+  <rdf:type rdf:resource="#Horario"/>
+  <diaSemana rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mié</diaSemana>
+  <inicioMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">540</inicioMinutos>
+  <finMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">660</finMinutos>
+  <turno rdf:datatype="http://www.w3.org/2001/XMLSchema#string">matutino</turno>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#grp_IA401-B">
+  <rdf:type rdf:resource="#Grupo"/>
+  <ofreceMateria rdf:resource="#mat_IA401"/>
+  <impartidoPor rdf:resource="#prof_P3"/>
+  <tieneModalidad rdf:resource="#mod_hibrida"/>
+  <seOfertaEnPeriodo rdf:resource="#per_2027-1"/>
+  <tieneHorario rdf:resource="#hor_IA401-B_0"/>
+  <tieneHorario rdf:resource="#hor_IA401-B_1"/>
+  <claveGrupo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IA401-B</claveGrupo>
+  <cupo rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">30</cupo>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hor_IA401-B_0">
+  <rdf:type rdf:resource="#Horario"/>
+  <diaSemana rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mar</diaSemana>
+  <inicioMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1080</inicioMinutos>
+  <finMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1200</finMinutos>
+  <turno rdf:datatype="http://www.w3.org/2001/XMLSchema#string">vespertino</turno>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hor_IA401-B_1">
+  <rdf:type rdf:resource="#Horario"/>
+  <diaSemana rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Jue</diaSemana>
+  <inicioMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1080</inicioMinutos>
+  <finMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1200</finMinutos>
+  <turno rdf:datatype="http://www.w3.org/2001/XMLSchema#string">vespertino</turno>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#grp_ING401-A">
+  <rdf:type rdf:resource="#Grupo"/>
+  <ofreceMateria rdf:resource="#mat_ING401"/>
+  <impartidoPor rdf:resource="#prof_P2"/>
+  <tieneModalidad rdf:resource="#mod_presencial"/>
+  <seOfertaEnPeriodo rdf:resource="#per_2027-1"/>
+  <tieneHorario rdf:resource="#hor_ING401-A_0"/>
+  <tieneHorario rdf:resource="#hor_ING401-A_1"/>
+  <claveGrupo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ING401-A</claveGrupo>
+  <cupo rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">30</cupo>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hor_ING401-A_0">
+  <rdf:type rdf:resource="#Horario"/>
+  <diaSemana rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mar</diaSemana>
+  <inicioMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">660</inicioMinutos>
+  <finMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">780</finMinutos>
+  <turno rdf:datatype="http://www.w3.org/2001/XMLSchema#string">matutino</turno>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hor_ING401-A_1">
+  <rdf:type rdf:resource="#Horario"/>
+  <diaSemana rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Jue</diaSemana>
+  <inicioMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">660</inicioMinutos>
+  <finMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">780</finMinutos>
+  <turno rdf:datatype="http://www.w3.org/2001/XMLSchema#string">matutino</turno>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#grp_ING401-B">
+  <rdf:type rdf:resource="#Grupo"/>
+  <ofreceMateria rdf:resource="#mat_ING401"/>
+  <impartidoPor rdf:resource="#prof_P4"/>
+  <tieneModalidad rdf:resource="#mod_presencial"/>
+  <seOfertaEnPeriodo rdf:resource="#per_2027-1"/>
+  <tieneHorario rdf:resource="#hor_ING401-B_0"/>
+  <tieneHorario rdf:resource="#hor_ING401-B_1"/>
+  <claveGrupo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ING401-B</claveGrupo>
+  <cupo rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">30</cupo>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hor_ING401-B_0">
+  <rdf:type rdf:resource="#Horario"/>
+  <diaSemana rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Lun</diaSemana>
+  <inicioMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">840</inicioMinutos>
+  <finMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">960</finMinutos>
+  <turno rdf:datatype="http://www.w3.org/2001/XMLSchema#string">vespertino</turno>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hor_ING401-B_1">
+  <rdf:type rdf:resource="#Horario"/>
+  <diaSemana rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mié</diaSemana>
+  <inicioMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">840</inicioMinutos>
+  <finMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">960</finMinutos>
+  <turno rdf:datatype="http://www.w3.org/2001/XMLSchema#string">vespertino</turno>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#grp_OPT501-A">
+  <rdf:type rdf:resource="#Grupo"/>
+  <ofreceMateria rdf:resource="#mat_OPT501"/>
+  <impartidoPor rdf:resource="#prof_P3"/>
+  <tieneModalidad rdf:resource="#mod_presencial"/>
+  <seOfertaEnPeriodo rdf:resource="#per_2027-1"/>
+  <tieneHorario rdf:resource="#hor_OPT501-A_0"/>
+  <claveGrupo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">OPT501-A</claveGrupo>
+  <cupo rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">30</cupo>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hor_OPT501-A_0">
+  <rdf:type rdf:resource="#Horario"/>
+  <diaSemana rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Vie</diaSemana>
+  <inicioMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">960</inicioMinutos>
+  <finMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1140</finMinutos>
+  <turno rdf:datatype="http://www.w3.org/2001/XMLSchema#string">vespertino</turno>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#grp_ELE501-A">
+  <rdf:type rdf:resource="#Grupo"/>
+  <ofreceMateria rdf:resource="#mat_ELE501"/>
+  <impartidoPor rdf:resource="#prof_P4"/>
+  <tieneModalidad rdf:resource="#mod_presencial"/>
+  <seOfertaEnPeriodo rdf:resource="#per_2027-1"/>
+  <tieneHorario rdf:resource="#hor_ELE501-A_0"/>
+  <claveGrupo rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ELE501-A</claveGrupo>
+  <cupo rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">30</cupo>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#hor_ELE501-A_0">
+  <rdf:type rdf:resource="#Horario"/>
+  <diaSemana rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Vie</diaSemana>
+  <inicioMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">960</inicioMinutos>
+  <finMinutos rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1140</finMinutos>
+  <turno rdf:datatype="http://www.w3.org/2001/XMLSchema#string">vespertino</turno>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#est_E1">
+  <rdf:type rdf:resource="#Estudiante"/>
+  <cursaPrograma rdf:resource="#prog_1"/>
+  <tieneRegistro rdf:resource="#reg_E1_0"/>
+  <tieneRegistro rdf:resource="#reg_E1_1"/>
+  <tieneRegistro rdf:resource="#reg_E1_2"/>
+  <tieneRegistro rdf:resource="#reg_E1_3"/>
+  <tieneRegistro rdf:resource="#reg_E1_4"/>
+  <tieneRegistro rdf:resource="#reg_E1_5"/>
+  <tieneRegistro rdf:resource="#reg_E1_6"/>
+  <haAprobado rdf:resource="#mat_MAT102"/>
+  <haAprobado rdf:resource="#mat_MAT101"/>
+  <haAprobado rdf:resource="#mat_PRO102"/>
+  <haAprobado rdf:resource="#mat_MAT201"/>
+  <haAprobado rdf:resource="#mat_PRO101"/>
+  <haAprobado rdf:resource="#mat_BD201"/>
+  <haAprobado rdf:resource="#mat_PRO201"/>
+  <puedeCursar rdf:resource="#mat_ELE501"/>
+  <puedeCursar rdf:resource="#mat_RED301"/>
+  <puedeCursar rdf:resource="#mat_EST301"/>
+  <puedeCursar rdf:resource="#mat_ING401"/>
+  <puedeCursar rdf:resource="#mat_SO301"/>
+  <matricula rdf:datatype="http://www.w3.org/2001/XMLSchema#string">E1</matricula>
+  <nombrePersona rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Alumno regular (ejemplo)</nombrePersona>
+  <semestreActual rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</semestreActual>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#reg_E1_0">
+  <rdf:type rdf:resource="#RegistroAprobado"/>
+  <registraMateria rdf:resource="#mat_MAT101"/>
+  <numeroOportunidad rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</numeroOportunidad>
+  <calificacion rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.5</calificacion>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#reg_E1_1">
+  <rdf:type rdf:resource="#RegistroAprobado"/>
+  <registraMateria rdf:resource="#mat_PRO101"/>
+  <numeroOportunidad rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</numeroOportunidad>
+  <calificacion rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.5</calificacion>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#reg_E1_2">
+  <rdf:type rdf:resource="#RegistroAprobado"/>
+  <registraMateria rdf:resource="#mat_MAT102"/>
+  <numeroOportunidad rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</numeroOportunidad>
+  <calificacion rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.5</calificacion>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#reg_E1_3">
+  <rdf:type rdf:resource="#RegistroAprobado"/>
+  <registraMateria rdf:resource="#mat_PRO102"/>
+  <numeroOportunidad rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</numeroOportunidad>
+  <calificacion rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.5</calificacion>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#reg_E1_4">
+  <rdf:type rdf:resource="#RegistroAprobado"/>
+  <registraMateria rdf:resource="#mat_MAT201"/>
+  <numeroOportunidad rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</numeroOportunidad>
+  <calificacion rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.5</calificacion>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#reg_E1_5">
+  <rdf:type rdf:resource="#RegistroAprobado"/>
+  <registraMateria rdf:resource="#mat_PRO201"/>
+  <numeroOportunidad rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</numeroOportunidad>
+  <calificacion rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.5</calificacion>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#reg_E1_6">
+  <rdf:type rdf:resource="#RegistroAprobado"/>
+  <registraMateria rdf:resource="#mat_BD201"/>
+  <numeroOportunidad rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</numeroOportunidad>
+  <calificacion rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.5</calificacion>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#est_E2">
+  <rdf:type rdf:resource="#Estudiante"/>
+  <cursaPrograma rdf:resource="#prog_1"/>
+  <tieneRegistro rdf:resource="#reg_E2_0"/>
+  <tieneRegistro rdf:resource="#reg_E2_1"/>
+  <tieneRegistro rdf:resource="#reg_E2_2"/>
+  <tieneRegistro rdf:resource="#reg_E2_3"/>
+  <tieneRegistro rdf:resource="#reg_E2_4"/>
+  <tieneRegistro rdf:resource="#reg_E2_5"/>
+  <matricula rdf:datatype="http://www.w3.org/2001/XMLSchema#string">E2</matricula>
+  <nombrePersona rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Alumno con materias reprobadas (ejemplo)</nombrePersona>
+  <semestreActual rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">4</semestreActual>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#reg_E2_0">
+  <rdf:type rdf:resource="#RegistroAprobado"/>
+  <registraMateria rdf:resource="#mat_MAT101"/>
+  <numeroOportunidad rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</numeroOportunidad>
+  <calificacion rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.5</calificacion>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#reg_E2_1">
+  <rdf:type rdf:resource="#RegistroAprobado"/>
+  <registraMateria rdf:resource="#mat_PRO101"/>
+  <numeroOportunidad rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</numeroOportunidad>
+  <calificacion rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.5</calificacion>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#reg_E2_2">
+  <rdf:type rdf:resource="#RegistroAprobado"/>
+  <registraMateria rdf:resource="#mat_PRO102"/>
+  <numeroOportunidad rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</numeroOportunidad>
+  <calificacion rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.5</calificacion>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#reg_E2_3">
+  <rdf:type rdf:resource="#RegistroAprobado"/>
+  <registraMateria rdf:resource="#mat_MAT201"/>
+  <numeroOportunidad rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</numeroOportunidad>
+  <calificacion rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.5</calificacion>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#reg_E2_4">
+  <rdf:type rdf:resource="#RegistroReprobado"/>
+  <registraMateria rdf:resource="#mat_MAT102"/>
+  <numeroOportunidad rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</numeroOportunidad>
+  <calificacion rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">5.0</calificacion>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#reg_E2_5">
+  <rdf:type rdf:resource="#RegistroReprobado"/>
+  <registraMateria rdf:resource="#mat_PRO201"/>
+  <numeroOportunidad rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</numeroOportunidad>
+  <calificacion rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">5.0</calificacion>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#est_E3">
+  <rdf:type rdf:resource="#Estudiante"/>
+  <cursaPrograma rdf:resource="#prog_1"/>
+  <tieneRegistro rdf:resource="#reg_E3_0"/>
+  <tieneRegistro rdf:resource="#reg_E3_1"/>
+  <tieneRegistro rdf:resource="#reg_E3_2"/>
+  <tieneRegistro rdf:resource="#reg_E3_3"/>
+  <tieneRegistro rdf:resource="#reg_E3_4"/>
+  <tieneRegistro rdf:resource="#reg_E3_5"/>
+  <tieneRegistro rdf:resource="#reg_E3_6"/>
+  <tieneRegistro rdf:resource="#reg_E3_7"/>
+  <tieneRegistro rdf:resource="#reg_E3_8"/>
+  <tieneRegistro rdf:resource="#reg_E3_9"/>
+  <matricula rdf:datatype="http://www.w3.org/2001/XMLSchema#string">E3</matricula>
+  <nombrePersona rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Alumno avanzado (ejemplo)</nombrePersona>
+  <semestreActual rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">6</semestreActual>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#reg_E3_0">
+  <rdf:type rdf:resource="#RegistroAprobado"/>
+  <registraMateria rdf:resource="#mat_MAT101"/>
+  <numeroOportunidad rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</numeroOportunidad>
+  <calificacion rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.5</calificacion>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#reg_E3_1">
+  <rdf:type rdf:resource="#RegistroAprobado"/>
+  <registraMateria rdf:resource="#mat_PRO101"/>
+  <numeroOportunidad rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</numeroOportunidad>
+  <calificacion rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.5</calificacion>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#reg_E3_2">
+  <rdf:type rdf:resource="#RegistroAprobado"/>
+  <registraMateria rdf:resource="#mat_MAT102"/>
+  <numeroOportunidad rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</numeroOportunidad>
+  <calificacion rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.5</calificacion>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#reg_E3_3">
+  <rdf:type rdf:resource="#RegistroAprobado"/>
+  <registraMateria rdf:resource="#mat_PRO102"/>
+  <numeroOportunidad rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</numeroOportunidad>
+  <calificacion rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.5</calificacion>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#reg_E3_4">
+  <rdf:type rdf:resource="#RegistroAprobado"/>
+  <registraMateria rdf:resource="#mat_MAT201"/>
+  <numeroOportunidad rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</numeroOportunidad>
+  <calificacion rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.5</calificacion>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#reg_E3_5">
+  <rdf:type rdf:resource="#RegistroAprobado"/>
+  <registraMateria rdf:resource="#mat_PRO201"/>
+  <numeroOportunidad rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</numeroOportunidad>
+  <calificacion rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.5</calificacion>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#reg_E3_6">
+  <rdf:type rdf:resource="#RegistroAprobado"/>
+  <registraMateria rdf:resource="#mat_BD201"/>
+  <numeroOportunidad rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</numeroOportunidad>
+  <calificacion rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.5</calificacion>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#reg_E3_7">
+  <rdf:type rdf:resource="#RegistroAprobado"/>
+  <registraMateria rdf:resource="#mat_RED301"/>
+  <numeroOportunidad rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</numeroOportunidad>
+  <calificacion rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.5</calificacion>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#reg_E3_8">
+  <rdf:type rdf:resource="#RegistroAprobado"/>
+  <registraMateria rdf:resource="#mat_SO301"/>
+  <numeroOportunidad rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</numeroOportunidad>
+  <calificacion rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.5</calificacion>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#reg_E3_9">
+  <rdf:type rdf:resource="#RegistroAprobado"/>
+  <registraMateria rdf:resource="#mat_EST301"/>
+  <numeroOportunidad rdf:datatype="http://www.w3.org/2001/XMLSchema#integer">1</numeroOportunidad>
+  <calificacion rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">8.5</calificacion>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ag_Historial">
+  <rdf:type rdf:resource="#AgenteHistorial"/>
+  <nombreAgente rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Historial</nombreAgente>
+  <valorShapley rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">42.822310405643734</valorShapley>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ag_Carga">
+  <rdf:type rdf:resource="#AgenteCarga"/>
+  <nombreAgente rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Carga</nombreAgente>
+  <valorShapley rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">29.60934744268078</valorShapley>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ag_Horarios">
+  <rdf:type rdf:resource="#AgenteHorarios"/>
+  <nombreAgente rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Horarios</nombreAgente>
+  <valorShapley rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">19.14241622574956</valorShapley>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#ag_Manager">
+  <rdf:type rdf:resource="#AgenteManager"/>
+  <nombreAgente rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Manager</nombreAgente>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#rec_E1">
+  <rdf:type rdf:resource="#Recomendacion"/>
+  <recomiendaA rdf:resource="#est_E1"/>
+  <recomendacionParaPeriodo rdf:resource="#per_2027-1"/>
+  <generadaPor rdf:resource="#ag_Manager"/>
+  <sujetaARestriccion rdf:resource="#restr_1"/>
+  <incluyeGrupo rdf:resource="#grp_EST301-B"/>
+  <sugiereMateria rdf:resource="#mat_EST301"/>
+  <incluyeGrupo rdf:resource="#grp_ING401-B"/>
+  <sugiereMateria rdf:resource="#mat_ING401"/>
+  <incluyeGrupo rdf:resource="#grp_RED301-B"/>
+  <sugiereMateria rdf:resource="#mat_RED301"/>
+  <incluyeGrupo rdf:resource="#grp_SO301-B"/>
+  <sugiereMateria rdf:resource="#mat_SO301"/>
+  <puntajeRecomendacion rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">91.57407407407408</puntajeRecomendacion>
+  <avanceAcademico rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">100.0</avanceAcademico>
+  <compatibilidadHorario rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">100.0</compatibilidadHorario>
+  <cargaEquilibrada rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">96.2962962962963</cargaEquilibrada>
+  <cumplimientoPreferencias rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">62.5</cumplimientoPreferencias>
+  <fechaGeneracion rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-11-02T21:59:50.372</fechaGeneracion>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#traza_E1_0">
+  <rdf:type rdf:resource="#TrazaEjecucion"/>
+  <trazaDeAgente rdf:resource="#ag_Horarios"/>
+  <trazaDeRecomendacion rdf:resource="#rec_E1"/>
+  <marcaTiempo rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-11-02T21:59:47.000</marcaTiempo>
+  <tareaEjecutada rdf:datatype="http://www.w3.org/2001/XMLSchema#string">interpretar_preferencias</tareaEjecutada>
+  <tiempoEjecucion rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0003</tiempoEjecucion>
+  <exito rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</exito>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#traza_E1_1">
+  <rdf:type rdf:resource="#TrazaEjecucion"/>
+  <trazaDeAgente rdf:resource="#ag_Historial"/>
+  <trazaDeRecomendacion rdf:resource="#rec_E1"/>
+  <marcaTiempo rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-11-02T21:59:47.000</marcaTiempo>
+  <tareaEjecutada rdf:datatype="http://www.w3.org/2001/XMLSchema#string">verificar_prerrequisitos</tareaEjecutada>
+  <tiempoEjecucion rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0001</tiempoEjecucion>
+  <exito rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</exito>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#traza_E1_2">
+  <rdf:type rdf:resource="#TrazaEjecucion"/>
+  <trazaDeAgente rdf:resource="#ag_Historial"/>
+  <trazaDeRecomendacion rdf:resource="#rec_E1"/>
+  <marcaTiempo rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-11-02T21:59:47.000</marcaTiempo>
+  <tareaEjecutada rdf:datatype="http://www.w3.org/2001/XMLSchema#string">proponer_carga</tareaEjecutada>
+  <tiempoEjecucion rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0015</tiempoEjecucion>
+  <exito rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</exito>
+  <scoreTraza rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">79.07</scoreTraza>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#traza_E1_3">
+  <rdf:type rdf:resource="#TrazaEjecucion"/>
+  <trazaDeAgente rdf:resource="#ag_Carga"/>
+  <trazaDeRecomendacion rdf:resource="#rec_E1"/>
+  <marcaTiempo rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-11-02T21:59:47.000</marcaTiempo>
+  <tareaEjecutada rdf:datatype="http://www.w3.org/2001/XMLSchema#string">proponer_carga</tareaEjecutada>
+  <tiempoEjecucion rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.41</tiempoEjecucion>
+  <exito rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</exito>
+  <scoreTraza rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">61.86</scoreTraza>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#traza_E1_4">
+  <rdf:type rdf:resource="#TrazaEjecucion"/>
+  <trazaDeAgente rdf:resource="#ag_Horarios"/>
+  <trazaDeRecomendacion rdf:resource="#rec_E1"/>
+  <marcaTiempo rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-11-02T21:59:48.000</marcaTiempo>
+  <tareaEjecutada rdf:datatype="http://www.w3.org/2001/XMLSchema#string">proponer_carga</tareaEjecutada>
+  <tiempoEjecucion rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.088</tiempoEjecucion>
+  <exito rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</exito>
+  <scoreTraza rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">45.0</scoreTraza>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#traza_E1_5">
+  <rdf:type rdf:resource="#TrazaEjecucion"/>
+  <trazaDeAgente rdf:resource="#ag_Manager"/>
+  <trazaDeRecomendacion rdf:resource="#rec_E1"/>
+  <marcaTiempo rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-11-02T21:59:48.000</marcaTiempo>
+  <tareaEjecutada rdf:datatype="http://www.w3.org/2001/XMLSchema#string">integrar_propuestas</tareaEjecutada>
+  <tiempoEjecucion rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">0.0012</tiempoEjecucion>
+  <exito rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</exito>
+  <scoreTraza rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">91.57</scoreTraza>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#traza_E1_6">
+  <rdf:type rdf:resource="#TrazaEjecucion"/>
+  <trazaDeAgente rdf:resource="#ag_Manager"/>
+  <trazaDeRecomendacion rdf:resource="#rec_E1"/>
+  <marcaTiempo rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-11-02T21:59:48.000</marcaTiempo>
+  <tareaEjecutada rdf:datatype="http://www.w3.org/2001/XMLSchema#string">seleccionar_mejor</tareaEjecutada>
+  <tiempoEjecucion rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.5007</tiempoEjecucion>
+  <exito rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</exito>
+  <scoreTraza rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">91.57</scoreTraza>
+</owl:NamedIndividual>
+
+<owl:NamedIndividual rdf:about="#traza_E1_7">
+  <rdf:type rdf:resource="#TrazaEjecucion"/>
+  <trazaDeAgente rdf:resource="#ag_Manager"/>
+  <trazaDeRecomendacion rdf:resource="#rec_E1"/>
+  <marcaTiempo rdf:datatype="http://www.w3.org/2001/XMLSchema#dateTime">2026-11-02T21:59:50.000</marcaTiempo>
+  <tareaEjecutada rdf:datatype="http://www.w3.org/2001/XMLSchema#string">calcular_shapley</tareaEjecutada>
+  <tiempoEjecucion rdf:datatype="http://www.w3.org/2001/XMLSchema#decimal">1.8138</tiempoEjecucion>
+  <exito rdf:datatype="http://www.w3.org/2001/XMLSchema#boolean">true</exito>
+</owl:NamedIndividual>
+
+
+</rdf:RDF>

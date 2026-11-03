@@ -1,0 +1,158 @@
+[
+ {
+  "timestamp": "2026-10-31T15:11:41",
+  "agent": "AgenteHorarios",
+  "task": "interpretar_preferencias",
+  "input": "Prefiero una carga ligera y que las clases sean presenciales.",
+  "output": {
+   "turno": null,
+   "modalidad": "presencial",
+   "carga": "ligera"
+  },
+  "execution_time": 0.0002,
+  "success": true,
+  "score": null
+ },
+ {
+  "timestamp": "2026-10-31T15:11:41",
+  "agent": "AgenteHistorial",
+  "task": "verificar_prerrequisitos",
+  "input": "E2",
+  "output": [
+   "MAT102",
+   "PRO201",
+   "BD201",
+   "RED301",
+   "ELE501"
+  ],
+  "execution_time": 0.0005,
+  "success": true,
+  "score": null
+ },
+ {
+  "timestamp": "2026-10-31T15:11:41",
+  "agent": "AgenteHistorial",
+  "task": "proponer_carga",
+  "input": {
+   "estudiante": "E2",
+   "preferencias": {
+    "turno": null,
+    "modalidad": "presencial",
+    "carga": "ligera"
+   },
+   "creditos": [
+    18,
+    36
+   ]
+  },
+  "output": [
+   "BD201-A",
+   "MAT102-A",
+   "PRO201-A",
+   "RED301-A"
+  ],
+  "execution_time": 0.0009,
+  "success": true,
+  "score": 88.77
+ },
+ {
+  "timestamp": "2026-10-31T15:11:41",
+  "agent": "AgenteCarga",
+  "task": "proponer_carga",
+  "input": {
+   "estudiante": "E2",
+   "preferencias": {
+    "turno": null,
+    "modalidad": "presencial",
+    "carga": "ligera"
+   },
+   "creditos": [
+    18,
+    36
+   ]
+  },
+  "output": [
+   "BD201-A",
+   "ELE501-A",
+   "IA401-A"
+  ],
+  "execution_time": 0.2801,
+  "success": true,
+  "score": 83.55
+ },
+ {
+  "timestamp": "2026-10-31T15:11:42",
+  "agent": "AgenteHorarios",
+  "task": "proponer_carga",
+  "input": {
+   "estudiante": "E2",
+   "preferencias": {
+    "turno": null,
+    "modalidad": "presencial",
+    "carga": "ligera"
+   },
+   "creditos": [
+    18,
+    36
+   ]
+  },
+  "output": [
+   "BD201-A",
+   "IA401-A",
+   "ING401-A",
+   "MAT102-A",
+   "PRO101-A",
+   "PRO102-A"
+  ],
+  "execution_time": 0.706,
+  "success": true,
+  "score": 55.0
+ },
+ {
+  "timestamp": "2026-10-31T15:11:42",
+  "agent": "AgenteManager",
+  "task": "integrar_propuestas",
+  "input": [
+   "AgenteHistorial",
+   "AgenteCarga",
+   "AgenteHorarios"
+  ],
+  "output": [
+   "BD201-A",
+   "MAT102-A",
+   "RED301-A"
+  ],
+  "execution_time": 0.0008,
+  "success": true,
+  "score": 98.43
+ },
+ {
+  "timestamp": "2026-10-31T15:11:42",
+  "agent": "AgenteManager",
+  "task": "seleccionar_mejor",
+  "input": [
+   "AgenteHistorial",
+   "AgenteCarga",
+   "AgenteHorarios",
+   "AgenteManager (integrada)"
+  ],
+  "output": "AgenteManager (integrada)",
+  "execution_time": 0.9878,
+  "success": true,
+  "score": 98.43
+ },
+ {
+  "timestamp": "2026-10-31T15:11:43",
+  "agent": "TraceCollector",
+  "task": "calcular_shapley",
+  "input": "8 coaliciones",
+  "output": {
+   "Historial": 42.66,
+   "Carga": 37.44,
+   "Horarios": 18.33
+  },
+  "execution_time": 1.1786,
+  "success": true,
+  "score": null
+ }
+]
